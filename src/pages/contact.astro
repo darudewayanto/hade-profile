@@ -1,0 +1,135 @@
+---
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import { site, wa } from "../data/site";
+
+const interests = [
+  "In-house agile training / workshop",
+  "In-house ACHC certification",
+  "Register for ACHC public batch",
+  "Leader & team profiling",
+  "Business agility advisory",
+  "HADE AI demo",
+  "Other",
+];
+---
+<Base title="Contact" description="Talk to HADE about in-house agile training, ACHC certification registration or a HADE AI demo. Reach us on WhatsApp or email.">
+  <PageHero
+    eyebrow="Contact"
+    title="Let's talk about your agile journey"
+    lead="Tell us a little about your needs and we will reply on WhatsApp, usually within one business day."
+  />
+
+  <section class="sheet section">
+    <div class="wrap grid">
+      <form class="card form" data-wa-form data-reveal>
+        <h2 class="h3">Send an enquiry</h2>
+        <p class="muted small">Your message opens in WhatsApp so you can review it before sending.</p>
+
+        <fieldset>
+          <legend>I'm interested in</legend>
+          <div class="options">
+            {interests.map((it, i) => (
+              <label class="opt">
+                <input type="radio" name="interest" value={it} checked={i === 0} />
+                <span>{it}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+
+        <div class="row">
+          <label class="field"><span>Full name</span><input name="name" required autocomplete="name" /></label>
+          <label class="field"><span>Organization</span><input name="org" autocomplete="organization" /></label>
+        </div>
+        <div class="row">
+          <label class="field"><span>Role / title</span><input name="role" autocomplete="organization-title" /></label>
+          <label class="field"><span>Estimated participants</span><input name="pax" inputmode="numeric" placeholder="e.g. 25" /></label>
+        </div>
+        <label class="field"><span>Message</span><textarea name="message" rows="4" placeholder="Goals, timeline or any questions"></textarea></label>
+
+        <button class="btn btn-dark submit" type="submit"><Icon name="whatsapp" /> Continue on WhatsApp</button>
+      </form>
+
+      <aside class="side" data-reveal style="--d:.1s">
+        <a class="c-card dark" href={wa("general")} target="_blank" rel="noopener">
+          <span class="c-icon"><Icon name="whatsapp" /></span>
+          <span><small class="muted">WhatsApp</small><strong>{site.phoneDisplay}</strong></span>
+          <Icon name="arrow-up-right" class="go" />
+        </a>
+        <a class="c-card" href={`mailto:${site.email}`}>
+          <span class="c-icon light"><Icon name="mail" /></span>
+          <span><small class="muted">Email</small><strong>{site.email}</strong></span>
+          <Icon name="arrow-up-right" class="go" />
+        </a>
+        <div class="c-card static">
+          <span class="c-icon light"><Icon name="pin" /></span>
+          <span><small class="muted">Where we work</small><strong>Indonesia · Hong Kong · Qatar · Australia</strong><small class="muted">HADE Middle East, Bahrain</small></span>
+        </div>
+        <div class="quick">
+          <p class="eyebrow">Quick start</p>
+          <a class="link-arrow" href={wa("inhouse")} target="_blank" rel="noopener">Plan an in-house program <Icon name="arrow-right" /></a>
+          <a class="link-arrow" href={wa("register")} target="_blank" rel="noopener">Register for ACHC certification <Icon name="arrow-right" /></a>
+          <a class="link-arrow" href={wa("ai")} target="_blank" rel="noopener">Request a HADE AI demo <Icon name="arrow-right" /></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<script define:vars={{ phone: site.whatsapp }}>
+  const form = document.querySelector("[data-wa-form]");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const line = (label, key) => (d.get(key) ? `${label}: ${String(d.get(key)).trim()}\n` : "");
+    const text =
+      `Hello HADE, I'd like to enquire about: ${d.get("interest")}\n\n` +
+      line("Name", "name") + line("Organization", "org") + line("Role", "role") +
+      line("Estimated participants", "pax") + (d.get("message") ? `\n${String(d.get("message")).trim()}` : "");
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text.trim())}`, "_blank", "noopener");
+  });
+</script>
+
+<style>
+  .grid { display: grid; gap: 2rem; align-items: start; }
+  @media (min-width: 960px) { .grid { grid-template-columns: 1.35fr 1fr; gap: 3rem; } }
+  .form { display: grid; gap: 1.25rem; }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  legend { font-weight: 600; font-size: var(--fs-small); margin-bottom: 0.75rem; }
+  .options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .opt { position: relative; cursor: pointer; }
+  .opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .opt span {
+    display: inline-block; padding: 0.55rem 0.95rem; border-radius: 999px;
+    border: 1px solid var(--line-strong); font-size: 0.86rem; transition: all 0.2s;
+  }
+  .opt input:checked + span { background: var(--navy-950); color: #fff; border-color: var(--navy-950); }
+  .opt input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .row { display: grid; gap: 1.25rem; }
+  @media (min-width: 640px) { .row { grid-template-columns: 1fr 1fr; } }
+  .field { display: grid; gap: 0.4rem; font-size: var(--fs-small); font-weight: 600; }
+  .field input, .field textarea {
+    font: inherit; font-weight: 400; font-size: 1rem; color: var(--ink);
+    padding: 0.8rem 1rem; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--cream);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--gold); background: #fff; }
+  .submit { justify-self: start; }
+
+  .side { display: grid; gap: 0.85rem; }
+  .c-card {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center;
+    padding: 1.25rem; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line);
+    transition: transform 0.25s var(--ease), border-color 0.25s;
+  }
+  a.c-card:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .c-card.dark { background: var(--navy-950); border-color: var(--navy-950); }
+  .c-card strong { display: block; font-weight: 600; word-break: break-word; }
+  .c-card small { display: block; }
+  .c-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--navy-950); }
+  .c-icon.light { background: var(--sand); color: var(--navy-800); }
+  .c-card :global(.go) { color: var(--gold); }
+  .quick { display: grid; gap: 0.85rem; justify-items: start; padding: 1.5rem 0.25rem; }
+</style>

@@ -1,0 +1,89 @@
+---
+import { u } from "../lib/url";
+import { Image } from "astro:assets";
+import logoWhite from "../assets/brand/hade-white.png";
+import Icon from "./Icon.astro";
+import { nav, site, wa } from "../data/site";
+const year = new Date().getFullYear();
+---
+<footer class="footer dark">
+  <div class="wrap">
+    <div class="top">
+      <div class="brandcol">
+        <Image src={logoWhite} alt="HADE" width={150} />
+        <p class="muted">{site.tagline}. Internationally accredited agile coaching, applied neuroscience and AI learning.</p>
+        <p class="countries">
+          {site.countries.map((c) => <span>{c}</span>)}
+          <span>Middle East · Bahrain</span>
+        </p>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Explore</h2>
+        <ul role="list">
+          {nav.slice(1).map((n) => <li><a href={u(n.href)}>{n.label}</a></li>)}
+          <li><a href={u("/contact")}>Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Programs</h2>
+        <ul role="list">
+          <li><a href={u("/certification")}>ACHC Certification</a></li>
+          <li><a href={u("/solutions#corporate")}>In-house Programs</a></li>
+          <li><a href={u("/solutions#profiling")}>Leader &amp; Team Profiling</a></li>
+          <li><a href={u("/solutions#transformation")}>Business Agility</a></li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h2 class="label">Get in touch</h2>
+        <ul role="list" class="contact">
+          <li><a href={wa("general")} target="_blank" rel="noopener"><Icon name="whatsapp" size={16} /> {site.phoneDisplay}</a></li>
+          <li><a href={`mailto:${site.email}`}><Icon name="mail" size={16} /> {site.email}</a></li>
+        </ul>
+        <a class="btn btn-gold" href={wa("inhouse")} target="_blank" rel="noopener">Plan a program <Icon name="arrow-up-right" /></a>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <p>© {year} HADE. All rights reserved.</p>
+      <p>Accredited by ICF · ICAgile · MyBrain International</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-block: clamp(4rem, 3rem + 4vw, 6.5rem) 2rem; }
+  .top {
+    display: grid;
+    gap: 3rem 2rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .top { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1040px) { .top { grid-template-columns: 1.6fr 0.8fr 1fr 1.2fr; } }
+
+  .brandcol { display: grid; gap: 1.25rem; align-content: start; max-width: 360px; }
+  .brandcol :global(img) { width: 132px; }
+  .countries { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .countries span {
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 0.25em 0.7em; border: 1px solid var(--line-dark); border-radius: 999px; color: #b7bfcd;
+  }
+  .label {
+    font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.1rem;
+  }
+  .col ul { display: grid; gap: 0.6rem; }
+  .col a { color: #d3d8e2; transition: color 0.2s; }
+  .col a:hover { color: #fff; }
+  .contact a { display: inline-flex; align-items: center; gap: 0.55rem; word-break: break-all; }
+  .col .btn { margin-top: 1.5rem; }
+  .bottom {
+    margin-top: clamp(3rem, 2rem + 4vw, 5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line-dark);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem;
+    font-size: var(--fs-small); color: #8590a4;
+  }
+</style>

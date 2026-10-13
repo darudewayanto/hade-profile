@@ -1,0 +1,284 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { accImg, clientImg } from "../lib/assets";
+import { stats, journey, accreditedMembers, masterCredentials, awards, universities, site } from "../data/site";
+
+import city from "../assets/photos/city.png";
+import portrait from "../assets/photos/daru-portrait.png";
+import news from "../assets/visuals/gdn-news.png";
+import award100 from "../assets/photos/award-100-best.png";
+import awardWcc from "../assets/photos/award-wcc.png";
+import awardTop from "../assets/photos/award-top-business.png";
+import coa from "../assets/visuals/center-of-agility.png";
+import uni1 from "../assets/visuals/universities-1.png";
+import uni2 from "../assets/visuals/universities-2.png";
+
+const strengths = [
+  { icon: "award", title: "The first & only in Asia & Australia", text: "Holder of all three master agile coach credentials: ICE-AC (ICAgile), MCC (ICF) and MIND Master Practitioner (MyBrain)." },
+  { icon: "certificate", title: "Triple-accredited certification", text: "The only international agile coaching certification accredited by ICF, ICAgile and MyBrain International." },
+  { icon: "globe", title: "Strong presence in the region", text: "28 coaching firms, 180 associate coaches and 1,800+ graduate coaches in Indonesia, Hong Kong, Qatar and Australia." },
+  { icon: "ai", title: "AI for digital learning", text: "HADE AI, a SaaS platform built on large language models, extends learning beyond the classroom." },
+];
+
+const programs = [
+  { name: "Agile Certified Hijrah Coach (ACHC)", by: "ICP-ACC, accredited by ICAgile" },
+  { name: "Certified Business Hijrah Coach (CBHC)", by: "ICF Level 1 accredited coaching education" },
+  { name: "Certified Hijrah MIND Practitioner (CHMP)", by: "MyBrain International (UK) & ICF Continuing Coach Education" },
+];
+---
+<Base title="About" description="HADE is an internationally accredited agile coaching firm with 28 coaching firms, 180 associate coaches and 1,800+ graduate coaches across Asia, Australia and the Middle East.">
+  <PageHero
+    eyebrow="About HADE"
+    title="Agile specialists for your sustainable business"
+    lead="Since 2011 we have helped corporations, governments and business owners build agile cultures through internationally accredited coaching, applied neuroscience and AI."
+    image={city}
+    imageAlt=""
+  />
+
+  <!-- Who we are -->
+  <section class="sheet section">
+    <div class="wrap who">
+      <div class="stack" data-reveal>
+        <span class="eyebrow">Who we are</span>
+        <h2 class="h2">From a business coaching practice to a regional agile coaching firm<span class="dot">.</span></h2>
+      </div>
+      <div class="stack" data-reveal style="--d:.1s">
+        <p class="lead">HADE provides end-to-end agile culture transformation, focused on people and leadership development. Our programs combine three disciplines: coaching, applied neuroscience and AI-powered learning.</p>
+        <p class="muted">We work with executives, professionals (coaches, trainers and mentors) and business owners. Our network of coaching firms and associate coaches delivers programs in Indonesia, Hong Kong, Qatar and Australia, and our partners serve clients in the USA, UK, Qatar, Saudi Arabia, UAE, Kuwait, Oman, Bahrain, Malaysia and Singapore.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <ul role="list" class="mini-stats">
+        {stats.map((s) => <li data-reveal><span>{s.value}</span><small class="muted">{s.label}</small></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Strength -->
+  <section class="section sand">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">HADE strength</span><h2 class="h2" style="margin-top:1rem">What makes us different<span class="dot">.</span></h2></div>
+        <p class="lead">Credentials that few firms in the world hold, and a delivery network to match.</p>
+      </div>
+      <ul role="list" class="strengths">
+        {strengths.map((s, i) => (
+          <li class="card" data-reveal style={`--d:${i * 0.08}s`}>
+            <span class="s-icon"><Icon name={s.icon} /></span>
+            <h3>{s.title}</h3>
+            <p class="muted">{s.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Middle East -->
+  <section class="section">
+    <div class="wrap me">
+      <div class="media me-news" data-reveal><Image src={news} alt="Gulf Daily News coverage of the Northstar Telecom and HADE Middle East alliance" width={700} /></div>
+      <div class="stack" data-reveal style="--d:.1s">
+        <span class="eyebrow">HADE Middle East</span>
+        <h2 class="h2">A subsidiary headquartered in Bahrain<span class="dot">.</span></h2>
+        <p class="lead">HADE Middle East was established with Northstar Telecom, headquartered in Bahrain, to bring agile coaching and AI learning to organizations across the GCC.</p>
+        <Image src={clientImg["northstar"]} alt="Northstar Telecom" height={44} class="ns" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Journey -->
+  <section class="section dark journey-sec">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">HADE journey</span><h2 class="h2" style="margin-top:1rem">Fifteen years of building agility<span class="dot">.</span></h2></div>
+        <p class="lead">From coaching local entrepreneurs to certifying agile coaches across four countries.</p>
+      </div>
+      <ol role="list" class="journey">
+        {journey.map((j, i) => (
+          <li data-reveal style={`--d:${i * 0.1}s`}>
+            <span class="period">{j.period}</span>
+            <h3 class="h3">{j.title}</h3>
+            <ul class="check-list small">{j.points.map((p) => <li>{p}</li>)}</ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="section" id="founder">
+    <div class="wrap founder">
+      <div class="f-photo" data-reveal>
+        <Image src={portrait} alt="Daru Dewayanto" widths={[480, 800]} sizes="(min-width: 900px) 38vw, 90vw" />
+      </div>
+      <div class="stack" data-reveal style="--d:.1s">
+        <span class="eyebrow">Founder, CEO &amp; Master Coach of HADE &amp; HADE AI</span>
+        <h2 class="h1">Daru Dewayanto<span class="dot">.</span></h2>
+        <p class="creds">MCM · MCC · ICE-AC · Indonesia · Hong Kong · Qatar · Australia</p>
+        <p class="lead">An internationally accredited and award-winning agile coach with more than 30 years of experience as a corporate leader and entrepreneur.</p>
+        <ul class="check-list">
+          <li>100 Best Global Coaching Leader 2017, 2018 &amp; 2019, World Coaching Congress</li>
+          <li>Top Business Award 2016 &amp; 2017, International Business Federation</li>
+          <li>Trained and certified more than 1,800 coaches and practitioners</li>
+          <li>Coached more than 1,000 companies, executives and business owners across 5,000+ training, coaching and mentoring hours</li>
+        </ul>
+        <div class="f-programs">
+          <h3>Chief Instructor &amp; Program Designer</h3>
+          <ul role="list">
+            {programs.map((p) => <li><strong>{p.name}</strong><span class="muted small">{p.by}</span></li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credentials -->
+  <section class="section sand" id="accreditation">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">International credibility</span><h2 class="h2" style="margin-top:1rem">Accredited by six international organizations<span class="dot">.</span></h2></div>
+        <p class="lead">We are certified and accredited by six major coaching and applied-neuroscience organizations, and hold six master credentials.</p>
+      </div>
+
+      <h3 class="sub">Accredited member</h3>
+      <ul role="list" class="logo-grid">
+        {accreditedMembers.map((a) => (
+          <li data-reveal>
+            <div class="lg"><Image src={accImg[a.logo]} alt="" height={70} /></div>
+            <strong>{a.name}</strong><span class="muted small">{a.full} · {a.country}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h3 class="sub">Master credentials</h3>
+      <ul role="list" class="logo-grid">
+        {masterCredentials.map((a) => (
+          <li data-reveal>
+            <div class="lg">{a.logo ? <Image src={accImg[a.logo]} alt="" height={70} /> : <span class="lg-text">Marshall<br />Goldsmith</span>}</div>
+            <strong>{a.name}</strong><span class="muted small">{a.full}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Awards</span><h2 class="h2" style="margin-top:1rem">An award-winning master coach &amp; coaching firm<span class="dot">.</span></h2></div>
+        <p class="lead">Recognized by the World Coaching Congress, the International Business Federation and global startup programs.</p>
+      </div>
+      <div class="awards-photos">
+        <div class="media" data-reveal><Image src={award100} alt="100 Best Global Coaching Leader award" width={800} /></div>
+        <div class="media" data-reveal style="--d:.08s"><Image src={awardWcc} alt="Receiving the World Coaching Congress award" width={800} /></div>
+        <div class="media" data-reveal style="--d:.16s"><Image src={awardTop} alt="Top Business Award ceremony" width={600} /></div>
+      </div>
+      <ul role="list" class="awards">
+        {awards.map((a) => (
+          <li data-reveal><span class="yr">{a.year}</span><strong>{a.title}</strong><span class="muted">{a.by}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Center of Agility -->
+  <section class="section sand">
+    <div class="wrap coa">
+      <div class="stack" data-reveal>
+        <span class="eyebrow">Center of Agility Movement</span>
+        <h2 class="h2">Growing agility with Indonesia's universities<span class="dot">.</span></h2>
+        <p class="lead">Through the Center of Agility movement and the Duta Agility program, we partner with universities to prepare the next generation of agile leaders.</p>
+        <p class="muted small"><strong>University partners:</strong> {universities}.</p>
+      </div>
+      <div class="coa-visual" data-reveal style="--d:.1s">
+        <div class="media"><Image src={coa} alt="Agile certification and Duta Agility programs" width={900} /></div>
+        <div class="unis">
+          <Image src={uni1} alt="University partner logos" width={760} />
+          <Image src={uni2} alt="More university partner logos" width={760} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-tight"></div>
+  <CtaBand />
+</Base>
+
+<style>
+  .who { display: grid; gap: 2rem 5rem; }
+  @media (min-width: 900px) { .who { grid-template-columns: 1fr 1fr; } }
+  .mini-stats {
+    margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+    border-top: 1px solid var(--line); padding-top: 2rem;
+  }
+  @media (min-width: 800px) { .mini-stats { grid-template-columns: repeat(4, 1fr); } }
+  .mini-stats li { display: grid; gap: 0.35rem; }
+  .mini-stats span { font-size: clamp(2.2rem, 1.6rem + 2vw, 3.4rem); letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+
+  .strengths { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
+  .strengths li { display: grid; gap: 0.9rem; align-content: start; }
+  .strengths h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; }
+  .s-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--navy-950); color: var(--gold-light); }
+
+  .me { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 900px) { .me { grid-template-columns: 0.8fr 1fr; gap: 6rem; } }
+  .me-news { max-width: 420px; transform: rotate(-2deg); box-shadow: var(--shadow); background: #fff; }
+  .me :global(.ns) { height: 40px; width: auto; }
+
+  .journey-sec { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
+  .journey { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); counter-reset: j; }
+  .journey > li {
+    position: relative; display: grid; gap: 1rem; align-content: start;
+    padding: 2rem 1.75rem; border-radius: var(--radius); border: 1px solid var(--line-dark);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .journey > li::before {
+    content: ""; position: absolute; top: -1px; left: 1.75rem; right: 1.75rem; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .period { font-size: clamp(1.8rem, 1.4rem + 1.4vw, 2.6rem); letter-spacing: -0.04em; color: var(--gold-light); font-weight: 500; }
+  .journey .check-list { color: #c3c9d6; }
+
+  .founder { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 900px) { .founder { grid-template-columns: 0.85fr 1.15fr; gap: 6rem; } }
+  .f-photo {
+    border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 50% 35%, rgba(188, 148, 108, 0.45), transparent 65%), var(--navy-900);
+    padding-top: 2.5rem; overflow: hidden;
+  }
+  .creds { color: var(--gold-deep); letter-spacing: 0.14em; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+  .f-programs { padding: 1.5rem; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+  .f-programs h3 { font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-bottom: 0.75rem; }
+  .f-programs li { display: grid; padding: 0.6rem 0; border-top: 1px solid var(--line); }
+  .f-programs li:first-child { border-top: 0; }
+
+  .sub { font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 2.5rem 0 1rem; }
+  .sub:first-of-type { margin-top: 0; }
+  .logo-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 180px), 1fr)); }
+  .logo-grid li { display: grid; gap: 0.25rem; align-content: start; padding: 1.25rem; background: var(--paper); border-radius: var(--radius); border: 1px solid var(--line); }
+  .lg { height: 84px; display: flex; align-items: center; margin-bottom: 0.75rem; }
+  .lg :global(img) { max-height: 70px; width: auto; max-width: 100%; object-fit: contain; }
+  .lg-text { font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--navy-800); }
+  .logo-grid strong { font-weight: 600; font-size: 0.95rem; }
+
+  .awards-photos { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-bottom: 2.5rem; }
+  @media (min-width: 760px) { .awards-photos { grid-template-columns: 1.3fr 1fr 0.8fr; } }
+  .awards-photos .media { height: clamp(220px, 22vw, 300px); }
+  .awards { display: grid; border-top: 1px solid var(--line-strong); }
+  .awards li { display: grid; grid-template-columns: 90px 1fr; gap: 0.25rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 760px) { .awards li { grid-template-columns: 120px 1fr 1fr; } }
+  .yr { color: var(--gold-deep); font-weight: 600; }
+  .awards strong { font-weight: 600; }
+  @media (max-width: 759px) { .awards .muted { grid-column: 2; } }
+
+  .coa { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 900px) { .coa { grid-template-columns: 1fr 1.1fr; gap: 5rem; } }
+  .coa-visual { display: grid; gap: 1rem; }
+  .unis { display: grid; gap: 0.75rem; padding: 1.25rem; background: var(--paper); border-radius: var(--radius); }
+</style>

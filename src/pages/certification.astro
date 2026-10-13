@@ -1,0 +1,240 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import { accImg } from "../lib/assets";
+import { achcModules, wa } from "../data/site";
+
+import lounge from "../assets/photos/daru-lounge.jpg";
+import emblem from "../assets/brand/master-hijrah-coach.png";
+
+const totalHours = achcModules.reduce((s, m) => s + m.hours, 0);
+
+const audiences = [
+  { icon: "leader", title: "Executives & leaders", text: "Lead change as an agile coach, from VP and GM to director levels." },
+  { icon: "building", title: "Corporate university & L&D", text: "Faculty members and HR teams building an internal coaching culture." },
+  { icon: "coach", title: "Coaches, trainers & mentors", text: "Professionals seeking international agile coaching credentials." },
+  { icon: "layers", title: "Agile practitioners", text: "Transformation leads, innovation mentors and team leaders." },
+];
+
+const faqs = [
+  { q: "Who accredits the ACHC program?", a: "ACHC is accredited by three international bodies: ICAgile (ICP-ACC) after Fundamental & Module 1, ICF Level 1 accredited coaching education after Modules 2 & 3, and MyBrain International with ICF Continuing Coach Education after Module 4." },
+  { q: "Can we run ACHC privately for our organization?", a: "Yes. Most of our corporate clients run ACHC as an in-house certification for batches of leaders, faculty members or internal coaches. We tailor the case studies and schedule to your organization." },
+  { q: "How do I register for a public batch?", a: "Send us a message on WhatsApp. We will share the next batch schedule, the investment and the registration steps." },
+  { q: "Who leads the program?", a: "The program is designed and led by Daru Dewayanto, MCC, ICE-AC, together with HADE's credentialed master and associate coaches." },
+];
+---
+<Base title="ACHC Certification" description="Agile Certified Hijrah Coach (ACHC): a triple-accredited agile coaching certification by ICF, ICAgile and MyBrain International. Available in-house and in public batches.">
+  <PageHero
+    eyebrow="Agile Certified Hijrah Coach · ACHC"
+    title="Triple-accredited agile coaching certification"
+    lead="An internationally certified and accredited agile competency program, recognized by ICF, ICAgile and MyBrain International."
+    image={lounge}
+    imagePosition="60% 40%"
+  >
+    <div class="btn-row" data-reveal style="--d:.24s">
+      <a class="btn btn-gold" href={wa("register")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Register for ACHC</a>
+      <a class="btn btn-light" href={wa("inhouse")} target="_blank" rel="noopener">In-house certification</a>
+    </div>
+  </PageHero>
+
+  <!-- Key facts -->
+  <section class="sheet section-tight">
+    <div class="wrap">
+      <ul role="list" class="facts">
+        <li data-reveal><span>4</span><small class="muted">Modules, from foundation to applied neuroscience</small></li>
+        <li data-reveal style="--d:.08s"><span>{totalHours}</span><small class="muted">Hours of international certified competency</small></li>
+        <li data-reveal style="--d:.16s"><span>3</span><small class="muted">International accreditations: ICF, ICAgile &amp; MyBrain</small></li>
+        <li data-reveal style="--d:.24s"><span>1,800+</span><small class="muted">HADE graduate coaches and practitioners</small></li>
+      </ul>
+      <div class="acc-strip" data-reveal>
+        {["icf", "icagile", "mybrain", "icp-acc", "icf-level1", "cce"].map((n) => <Image src={accImg[n]} alt={n} height={60} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Framework -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Agile coaching framework</span><h2 class="h2" style="margin-top:1rem">The competencies of an agile coach<span class="dot">.</span></h2></div>
+        <p class="lead">ACHC builds every competency in the agile coaching framework on a foundation of Agile-Lean mindset, values and principles.</p>
+      </div>
+      <div class="framework" data-reveal>
+        <div class="fw-masteries">
+          <span>Technical Mastery</span><span>Business Mastery</span><span>Transformation Mastery</span>
+        </div>
+        <div class="fw-groups">
+          <div class="fw-group">
+            <h3>Content authority</h3>
+            <ul role="list"><li>Mentoring competency</li><li>Training competency</li></ul>
+          </div>
+          <div class="fw-group center-g">
+            <Image src={emblem} alt="Master Hijrah Coach emblem" width={160} />
+            <h3>Agile-Lean practitioner</h3>
+          </div>
+          <div class="fw-group">
+            <h3>Process authority</h3>
+            <ul role="list"><li>Coaching competency</li><li>Team coaching competency</li><li>Facilitating competency</li></ul>
+          </div>
+        </div>
+        <div class="fw-foundation">A foundation in Agile-Lean mindset, values &amp; principles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules -->
+  <section class="section dark rounded">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Program structure</span><h2 class="h2" style="margin-top:1rem">Four modules, three credentials<span class="dot">.</span></h2></div>
+        <p class="lead">Each stage leads to an international accreditation, so participants earn recognized credentials as they progress.</p>
+      </div>
+      <ol role="list" class="modules">
+        {achcModules.map((m, i) => (
+          <li data-reveal style={`--d:${i * 0.06}s`}>
+            <div class="m-left">
+              <span class="m-step">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <span class="m-code">{m.code}</span>
+                <h3 class="h3">{m.title}</h3>
+              </div>
+            </div>
+            <div class="m-mid">
+              <p>{m.text}</p>
+              <p class="m-acc"><Icon name="certificate" size={18} /> {m.accreditation}</p>
+            </div>
+            <div class="m-right">
+              <span class="chip chip-gold">{m.hours} hours</span>
+              <div class="m-logos">{m.logos.map((l) => <Image src={accImg[l]} alt={l} height={40} />)}</div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Audience & formats -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Who it's for</span><h2 class="h2" style="margin-top:1rem">Built for leaders who drive change<span class="dot">.</span></h2></div>
+        <p class="lead">Our graduates include 400+ executives from Telkom Group, 150+ from Pertamina Group, and corporate university faculty across Indonesia.</p>
+      </div>
+      <ul role="list" class="aud">
+        {audiences.map((a, i) => (
+          <li class="card" data-reveal style={`--d:${i * 0.06}s`}>
+            <span class="a-icon"><Icon name={a.icon} /></span>
+            <h3>{a.title}</h3>
+            <p class="muted small">{a.text}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div class="formats">
+        <article class="format dark" data-reveal>
+          <span class="chip chip-gold">For organizations</span>
+          <h3 class="h3">In-house certification</h3>
+          <p class="muted">A private ACHC batch for your leaders, faculty or internal coaches, with case studies drawn from your organization.</p>
+          <ul class="check-list small"><li>Scheduled around your calendar</li><li>Customized cases &amp; context</li><li>Builds an internal coaching culture</li></ul>
+          <a class="btn btn-gold" href={wa("inhouse")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Plan an in-house batch</a>
+        </article>
+        <article class="format card" data-reveal style="--d:.08s">
+          <span class="chip">For individuals</span>
+          <h3 class="h3">Public batch</h3>
+          <p class="muted">Join leaders and professionals from different industries in an open ACHC batch.</p>
+          <ul class="check-list small"><li>Open to individuals from any organization</li><li>Cross-industry peer learning</li><li>Same triple accreditation</li></ul>
+          <a class="btn btn-dark" href={wa("register")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Ask for the next schedule</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section sand">
+    <div class="wrap-narrow">
+      <div class="center stack" data-reveal>
+        <span class="eyebrow center">FAQ</span>
+        <h2 class="h2">Questions about ACHC<span class="dot">.</span></h2>
+      </div>
+      <div class="faq" data-reveal>
+        {faqs.map((f, i) => (
+          <details name="faq" open={i === 0}>
+            <summary>{f.q}<span class="plus" aria-hidden="true"><Icon name="plus" size={18} /></span></summary>
+            <p class="muted">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+  <CtaBand title="Start your agile coaching journey." />
+</Base>
+
+<style>
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  @media (min-width: 860px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+  .facts li { display: grid; gap: 0.35rem; padding-top: 1.25rem; border-top: 1px solid var(--line-strong); }
+  .facts span { font-size: clamp(2.4rem, 1.8rem + 2vw, 3.6rem); font-weight: 500; letter-spacing: -0.05em; line-height: 1; }
+  .acc-strip { margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; justify-content: center; }
+  .acc-strip :global(img) { height: 54px; width: auto; }
+
+  .framework { display: grid; gap: 1rem; }
+  .fw-masteries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+  .fw-masteries span {
+    text-align: center; padding: 0.9rem 0.5rem; border-radius: 999px;
+    background: var(--sand); font-weight: 600; font-size: clamp(0.72rem, 0.6rem + 0.4vw, 0.95rem);
+  }
+  .fw-groups { display: grid; gap: 1rem; }
+  @media (min-width: 860px) { .fw-groups { grid-template-columns: 1fr 0.9fr 1fr; } }
+  .fw-group { padding: 1.75rem; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+  .fw-group h3 { font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-bottom: 1rem; }
+  .fw-group li { padding: 0.75rem 0; border-top: 1px solid var(--line); font-weight: 500; font-size: 1.05rem; }
+  .center-g { display: grid; justify-items: center; align-content: center; text-align: center; gap: 1rem; background: var(--navy-950); border-color: var(--navy-950); }
+  .center-g :global(img) { width: 130px; }
+  .center-g h3 { color: var(--gold-light); margin: 0; }
+  .fw-foundation {
+    text-align: center; padding: 1.1rem; border-radius: var(--radius);
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+    color: var(--navy-950); font-weight: 600;
+  }
+
+  .rounded { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
+  .modules { display: grid; border-top: 1px solid var(--line-dark); }
+  .modules > li {
+    display: grid; gap: 1.25rem 3rem; padding: 2rem 0; border-bottom: 1px solid var(--line-dark);
+  }
+  @media (min-width: 960px) { .modules > li { grid-template-columns: 1fr 1.3fr auto; align-items: start; } }
+  .m-left { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .m-step { font-size: 2.6rem; line-height: 1; letter-spacing: -0.05em; color: var(--gold); font-weight: 500; }
+  .m-code { font-size: var(--fs-micro); letter-spacing: 0.18em; text-transform: uppercase; color: #9aa3b5; font-weight: 600; }
+  .m-mid { display: grid; gap: 0.85rem; color: #c3c9d6; }
+  .m-acc { display: flex; gap: 0.5rem; align-items: flex-start; font-size: var(--fs-small); color: var(--gold-light); }
+  .m-acc :global(svg) { flex: none; margin-top: 0.1rem; }
+  .m-right { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+  @media (min-width: 960px) { .m-right { align-items: flex-end; } }
+  .m-logos { display: flex; gap: 0.5rem; }
+  .m-logos :global(img) { height: 38px; width: auto; background: #fff; border-radius: 8px; padding: 4px 8px; }
+
+  .aud { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+  .aud li { display: grid; gap: 0.6rem; align-content: start; }
+  .aud h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -0.015em; }
+  .a-icon { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); color: var(--gold-deep); margin-bottom: 0.4rem; }
+
+  .formats { margin-top: 1.5rem; display: grid; gap: 1rem; }
+  @media (min-width: 860px) { .formats { grid-template-columns: 1fr 1fr; } }
+  .format { display: grid; gap: 1rem; justify-items: start; align-content: start; padding: clamp(1.75rem, 1rem + 2vw, 2.75rem); border-radius: var(--radius); }
+  .format.dark { background: var(--navy-950); }
+
+  .faq { margin-top: 2.5rem; border-top: 1px solid var(--line-strong); }
+  details { border-bottom: 1px solid var(--line-strong); }
+  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0; font-weight: 600; font-size: 1.08rem; }
+  summary::-webkit-details-marker { display: none; }
+  .plus { transition: transform 0.3s var(--ease); flex: none; }
+  details[open] .plus { transform: rotate(45deg); color: var(--gold-deep); }
+  details p { padding: 0 2.5rem 1.4rem 0; }
+</style>

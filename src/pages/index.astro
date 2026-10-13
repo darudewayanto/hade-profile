@@ -1,0 +1,500 @@
+---
+import { u } from "../lib/url";
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import LogoMarquee from "../components/LogoMarquee.astro";
+import Testimonials from "../components/Testimonials.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { accImg, clientImg } from "../lib/assets";
+import { pillars, stats, coreSolutions, corporatePrograms, achcModules, caseStudies, wa, site } from "../data/site";
+
+import heroPhoto from "../assets/photos/daru-window.jpg";
+import lounge from "../assets/photos/daru-lounge.jpg";
+import stage from "../assets/photos/daru-stage.jpg";
+import aiFlow from "../assets/visuals/hade-ai-flow.png";
+import startupStage from "../assets/photos/startup-stage.png";
+import portrait from "../assets/photos/daru-portrait.png";
+---
+<Base>
+  <!-- ============ HERO ============ -->
+  <section class="hero dark">
+    <div class="hero-photo">
+      <Image src={heroPhoto} alt="Daru Dewayanto, Founder and Master Coach of HADE" widths={[600, 853]} sizes="(min-width: 900px) 50vw, 100vw" loading="eager" fetchpriority="high" />
+    </div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <span class="eyebrow" data-reveal>Agile specialists · Since 2011</span>
+        <h1 class="hero-title" data-reveal style="--d:.08s">We Help Companies Become Agile<span class="dot">.</span></h1>
+        <p class="lead" data-reveal style="--d:.16s">
+          Internationally accredited agile coaching, applied neuroscience and AI-powered learning that help leaders and teams build a sustainable business.
+        </p>
+        <div class="btn-row" data-reveal style="--d:.24s">
+          <a class="btn btn-gold" href={wa("inhouse")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Plan an in-house program</a>
+          <a class="btn btn-light" href={u("/certification")}>Explore certification</a>
+        </div>
+      </div>
+
+      <div class="hero-proof" data-reveal style="--d:.32s">
+        <div class="badges">
+          <Image src={accImg["ice-ac"]} alt="ICAgile Certified Expert in Agile Coaching" height={64} />
+          <Image src={accImg["mcc"]} alt="ICF Master Certified Coach" height={64} />
+          <Image src={accImg["mind-master"]} alt="MIND Master Practitioner" height={64} />
+        </div>
+        <p><strong>The first &amp; only in Asia &amp; Australia</strong><br /><span class="muted">holder of all three master agile coach credentials</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTRO / PILLARS ============ -->
+  <section class="sheet section intro">
+    <div class="wrap">
+      <div class="wrap-narrow center" data-reveal>
+        <span class="eyebrow center">Intro</span>
+        <h2 class="intro-title">We bring agility to life by combining coaching, neuroscience and AI, backed by more than a decade of transformation work.</h2>
+      </div>
+
+      <ul role="list" class="pillars">
+        {pillars.map((p, i) => (
+          <li data-reveal style={`--d:${i * 0.1}s`}>
+            <span class="pillar-icon"><Icon name={p.icon} size={30} /></span>
+            <h3>{p.title}</h3>
+            <p class="muted">{p.text}</p>
+            <a class="btn" href={u(p.href)}>Learn more</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats-band">
+    <div class="wrap">
+      <ul role="list" class="stats">
+        {stats.map((s, i) => (
+          <li data-reveal style={`--d:${i * 0.08}s`}>
+            <span class="num">{s.value}</span>
+            <span class="muted">{s.label}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="presence small muted" data-reveal>
+        <Icon name="globe" size={16} /> Firms in {site.countries.join(", ")} · Subsidiary in Bahrain · Partners in the USA, UK, Qatar, Saudi Arabia, UAE, Kuwait, Oman, Bahrain, Malaysia &amp; Singapore
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ THE AGILE SPECIALIST (accordion) ============ -->
+  <section class="section specialist">
+    <div class="wrap split">
+      <div class="specialist-copy" data-reveal>
+        <h2 class="h1">The Agile<br />Specialist<span class="dot">.</span></h2>
+        <p class="lead">
+          HADE provides end-to-end agile culture transformation, focused on people and leadership development, with programs customized for every team and leader.
+        </p>
+        <div class="accordion">
+          {coreSolutions.map((c, i) => (
+            <details name="core" open={i === 0}>
+              <summary>{c.title}<span class="plus" aria-hidden="true"><Icon name="plus" size={18} /></span></summary>
+              <p class="muted">{c.text}</p>
+            </details>
+          ))}
+        </div>
+        <a class="link-arrow" href={u("/solutions")}>See all solutions <Icon name="arrow-right" /></a>
+      </div>
+      <div class="media specialist-photo" data-reveal style="--d:.1s">
+        <Image src={lounge} alt="Daru Dewayanto reviewing a coaching plan" widths={[640, 1000, 1400]} sizes="(min-width: 900px) 45vw, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPLIT FEATURE ============ -->
+  <section class="feature">
+    <div class="feature-photo">
+      <Image src={stage} alt="Daru Dewayanto speaking at Entrepreneur Hub, Makassar" widths={[700, 1000, 1333]} sizes="(min-width: 900px) 50vw, 100vw" />
+    </div>
+    <div class="feature-copy sand">
+      <div data-reveal>
+        <span class="eyebrow">Why HADE</span>
+        <h2 class="h2">Not just training. Transformation that lasts<span class="dot">.</span></h2>
+        <p class="lead">
+          HADE is the only firm in the region accredited in agile coaching by three major international bodies (ICF, ICAgile and MyBrain), so your leaders gain capabilities that stay after the workshop ends.
+        </p>
+        <div class="acc-row">
+          {["icf", "icagile", "mybrain"].map((n) => <Image src={accImg[n]} alt={n} height={44} />)}
+        </div>
+        <div class="btn-row">
+          <a class="btn" href={u("/about")}>About HADE</a>
+          <a class="btn btn-dark" href={u("/certification")}>View certification</a>
+        </div>
+      </div>
+      <a class="call-chip" href={wa("general")} target="_blank" rel="noopener">
+        <Image src={heroPhoto} alt="" width={40} height={40} class="avatar" />
+        <span>Talk to our Master Coach<br /><strong>{site.phoneDisplay}</strong></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CORPORATE SOLUTIONS ============ -->
+  <section class="section solutions">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div>
+          <span class="eyebrow">Corporate &amp; enterprise</span>
+          <h2 class="h1" style="margin-top:1rem">Our Solutions<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">Each program is customized and designed around your organization, from the boardroom to front-line teams, and delivered in-house or in public batches.</p>
+      </div>
+      <ul role="list" class="sol-grid">
+        {corporatePrograms.map((p, i) => (
+          <li class="card sol" data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="sol-icon"><Icon name={p.icon} /></span>
+            <h3 class="h3">{p.title}</h3>
+            <p class="muted">{p.text}</p>
+            <ul class="check-list small">{p.items.map((it) => <li>{it}</li>)}</ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATION PREVIEW ============ -->
+  <section class="section achc dark">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div>
+          <span class="eyebrow">Agile Certified Hijrah Coach · ACHC</span>
+          <h2 class="h1" style="margin-top:1rem">A triple-accredited path to agile coaching mastery<span class="dot">.</span></h2>
+        </div>
+        <div class="stack">
+          <p class="lead">Four modules and 110 hours of international certified competency, accredited by ICF, ICAgile and MyBrain International.</p>
+          <div class="btn-row">
+            <a class="btn btn-gold" href={wa("register")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Register now</a>
+            <a class="btn btn-light" href={u("/certification")}>Program details</a>
+          </div>
+        </div>
+      </div>
+      <ol role="list" class="modules">
+        {achcModules.map((m, i) => (
+          <li data-reveal style={`--d:${i * 0.08}s`}>
+            <div class="mod-top">
+              <span class="mod-code">{m.code}</span>
+              <span class="chip chip-gold">{m.hours} hrs</span>
+            </div>
+            <h3 class="h3">{m.title}</h3>
+            <p class="muted small">{m.text}</p>
+            <div class="mod-logos">{m.logos.map((l) => <Image src={accImg[l]} alt={l} height={34} />)}</div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS ============ -->
+  <section class="section clients">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div>
+          <span class="eyebrow">Trusted by</span>
+          <h2 class="h2" style="margin-top:1rem">Leaders across state-owned enterprises, ministries &amp; global brands<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">From Telkom and Pertamina to Shell, Samsung and Indonesia's ministries, we have helped organizations make agility part of how they lead.</p>
+      </div>
+    </div>
+    <LogoMarquee />
+    <div class="wrap">
+      <ul role="list" class="cases">
+        {caseStudies.map((c, i) => (
+          <li class="card case" data-reveal style={`--d:${i * 0.08}s`}>
+            <div class="case-logo"><Image src={clientImg[c.logo]} alt={c.client} height={40} /></div>
+            <p class="case-num">{c.headline}</p>
+            <p class="muted small">{c.headlineLabel}</p>
+            <h3>{c.client}</h3>
+            <p class="muted small">{c.summary}</p>
+            <a class="link-arrow" href={u(`/clients#case-${i + 1}`)}>Read the case <Icon name="arrow-right" /></a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FOUNDER ============ -->
+  <section class="founder dark">
+    <div class="wrap founder-grid">
+      <div class="founder-photo" data-reveal>
+        <span class="halo" aria-hidden="true"></span>
+        <Image src={portrait} alt="Daru Dewayanto, MCM, MCC, ICE-AC" widths={[480, 760, 1000]} sizes="(min-width: 900px) 40vw, 90vw" />
+      </div>
+      <div class="founder-copy" data-reveal style="--d:.1s">
+        <span class="eyebrow">Founder, CEO &amp; Master Coach</span>
+        <h2 class="h1">Daru Dewayanto<span class="dot">.</span></h2>
+        <p class="creds">MCM · MCC · ICE-AC</p>
+        <p class="lead">
+          An internationally accredited, award-winning agile coach with more than 30 years of experience as a corporate leader and entrepreneur. Daru has trained and certified 1,800+ coaches and practitioners, and has coached more than 1,000 companies, executives and business owners over 5,000+ hours.
+        </p>
+        <ul role="list" class="founder-facts">
+          <li><strong>100 Best Global Coaching Leader</strong><span class="muted">World Coaching Congress · 2017, 2018 &amp; 2019</span></li>
+          <li><strong>Top Business Award</strong><span class="muted">International Business Federation · 2016 &amp; 2017</span></li>
+          <li><strong>Chief Instructor &amp; Program Designer</strong><span class="muted">Three internationally accredited certification programs</span></li>
+        </ul>
+        <div class="founder-badges">
+          {["ice-ac", "mcc", "mind-master", "cmc", "erickson"].map((n) => <Image src={accImg[n]} alt={n} height={56} />)}
+        </div>
+        <a class="link-arrow" href={u("/about#founder")}>Full profile <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HADE AI TEASER ============ -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="ai" data-reveal>
+        <div class="ai-copy">
+          <span class="eyebrow">HADE AI</span>
+          <h2 class="h2">Turn your experts' knowledge into AI-powered learning<span class="dot">.</span></h2>
+          <p class="lead">An LLM knowledge converter that turns documents and expertise into micro-learning courses, so learning continues between coaching sessions.</p>
+          <ul class="ai-awards small" role="list">
+            <li><Icon name="award" size={18} /> Top 10 Finalist, Startup World Cup</li>
+            <li><Icon name="award" size={18} /> World Top Finalist, Startup Istanbul</li>
+            <li><Icon name="award" size={18} /> Founder Institute, Silicon Valley</li>
+          </ul>
+          <a class="btn btn-dark" href={u("/hade-ai")}>Discover HADE AI <Icon name="arrow-right" /></a>
+        </div>
+        <div class="ai-visual">
+          <div class="media"><Image src={startupStage} alt="HADE AI presented at an international startup competition" width={900} /></div>
+          <div class="media ai-flow"><Image src={aiFlow} alt="HADE AI converting a document into a course" width={700} /></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Testimonials />
+  <CtaBand />
+</Base>
+
+<style>
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: min(100svh, 940px);
+    display: flex;
+    align-items: flex-end;
+    padding: 8rem 0 calc(var(--radius-lg) + clamp(2.5rem, 2rem + 3vw, 5rem));
+    overflow: hidden;
+    background: #0a0f1a;
+  }
+  .hero-photo { position: absolute; inset: 0; }
+  .hero-photo :global(img) {
+    width: 100%; height: 100%; object-fit: cover; object-position: 62% 30%;
+    filter: saturate(0.85);
+  }
+  .hero-photo::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(10, 15, 26, 0.55) 0%, rgba(10, 15, 26, 0.1) 30%, rgba(10, 15, 26, 0.85) 100%),
+      linear-gradient(90deg, rgba(10, 15, 26, 0.85) 0%, rgba(10, 15, 26, 0.2) 70%);
+  }
+  @media (min-width: 900px) {
+    .hero-photo { left: 42%; }
+    .hero-photo::after {
+      background:
+        linear-gradient(90deg, #0a0f1a 0%, rgba(10, 15, 26, 0.35) 35%, rgba(10, 15, 26, 0) 70%),
+        linear-gradient(180deg, rgba(10, 15, 26, 0) 60%, rgba(10, 15, 26, 0.7) 100%);
+    }
+  }
+  .hero-inner { position: relative; display: grid; gap: 3rem; align-items: end; }
+  @media (min-width: 1100px) { .hero-inner { grid-template-columns: 1fr auto; } }
+  .hero-copy { display: grid; gap: 1.5rem; max-width: 760px; }
+  .hero-title { font-size: var(--fs-hero); line-height: 0.98; letter-spacing: -0.045em; color: #fff; }
+  .hero-copy .lead { max-width: 560px; }
+  .hero-proof {
+    display: grid; gap: 1rem; max-width: 300px;
+    padding: 1.25rem; border-radius: var(--radius);
+    background: rgba(12, 19, 34, 0.55); border: 1px solid var(--line-dark);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .hero-proof p { font-size: var(--fs-small); line-height: 1.45; }
+  @media (max-width: 699px) {
+    .hero { min-height: 0; padding-top: 7rem; }
+    .hero-inner { gap: 1.75rem; }
+    .hero-proof {
+      max-width: none; padding: 0.85rem 1rem;
+      grid-template-columns: auto 1fr; align-items: center; gap: 0.85rem;
+    }
+    .hero-proof .badges :global(img) { height: 40px; }
+    .hero-proof .badges :global(img:nth-child(n + 2)) { display: none; }
+    .hero-photo :global(img) { object-position: 70% 20%; }
+  }
+  .badges { display: flex; gap: 0.6rem; }
+  .badges :global(img) { height: 58px; width: auto; }
+
+  /* ---------- Intro ---------- */
+  .intro-title {
+    margin-top: 1.25rem;
+    font-size: clamp(1.6rem, 1.1rem + 1.9vw, 2.75rem);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+  .pillars {
+    margin-top: clamp(3rem, 2rem + 4vw, 5.5rem);
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  }
+  .pillars li { display: grid; justify-items: center; text-align: center; gap: 0.85rem; padding-inline: 1rem; }
+  .pillar-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid var(--line-strong); color: var(--navy-800);
+    background: var(--paper);
+  }
+  .pillars h3 { font-size: 1.2rem; letter-spacing: -0.02em; font-weight: 600; }
+  .pillars p { max-width: 320px; font-size: 0.95rem; }
+  .pillars .btn { margin-top: 0.5rem; min-height: 38px; font-size: 0.7rem; }
+
+  /* ---------- Stats ---------- */
+  .stats-band { padding-bottom: var(--section); }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--line);
+  }
+  @media (min-width: 900px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stats li { padding: 2rem 1.25rem 0 0; display: grid; gap: 0.4rem; align-content: start; }
+  .stats li + li { padding-left: clamp(0rem, 2vw, 1.25rem); }
+  .num { font-size: clamp(2.6rem, 1.8rem + 3vw, 4.4rem); font-weight: 500; letter-spacing: -0.05em; line-height: 1; }
+  .stats .muted { font-size: 0.92rem; max-width: 220px; }
+  .presence { margin-top: 2.5rem; display: flex; gap: 0.5rem; align-items: flex-start; }
+  .presence :global(svg) { flex: none; margin-top: 0.15rem; color: var(--gold-deep); }
+
+  /* ---------- Specialist ---------- */
+  .specialist { padding-top: 0; }
+  .split { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; gap: clamp(3rem, 6vw, 7rem); } }
+  .specialist-copy { display: grid; gap: 1.5rem; }
+  .specialist-photo { aspect-ratio: 4 / 5; }
+  .specialist-photo :global(img) { object-position: 55% 50%; }
+
+  .accordion { border-top: 1px solid var(--line-strong); }
+  details { border-bottom: 1px solid var(--line-strong); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: 1.05rem 0; font-weight: 600;
+  }
+  summary::-webkit-details-marker { display: none; }
+  .plus { transition: transform 0.3s var(--ease); color: var(--ink-soft); }
+  details[open] .plus { transform: rotate(45deg); color: var(--gold-deep); }
+  details p { padding: 0 2.5rem 1.15rem 0; }
+
+  /* ---------- Feature split ---------- */
+  .feature { display: grid; }
+  @media (min-width: 900px) { .feature { grid-template-columns: 1fr 1fr; min-height: 640px; } }
+  .feature-photo { min-height: 420px; position: relative; }
+  .feature-photo :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; }
+  .feature-copy {
+    position: relative;
+    padding: clamp(3rem, 2rem + 5vw, 6rem) var(--gutter) clamp(6rem, 5rem + 4vw, 8rem);
+    display: flex; align-items: center;
+  }
+  .feature-copy > div { display: grid; gap: 1.4rem; max-width: 520px; }
+  @media (min-width: 900px) { .feature-copy { padding-inline: clamp(3rem, 6vw, 6rem); } }
+  .acc-row { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .acc-row :global(img) { height: 38px; width: auto; }
+  .call-chip {
+    position: absolute; left: 0; bottom: 0;
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.9rem 1.6rem 0.9rem 1rem;
+    background: var(--cream);
+    border-radius: 0 var(--radius-lg) 0 0;
+    font-size: 0.82rem; line-height: 1.3;
+  }
+  @media (min-width: 900px) {
+    .call-chip { left: auto; right: 0; border-radius: var(--radius-lg) 0 0 0; }
+  }
+  .call-chip :global(.avatar) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
+  .call-chip:hover strong { color: var(--gold-deep); }
+
+  /* ---------- Solutions ---------- */
+  .sol-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+  .sol { display: grid; gap: 1rem; align-content: start; transition: transform 0.35s var(--ease), box-shadow 0.35s; }
+  .sol:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .sol-icon {
+    width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--navy-950); color: var(--gold-light);
+  }
+  .sol .check-list { margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+
+  /* ---------- ACHC ---------- */
+  .achc { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
+  .modules {
+    display: grid; gap: 1px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    background: var(--line-dark);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .modules li { background: var(--navy-950); padding: 1.75rem; display: grid; gap: 0.9rem; align-content: start; }
+  .mod-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
+  .mod-top .chip { white-space: nowrap; flex: none; }
+  .mod-code { font-size: var(--fs-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; }
+  .mod-logos { display: flex; gap: 0.6rem; align-items: center; margin-top: auto; padding-top: 0.75rem; }
+  .mod-logos :global(img) {
+    height: 30px; width: auto; background: #fff; border-radius: 6px; padding: 3px 6px;
+  }
+
+  /* ---------- Clients ---------- */
+  .cases {
+    margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+    display: grid; gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+  .case { display: grid; gap: 0.6rem; align-content: start; }
+  .case-logo { height: 48px; display: flex; align-items: center; margin-bottom: 1rem; }
+  .case-logo :global(img) { height: 40px; width: auto; }
+  .case-num { font-size: clamp(2.2rem, 1.8rem + 1.5vw, 3rem); letter-spacing: -0.045em; line-height: 1; font-weight: 500; color: var(--gold-deep); }
+  .case h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.015em; margin-top: 1rem; }
+  .case .link-arrow { margin-top: 0.75rem; justify-self: start; }
+
+  /* ---------- Founder ---------- */
+  .founder { padding-top: clamp(4rem, 3rem + 4vw, 7rem); overflow: hidden; }
+  .founder-grid { display: grid; gap: 2rem; align-items: end; }
+  @media (min-width: 900px) { .founder-grid { grid-template-columns: 0.9fr 1.1fr; gap: clamp(3rem, 6vw, 6rem); } }
+  .founder-photo { position: relative; align-self: end; max-width: 520px; margin-inline: auto; width: 100%; }
+  .founder-photo :global(img) { position: relative; width: 100%; height: auto; }
+  .halo {
+    position: absolute; left: 8%; right: 8%; top: 12%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, rgba(188, 148, 108, 0.5), rgba(188, 148, 108, 0.08) 60%, transparent 70%);
+    border: 1px solid rgba(188, 148, 108, 0.35);
+  }
+  .founder-copy { display: grid; gap: 1.25rem; padding-bottom: clamp(4rem, 3rem + 4vw, 7rem); justify-items: start; }
+  .creds { color: var(--gold-light); letter-spacing: 0.2em; font-weight: 600; font-size: 0.9rem; margin-top: -0.5rem; }
+  .founder-facts { display: grid; gap: 0; width: 100%; border-top: 1px solid var(--line-dark); }
+  .founder-facts li { display: grid; gap: 0.15rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line-dark); }
+  .founder-facts strong { font-weight: 600; color: #fff; }
+  .founder-facts .muted { font-size: var(--fs-small); }
+  .founder-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+  .founder-badges :global(img) { height: 52px; width: auto; }
+
+  /* ---------- AI ---------- */
+  .ai {
+    display: grid; gap: 3rem; align-items: center;
+    padding: clamp(2rem, 1rem + 4vw, 4.5rem);
+    border-radius: var(--radius-lg);
+    background: var(--sand);
+  }
+  @media (min-width: 960px) { .ai { grid-template-columns: 1fr 1.05fr; } }
+  .ai-copy { display: grid; gap: 1.25rem; justify-items: start; }
+  .ai-awards { display: grid; gap: 0.5rem; }
+  .ai-awards li { display: flex; gap: 0.5rem; align-items: center; }
+  .ai-awards :global(svg) { color: var(--gold-deep); }
+  .ai-visual { position: relative; padding-bottom: 3rem; }
+  .ai-visual > .media:first-child { aspect-ratio: 16 / 11; }
+  .ai-flow {
+    position: absolute; right: -0.5rem; bottom: 0; width: 58%;
+    border: 6px solid var(--paper); box-shadow: var(--shadow); background: #fff;
+  }
+  .ai-flow :global(img) { object-fit: contain; }
+</style>

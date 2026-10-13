@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import emblem from "../assets/brand/emblem-gold.png";
+import { wa, site } from "../data/site";
+
+interface Props { title?: string; text?: string }
+const {
+  title = "Ready to build a truly agile organization?",
+  text = "Tell us about your team. We will design an in-house program or help you register for the next certification batch.",
+} = Astro.props;
+---
+<section class="cta-band">
+  <div class="wrap">
+    <div class="inner dark" data-reveal>
+      <Image src={emblem} alt="" class="emblem" width={420} />
+      <div class="copy">
+        <span class="eyebrow">Let's talk</span>
+        <h2 class="h2">{title}</h2>
+        <p class="lead">{text}</p>
+      </div>
+      <div class="actions">
+        <a class="option" href={wa("inhouse")} target="_blank" rel="noopener">
+          <span class="ico"><Icon name="building" /></span>
+          <span><strong>In-house training &amp; certification</strong><span class="muted small">For organizations and corporate universities</span></span>
+          <Icon name="arrow-up-right" class="go" />
+        </a>
+        <a class="option" href={wa("register")} target="_blank" rel="noopener">
+          <span class="ico"><Icon name="certificate" /></span>
+          <span><strong>Register for ACHC certification</strong><span class="muted small">Public batches for leaders and coaches</span></span>
+          <Icon name="arrow-up-right" class="go" />
+        </a>
+        <p class="small muted">WhatsApp {site.phoneDisplay} · {site.email}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-band { padding-block: 0 var(--section); }
+  .inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    padding: clamp(2rem, 1.2rem + 4vw, 5rem);
+    display: grid;
+    gap: 2.5rem;
+    background:
+      radial-gradient(120% 120% at 100% 0%, rgba(188, 148, 108, 0.18), transparent 55%),
+      var(--navy-900);
+  }
+  @media (min-width: 960px) { .inner { grid-template-columns: 1.15fr 1fr; align-items: center; gap: 4rem; } }
+  .inner :global(.emblem) {
+    position: absolute; right: -60px; bottom: -90px; width: 380px; opacity: 0.07; pointer-events: none;
+  }
+  .copy { display: grid; gap: 1.25rem; position: relative; }
+  .actions { display: grid; gap: 0.85rem; position: relative; }
+  .option {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--line-dark);
+    transition: background 0.25s, border-color 0.25s, transform 0.25s var(--ease);
+  }
+  .option:hover { background: rgba(188, 148, 108, 0.1); border-color: rgba(188, 148, 108, 0.55); transform: translateY(-2px); }
+  .option strong { display: block; font-weight: 600; color: #fff; }
+  .ico {
+    width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--gold); color: var(--navy-950);
+  }
+  .option :global(.go) { color: var(--gold-light); }
+</style>

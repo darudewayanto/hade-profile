@@ -1,0 +1,156 @@
+---
+import { u } from "../lib/url";
+import { Image } from "astro:assets";
+import logo from "../assets/brand/hade-navy.png";
+import Icon from "./Icon.astro";
+import { nav, wa } from "../data/site";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const path = Astro.url.pathname.slice(base.length).replace(/\/$/, "") || "/";
+const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+---
+<header class="site-header" data-header>
+  <div class="bar">
+    <a href={u("/")} class="brand" aria-label="HADE home">
+      <Image src={logo} alt="HADE" width={92} loading="eager" />
+    </a>
+
+    <nav class="links" aria-label="Main">
+      {nav.map((n) => (
+        <a href={u(n.href)} class:list={[{ active: isActive(n.href) }]} aria-current={isActive(n.href) ? "page" : undefined}>
+          {n.label}
+        </a>
+      ))}
+    </nav>
+
+    <a href={u("/contact")} class="cta">Contact <Icon name="arrow-up-right" size={14} /></a>
+
+    <button class="toggle" aria-expanded="false" aria-controls="mobile-nav" data-toggle>
+      <span class="sr-only">Open menu</span>
+      <Icon name="menu" size={22} class="i-open" />
+      <Icon name="close" size={22} class="i-close" />
+    </button>
+  </div>
+
+  <div class="mobile" id="mobile-nav" data-mobile hidden>
+    <nav aria-label="Mobile">
+      {nav.map((n) => <a href={u(n.href)} class:list={[{ active: isActive(n.href) }]}>{n.label}</a>)}
+      <a href={u("/contact")}>Contact</a>
+    </nav>
+    <a class="btn btn-gold" href={wa("general")} target="_blank" rel="noopener">
+      <Icon name="whatsapp" /> Chat on WhatsApp
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    inset: 0.9rem 0 auto;
+    z-index: 50;
+    padding-inline: var(--gutter);
+    pointer-events: none;
+  }
+  .bar {
+    pointer-events: auto;
+    max-width: 1080px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.45rem 0.5rem 0.45rem 1.25rem;
+    border-radius: 999px;
+    background: rgba(247, 244, 238, 0.86);
+    backdrop-filter: blur(14px) saturate(1.3);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 30px -12px rgba(12, 19, 34, 0.35);
+    transition: box-shadow 0.3s var(--ease), background 0.3s;
+  }
+  .scrolled .bar { background: rgba(247, 244, 238, 0.94); }
+  .brand { flex: none; display: flex; }
+  .brand :global(img) { width: 78px; height: auto; }
+
+  .links { display: none; margin-left: auto; gap: 0.15rem; }
+  .links a {
+    font-size: 0.86rem;
+    font-weight: 500;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    color: var(--ink-soft);
+    transition: background 0.2s, color 0.2s;
+  }
+  .links a:hover { color: var(--ink); background: rgba(19, 26, 42, 0.05); }
+  .links a.active { color: var(--ink); background: rgba(188, 148, 108, 0.18); }
+
+  .cta {
+    display: none;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.6rem 1.05rem;
+    border-radius: 999px;
+    background: var(--navy-950);
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: background 0.2s;
+  }
+  .cta:hover { background: var(--navy-800); }
+
+  .toggle {
+    margin-left: auto;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--navy-950);
+    color: #fff;
+    cursor: pointer;
+  }
+  .toggle :global(.i-close) { display: none; }
+  .toggle[aria-expanded="true"] :global(.i-close) { display: block; }
+  .toggle[aria-expanded="true"] :global(.i-open) { display: none; }
+
+  .mobile {
+    pointer-events: auto;
+    margin: 0.6rem auto 0;
+    max-width: 1080px;
+    padding: 1.25rem;
+    border-radius: 24px;
+    background: var(--cream);
+    box-shadow: var(--shadow);
+    display: grid;
+    gap: 1rem;
+  }
+  .mobile[hidden] { display: none; }
+  .mobile nav { display: grid; }
+  .mobile nav a {
+    font-size: 1.35rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    padding: 0.6rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile nav a.active { color: var(--gold-deep); }
+
+  @media (min-width: 980px) {
+    .links, .cta { display: flex; }
+    .toggle, .mobile { display: none !important; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector<HTMLElement>("[data-header]")!;
+  const toggle = header.querySelector<HTMLButtonElement>("[data-toggle]")!;
+  const panel = header.querySelector<HTMLElement>("[data-mobile]")!;
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    panel.hidden = open;
+  });
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 24);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+</script>

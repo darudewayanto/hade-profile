@@ -1,0 +1,199 @@
+---
+import { u } from "../lib/url";
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import Icon from "../components/Icon.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { accImg } from "../lib/assets";
+import { corporatePrograms, coreSolutions, wa } from "../data/site";
+
+import stage from "../assets/photos/daru-stage.jpg";
+import safe1 from "../assets/visuals/safe-1.png";
+import safe2 from "../assets/visuals/safe-2.png";
+import mindInd from "../assets/visuals/mind-individual.png";
+import mindTeam from "../assets/visuals/mind-team.png";
+
+const process = [
+  { n: "01", title: "Discover", text: "An Agile Health Check-up and leader profiling show where your organization stands today." },
+  { n: "02", title: "Design", text: "We co-design a program around your strategy, culture and people, whether in-house, public or blended." },
+  { n: "03", title: "Deliver", text: "Workshops, certification, and 1-on-1 and team coaching led by internationally credentialed coaches." },
+  { n: "04", title: "Sustain", text: "Internal coaches, a coaching culture and AI micro-learning keep the change going after we leave." },
+];
+---
+<Base title="Solutions" description="Business agility transformation, agile coaching competencies, applied-neuroscience profiling and AI learning, customized for corporations and governments.">
+  <PageHero
+    eyebrow="Solutions"
+    title="End-to-end agile culture transformation"
+    lead="Customized programs for people and leadership development, from the first assessment to a self-sustaining coaching culture."
+    image={stage}
+    imagePosition="50% 20%"
+  >
+    <div class="btn-row" data-reveal style="--d:.24s">
+      <a class="btn btn-gold" href={wa("inhouse")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Discuss your program</a>
+    </div>
+  </PageHero>
+
+  <!-- Core positioning -->
+  <section class="sheet section">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Core positioning</span><h2 class="h2" style="margin-top:1rem">Three disciplines, one transformation<span class="dot">.</span></h2></div>
+        <p class="lead">Every HADE engagement draws on business agility, agile coaching competencies and AI, combined to fit your organization.</p>
+      </div>
+      <div class="core">
+        <article class="core-item" id="transformation" data-reveal>
+          <span class="num">01</span>
+          <div>
+            <h3 class="h3">Business Agility Transformation</h3>
+            <p class="muted">End-to-end agile culture transformation focused on people and leadership development, with customized team and leadership transformation.</p>
+          </div>
+          <ul class="check-list small">
+            {coreSolutions.map((c) => <li><strong>{c.title}</strong>: {c.text}</li>)}
+          </ul>
+        </article>
+        <article class="core-item" id="competencies" data-reveal>
+          <span class="num">02</span>
+          <div>
+            <h3 class="h3">Agile Coaching Competencies</h3>
+            <p class="muted">Agile coaching is the core competency leaders need to guide an agile transformation. HADE is the only firm in the region holding international accreditation in agile coaching from three major organizations: ICF, ICAgile and MyBrain.</p>
+          </div>
+          <ul class="check-list small">
+            <li>Agile coaching certification (in-house &amp; public)</li>
+            <li>Workshops &amp; training on agile coaching competency</li>
+            <li>1-on-1 &amp; group sessions</li>
+          </ul>
+          <a class="link-arrow" href={u("/certification")}>Explore the ACHC certification <Icon name="arrow-right" /></a>
+        </article>
+        <article class="core-item" id="ai" data-reveal>
+          <span class="num">03</span>
+          <div>
+            <h3 class="h3">HADE AI</h3>
+            <p class="muted">Solution-based AI that uses large language models to support learning along the agile transformation journey. It is designed for executives, professionals (coaches, trainers and mentors) and business owners.</p>
+          </div>
+          <ul class="check-list small">
+            <li>AI micro-learning</li>
+            <li>AI learning engagement</li>
+            <li>Knowledge converter for your experts</li>
+          </ul>
+          <a class="link-arrow" href={u("/hade-ai")}>Discover HADE AI <Icon name="arrow-right" /></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="section dark rounded">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">How we work</span><h2 class="h2" style="margin-top:1rem">From assessment to lasting agility<span class="dot">.</span></h2></div>
+        <p class="lead">A clear four-step path, tailored to each organization.</p>
+      </div>
+      <ol role="list" class="process">
+        {process.map((p, i) => (
+          <li data-reveal style={`--d:${i * 0.08}s`}>
+            <span class="pn">{p.n}</span>
+            <h3 class="h3">{p.title}</h3>
+            <p class="muted small">{p.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Corporate -->
+  <section class="section" id="corporate">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Corporate &amp; enterprise solution</span><h2 class="h2" style="margin-top:1rem">Programs designed for your organization<span class="dot">.</span></h2></div>
+        <p class="lead">Our most requested corporate programs, each customized for your context and delivered in-house or in public batches.</p>
+      </div>
+      <ul role="list" class="sol-grid">
+        {corporatePrograms.map((p, i) => (
+          <li class="card sol" data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="sol-icon"><Icon name={p.icon} /></span>
+            <h3 class="h3">{p.title}</h3>
+            <p class="muted">{p.text}</p>
+            <ul class="check-list small">{p.items.map((it) => <li>{it}</li>)}</ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Profiling -->
+  <section class="section sand" id="profiling">
+    <div class="wrap split">
+      <div class="stack" data-reveal>
+        <span class="eyebrow">Applied neuroscience</span>
+        <h2 class="h2">MyBrain Neuro-Dominance profiling<span class="dot">.</span></h2>
+        <p class="lead">Understand how each leader and team prefers to think, decide and act, and use it to build better teams.</p>
+        <ul class="check-list">
+          <li><strong>Individual profile:</strong> personal and professional thinking preferences across reasoning, spontaneous, specific and feeling dimensions</li>
+          <li><strong>Team profile:</strong> the collective thinking pattern of a team, to balance roles and reduce friction</li>
+          <li><strong>Agile Health Check-up:</strong> leader, team and organization assessment</li>
+        </ul>
+        <div class="acc-row">
+          <Image src={accImg["mybrain"]} alt="MyBrain International" height={40} />
+          <Image src={accImg["mind-master"]} alt="MIND Master Practitioner" height={56} />
+        </div>
+      </div>
+      <div class="profile-visuals" data-reveal style="--d:.1s">
+        <figure class="card"><Image src={mindInd} alt="Individual Neuro-Dominance profile chart" width={600} /><figcaption class="small muted">Individual profile</figcaption></figure>
+        <figure class="card"><Image src={mindTeam} alt="Team Neuro-Dominance profile charts" width={800} /><figcaption class="small muted">Team profile</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business agility framework -->
+  <section class="section">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Business agility transformation framework</span><h2 class="h2" style="margin-top:1rem">Scaled agility, guided by SAFe 6.0<span class="dot">.</span></h2></div>
+        <p class="lead">We use the Scaled Agile Framework (SAFe) 6.0 as a reference to connect strategy, leadership, teams and continuous learning, adapted to your organization's maturity.</p>
+      </div>
+      <div class="safe" data-reveal>
+        <div class="card"><Image src={safe1} alt="Business agility competencies overview" width={1000} /></div>
+        <div class="card"><Image src={safe2} alt="SAFe 6.0 business agility framework" width={1000} /></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Let's design your transformation program." />
+</Base>
+
+<style>
+  .core { display: grid; gap: 1.25rem; }
+  .core-item {
+    display: grid; gap: 1.25rem 3rem; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line);
+    scroll-margin-top: 7rem;
+  }
+  @media (min-width: 900px) { .core-item { grid-template-columns: 70px 1.1fr 1fr; align-items: start; } .core-item .link-arrow { grid-column: 3; justify-self: start; } }
+  .core-item .num { font-size: 2.2rem; letter-spacing: -0.04em; color: var(--gold); line-height: 1; }
+  .core-item > div { display: grid; gap: 0.75rem; }
+
+  .rounded { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
+  .process { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); background: var(--line-dark); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-dark); }
+  .process li { background: var(--navy-950); padding: 2rem 1.75rem; display: grid; gap: 0.75rem; align-content: start; }
+  .pn { color: var(--gold-light); font-weight: 600; letter-spacing: 0.1em; }
+
+  #corporate, #profiling { scroll-margin-top: 4rem; }
+  .sol-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+  .sol { display: grid; gap: 1rem; align-content: start; }
+  .sol-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--navy-950); color: var(--gold-light); }
+  .sol .check-list { margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+
+  .split { display: grid; gap: 3rem; align-items: center; }
+  @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+  .acc-row { display: flex; gap: 1.25rem; align-items: center; }
+  .acc-row :global(img) { width: auto; }
+  .profile-visuals { display: grid; gap: 1rem; grid-template-columns: 0.8fr 1fr; align-items: center; }
+  .profile-visuals figure { padding: 1rem; display: grid; gap: 0.5rem; }
+  .profile-visuals figcaption { text-align: center; }
+
+  .safe { display: grid; gap: 1rem; }
+  @media (min-width: 900px) { .safe { grid-template-columns: 1fr 1fr; } }
+  .safe .card { padding: 0.75rem; }
+  .safe :global(img) { border-radius: 10px; }
+</style>

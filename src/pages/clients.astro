@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Testimonials from "../components/Testimonials.astro";
+import { clientImg } from "../lib/assets";
+import { caseStudies, clientLogos } from "../data/site";
+
+import groupPhoto from "../assets/photos/startup-group.png";
+
+const related: Record<number, string[]> = {
+  0: ["telkom", "telin", "jalin", "admedika", "infomedia", "amoeba"],
+  1: ["pertamina", "ptc", "badak-lng"],
+  2: ["bpjs-kesehatan", "kemnaker", "shell", "xl-axiata"],
+};
+---
+<Base title="Clients" description="HADE has supported Telkom Group, Pertamina Group, Indonesian ministries and multinational companies such as Shell, Samsung and XL Axiata in their agile transformation.">
+  <PageHero
+    eyebrow="Global clients"
+    title="Trusted by the organizations that move a nation"
+    lead="State-owned enterprises, ministries and multinational brands have chosen HADE to build agile leaders and coaching cultures."
+    image={groupPhoto}
+    imagePosition="50% 40%"
+  />
+
+  <section class="sheet section">
+    <div class="wrap">
+      <ul role="list" class="logos">
+        {clientLogos.filter((n) => clientImg[n]).map((n, i) => (
+          <li data-reveal style={`--d:${(i % 6) * 0.04}s`}><Image src={clientImg[n]} alt={n.replace(/-/g, " ")} height={60} /></li>
+        ))}
+      </ul>
+      <p class="center muted small more">And many more companies across Indonesia, Asia and the Middle East.</p>
+    </div>
+  </section>
+
+  {caseStudies.map((c, i) => (
+    <section class:list={["section", "case", { sand: i % 2 === 1 }]} id={`case-${i + 1}`}>
+      <div class="wrap case-grid">
+        <div class="case-head" data-reveal>
+          <span class="eyebrow">Client case · {c.sector}</span>
+          <h2 class="h2">{c.client}<span class="dot">.</span></h2>
+          <p class="lead">{c.summary}</p>
+          <div class="big">
+            <span>{c.headline}</span>
+            <small class="muted">{c.headlineLabel}</small>
+          </div>
+          <div class="rel">
+            {related[i].filter((n) => clientImg[n]).map((n) => <span class="rel-logo"><Image src={clientImg[n]} alt={n} height={40} /></span>)}
+          </div>
+        </div>
+        <div class="card delivery" data-reveal style="--d:.1s">
+          <h3>Key delivery</h3>
+          <ul class="check-list">{c.delivery.map((d) => <li>{d}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <Testimonials />
+  <CtaBand title="Let's write your organization's agile story." />
+</Base>
+
+<style>
+  .logos { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(min(46%, 170px), 1fr)); }
+  .logos li {
+    height: 104px; display: grid; place-items: center; padding: 1rem 1.25rem;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  }
+  .logos :global(img) { max-height: 52px; width: auto; max-width: 100%; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter 0.3s, opacity 0.3s; }
+  .logos li:hover :global(img) { filter: none; opacity: 1; }
+  .more { margin-top: 2rem; }
+
+  .case { scroll-margin-top: 4rem; }
+  .case-grid { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 960px) { .case-grid { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+  .case-head { display: grid; gap: 1.25rem; }
+  .big { display: grid; gap: 0.2rem; padding-top: 1.25rem; border-top: 1px solid var(--line-strong); }
+  .big span { font-size: clamp(2.6rem, 1.8rem + 3vw, 4.4rem); color: var(--gold-deep); letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
+  .rel { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .rel-logo { display: grid; place-items: center; height: 60px; padding: 0.6rem 1rem; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+  .rel-logo :global(img) { max-height: 36px; max-width: 110px; width: auto; object-fit: contain; }
+  .delivery h3 { font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-bottom: 1.25rem; }
+  @media (min-width: 960px) { .delivery { position: sticky; top: 6.5rem; } }
+</style>

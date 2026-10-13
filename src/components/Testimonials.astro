@@ -1,0 +1,57 @@
+---
+// Renders testimonials from src/data/site.ts. While the list is empty it shows
+// three placeholder slots so the layout is final and ready for real quotes.
+import Icon from "./Icon.astro";
+import { testimonials } from "../data/site";
+
+const items = testimonials.length
+  ? testimonials
+  : Array.from({ length: 3 }, () => null);
+---
+<section class="section testimonials">
+  <div class="wrap">
+    <div class="head-row" data-reveal>
+      <div>
+        <span class="eyebrow">Testimonials</span>
+        <h2 class="h2" style="margin-top:1rem">What leaders say<span class="dot">.</span></h2>
+      </div>
+      <p class="lead">Executives, faculty and coaches from the organizations we have worked with, in their own words.</p>
+    </div>
+
+    <div class="grid">
+      {items.map((t, i) => (
+        <figure class:list={["card", "t", { placeholder: !t }]} data-reveal style={`--d:${i * 0.08}s`}>
+          <Icon name="quote" size={28} class="q" />
+          {t ? (
+            <>
+              <blockquote>{t.quote}</blockquote>
+              <figcaption>
+                {t.photo && <img src={t.photo} alt="" width="44" height="44" loading="lazy" />}
+                <span><strong>{t.name}</strong><br /><span class="muted small">{t.role}, {t.company}</span></span>
+              </figcaption>
+            </>
+          ) : (
+            <>
+              <blockquote class="muted">Client testimonial coming soon. This space is reserved for a quote from one of our partner organizations.</blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true"></span>
+                <span><strong>Client name</strong><br /><span class="muted small">Role, Organization</span></span>
+              </figcaption>
+            </>
+          )}
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .t { display: flex; flex-direction: column; gap: 1.5rem; }
+  .t :global(.q) { color: var(--gold); }
+  blockquote { font-size: 1.12rem; line-height: 1.55; letter-spacing: -0.01em; flex: 1; }
+  figcaption { display: flex; align-items: center; gap: 0.85rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  figcaption img, .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex: none; }
+  .avatar { background: var(--sand); border: 1px dashed var(--line-strong); }
+  .placeholder { border-style: dashed; background: transparent; }
+</style>
