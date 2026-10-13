@@ -10,6 +10,13 @@ npm run dev      # http://localhost:4321
 npm run build    # hasil statis di dist/ — bisa di-hosting di mana saja (Vercel, Netlify, Cloudflare Pages, cPanel)
 ```
 
+## Tayang sementara: GitHub Pages
+
+- Live: https://darudewayanto.github.io/hade-profile/ (noindex, tidak diindeks Google)
+- Repo: https://github.com/darudewayanto/hade-profile
+- Setiap `git push` ke `main` otomatis build + deploy lewat `.github/workflows/deploy.yml` (±1 menit).
+- Pindah ke domain sendiri nanti: ubah env di workflow (`SITE_URL`, hapus `BASE_PATH` & `PUBLIC_NOINDEX`), lalu pasang custom domain.
+
 ## Mengubah konten
 
 Hampir semua teks, angka, nomor WhatsApp dan daftar logo ada di **`src/data/site.ts`**:
