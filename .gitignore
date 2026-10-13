@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # local Claude/preview config
 .claude/
+
+# firebase cache
+.firebase/

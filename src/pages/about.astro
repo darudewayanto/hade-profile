@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import Image from "../components/Img.astro";
 import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Icon from "../components/Icon.astro";
@@ -11,8 +11,7 @@ import city from "../assets/photos/city.png";
 import portrait from "../assets/photos/daru-portrait.png";
 import news from "../assets/visuals/gdn-news.png";
 import award100 from "../assets/photos/award-100-best.png";
-import awardWcc from "../assets/photos/award-wcc.png";
-import awardTop from "../assets/photos/award-top-business.png";
+// award-wcc.png & award-top-business.png are hidden until higher-resolution photos arrive (originals are ~197px).
 import coa from "../assets/visuals/center-of-agility.png";
 import uni1 from "../assets/visuals/universities-1.png";
 import uni2 from "../assets/visuals/universities-2.png";
@@ -173,16 +172,14 @@ const programs = [
         <div><span class="eyebrow">Awards</span><h2 class="h2" style="margin-top:1rem">An award-winning master coach &amp; coaching firm<span class="dot">.</span></h2></div>
         <p class="lead">Recognized by the World Coaching Congress, the International Business Federation and global startup programs.</p>
       </div>
-      <div class="awards-photos">
-        <div class="media" data-reveal><Image src={award100} alt="100 Best Global Coaching Leader award" width={800} /></div>
-        <div class="media" data-reveal style="--d:.08s"><Image src={awardWcc} alt="Receiving the World Coaching Congress award" width={800} /></div>
-        <div class="media" data-reveal style="--d:.16s"><Image src={awardTop} alt="Top Business Award ceremony" width={600} /></div>
+      <div class="awards-wrap">
+        <div class="media award-photo" data-reveal><Image src={award100} alt="Daru Dewayanto with the 100 Best Global Coaching Leader award" width={666} /></div>
+        <ul role="list" class="awards">
+          {awards.map((a) => (
+            <li data-reveal><span class="yr">{a.year}</span><strong>{a.title}</strong><span class="muted">{a.by}</span></li>
+          ))}
+        </ul>
       </div>
-      <ul role="list" class="awards">
-        {awards.map((a) => (
-          <li data-reveal><span class="yr">{a.year}</span><strong>{a.title}</strong><span class="muted">{a.by}</span></li>
-        ))}
-      </ul>
     </div>
   </section>
 
@@ -267,9 +264,9 @@ const programs = [
   .lg-text { font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--navy-800); }
   .logo-grid strong { font-weight: 600; font-size: 0.95rem; }
 
-  .awards-photos { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-bottom: 2.5rem; }
-  @media (min-width: 760px) { .awards-photos { grid-template-columns: 1.3fr 1fr 0.8fr; } }
-  .awards-photos .media { height: clamp(220px, 22vw, 300px); }
+  .awards-wrap { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 960px) { .awards-wrap { grid-template-columns: minmax(0, 0.8fr) 1.2fr; gap: 4rem; } }
+  .award-photo { max-width: 520px; aspect-ratio: 4 / 3; }
   .awards { display: grid; border-top: 1px solid var(--line-strong); }
   .awards li { display: grid; grid-template-columns: 90px 1fr; gap: 0.25rem 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
   @media (min-width: 760px) { .awards li { grid-template-columns: 120px 1fr 1fr; } }
