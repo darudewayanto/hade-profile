@@ -1,0 +1,142 @@
+---
+// HADE rendition of the Agile Coach Competency Framework (Adkins & Spayd, CC BY-NC-SA),
+// redrawn as vector SVG in HADE colors so it stays sharp at any size.
+import badge from "../assets/brand/master-hijrah-coach.png";
+
+type Item = { title: string; lines: string[]; x: number; y: number; tone: "mastery" | "content" | "process" | "core" };
+
+const items: Item[] = [
+  { tone: "mastery", title: "Technical Mastery", x: 338, y: 96, lines: ["Hands-on expertise in the", "technical craft of building", "products."] },
+  { tone: "mastery", title: "Business Mastery", x: 600, y: 58, lines: ["Business strategy, management,", "product ownership and", "process improvement."] },
+  { tone: "mastery", title: "Transformation Mastery", x: 866, y: 96, lines: ["Organization development,", "behavioral science and", "change theory."] },
+  { tone: "content", title: "Mentoring", x: 300, y: 318, lines: ["Sharing expertise and", "experience to grow others."] },
+  { tone: "content", title: "Training", x: 290, y: 498, lines: ["Building knowledge", "and understanding."] },
+  { tone: "process", title: "Professional Team Coaching", x: 940, y: 304, lines: ["Using group dynamics to help a", "team unlock its collective intelligence."] },
+  { tone: "process", title: "Professional Coaching", x: 918, y: 420, lines: ["Partnering with a person to discover", "insights and take inspired action."] },
+  { tone: "process", title: "Facilitation", x: 932, y: 560, lines: ["A neutral guide helping a group", "reach its purpose together."] },
+  { tone: "core", title: "Agile-Lean Practitioner", x: 600, y: 590, lines: ["Deep understanding of agile mindset,", "values and principles, applied across", "many agile frameworks."] },
+];
+
+// Spokes radiate from the center; dividers separate items inside a side.
+const C = { x: 600, y: 420 };
+const spokes = [
+  [200, 120], [455, 30], [745, 30], [1000, 120], [240, 740], [960, 740],
+];
+const dividers = [
+  [[515, 432], [150, 412]],
+  [[705, 384], [1080, 372]],
+  [[705, 478], [1078, 520]],
+];
+
+const groups = [
+  { label: "Mastery", tone: "mastery", names: items.filter((i) => i.tone === "mastery") },
+  { label: "Content authority", tone: "content", names: items.filter((i) => i.tone === "content") },
+  { label: "Process authority", tone: "process", names: items.filter((i) => i.tone === "process") },
+  { label: "At the core", tone: "core", names: items.filter((i) => i.tone === "core") },
+];
+---
+<figure class="wheel">
+  <svg class="wheel-svg" viewBox="0 0 1200 770" role="img" aria-labelledby="wheel-title wheel-desc">
+    <title id="wheel-title">The agile coaching competency framework</title>
+    <desc id="wheel-desc">Three masteries (technical, business, transformation), content authority competencies (mentoring, training), process authority competencies (professional team coaching, professional coaching, facilitation), and the agile-lean practitioner at the core, on a foundation of Agile-Lean mindset, values and principles.</desc>
+    <defs>
+      <linearGradient id="gold-arrow" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#bc946c" stop-opacity="0.15" />
+        <stop offset="1" stop-color="#9a7552" />
+      </linearGradient>
+      <linearGradient id="navy-arrow" x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0" stop-color="#1e2b40" stop-opacity="0.15" />
+        <stop offset="1" stop-color="#1e2b40" />
+      </linearGradient>
+    </defs>
+
+    <!-- spokes & dividers -->
+    <g class="spokes">
+      {spokes.map(([x, y]) => <line x1={C.x} y1={C.y} x2={x} y2={y} />)}
+      {dividers.map(([[x1, y1], [x2, y2]]) => <line class="div" x1={x1} y1={y1} x2={x2} y2={y2} />)}
+    </g>
+
+    <!-- authority arrows -->
+    <path d="M78 690 C 48 560, 48 330, 112 214" class="arrow" stroke="url(#gold-arrow)" />
+    <path d="M100 236 L112 214 L126 238" class="arrow-head gold" />
+    <text class="axis gold" transform="translate(40 450) rotate(-90)" text-anchor="middle">Content authority</text>
+
+    <path d="M1122 690 C 1152 560, 1152 330, 1088 214" class="arrow" stroke="url(#navy-arrow)" />
+    <path d="M1074 238 L1088 214 L1100 236" class="arrow-head navy" />
+    <text class="axis navy" transform="translate(1162 450) rotate(90)" text-anchor="middle">Process authority</text>
+
+    <!-- center emblem -->
+    <circle cx={C.x} cy={C.y} r="60" class="hub" />
+    <image href={badge.src} x={C.x - 50} y={C.y - 52} width="100" height="100" preserveAspectRatio="xMidYMid meet" />
+
+    <!-- items -->
+    {items.map((it) => (
+      <g class:list={["item", it.tone]}>
+        <text x={it.x} y={it.y} text-anchor="middle" class="t">{it.title}</text>
+        <text x={it.x} y={it.y + 26} text-anchor="middle" class="d">
+          {it.lines.map((l, i) => <tspan x={it.x} dy={i === 0 ? 0 : 20}>{l}</tspan>)}
+        </text>
+      </g>
+    ))}
+
+    <text x="600" y="752" text-anchor="middle" class="foundation">A foundation in Agile-Lean mindset, values &amp; principles</text>
+  </svg>
+
+  <!-- Small screens: the same framework as a readable list -->
+  <div class="wheel-list">
+    {groups.map((g) => (
+      <section class:list={["wl-group", g.tone]}>
+        <h3>{g.label}</h3>
+        <ul role="list">
+          {g.names.map((n) => <li><strong>{n.title}</strong><span>{n.lines.join(" ")}</span></li>)}
+        </ul>
+      </section>
+    ))}
+    <p class="wl-foundation">A foundation in Agile-Lean mindset, values &amp; principles</p>
+  </div>
+
+  <figcaption>
+    Adapted from <em>The Agile Coach Competency Framework</em> by Lyssa Adkins &amp; Michael Spayd (CC BY-NC-SA),
+    in alignment with the ICAgile Agile Coaching Competencies v2.0.
+  </figcaption>
+</figure>
+
+<style>
+  .wheel { margin: 0; padding: clamp(1.25rem, 0.5rem + 2.5vw, 2.5rem); border-radius: var(--radius-lg); background: var(--paper); border: 1px solid var(--line); }
+  .wheel-svg { display: block; width: 100%; height: auto; font-family: var(--font); }
+  .spokes line { stroke: #cfc7b9; stroke-width: 3; stroke-linecap: round; }
+  .spokes line.div { stroke-width: 2; stroke: #ddd6ca; }
+  .arrow { fill: none; stroke-width: 7; stroke-linecap: round; }
+  .arrow-head { fill: none; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .arrow-head.gold { stroke: #9a7552; }
+  .arrow-head.navy { stroke: #1e2b40; }
+  .axis { font-size: 22px; font-weight: 600; letter-spacing: 0.04em; }
+  .axis.gold { fill: #9a7552; }
+  .axis.navy { fill: #1e2b40; }
+  .hub { fill: #0c1322; }
+
+  .item .t { font-size: 23px; font-weight: 600; letter-spacing: -0.01em; }
+  .item .d { font-size: 15.5px; fill: #5b6475; }
+  .mastery .t { fill: #131a2a; }
+  .content .t { fill: #9a7552; }
+  .process .t { fill: #1e2b40; }
+  .core .t { fill: #9a7552; font-size: 25px; }
+  .foundation { font-size: 21px; font-weight: 600; fill: #131a2a; }
+
+  .wheel-list { display: none; gap: 1rem; }
+  .wl-group { border-radius: var(--radius); border: 1px solid var(--line); background: #fff; padding: 1.1rem 1.2rem; }
+  .wl-group h3 { font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.4rem; color: var(--muted); }
+  .wl-group.content h3, .wl-group.core h3 { color: var(--gold-deep); }
+  .wl-group.process h3 { color: var(--navy-800); }
+  .wl-group li { display: grid; gap: 0.15rem; padding: 0.65rem 0; border-top: 1px solid var(--line); font-size: 0.92rem; }
+  .wl-group li:first-child { border-top: 0; }
+  .wl-group li span { color: var(--muted); }
+  .wl-foundation { text-align: center; padding: 0.9rem; border-radius: var(--radius); background: linear-gradient(90deg, var(--gold-deep), var(--gold)); color: var(--navy-950); font-weight: 600; }
+
+  figcaption { margin-top: 1.25rem; font-size: 0.75rem; color: var(--muted); text-align: center; }
+
+  @media (max-width: 760px) {
+    .wheel-svg { display: none; }
+    .wheel-list { display: grid; }
+  }
+</style>

@@ -4,12 +4,12 @@ import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Icon from "../components/Icon.astro";
 import CtaBand from "../components/CtaBand.astro";
+import CompetencyWheel from "../components/CompetencyWheel.astro";
 import Testimonials from "../components/Testimonials.astro";
 import { accImg } from "../lib/assets";
 import { achcModules, wa } from "../data/site";
 
 import lounge from "../assets/photos/daru-lounge.jpg";
-import emblem from "../assets/brand/master-hijrah-coach.png";
 
 const totalHours = achcModules.reduce((s, m) => s + m.hours, 0);
 
@@ -74,26 +74,7 @@ const faqs = [
         <div><span class="eyebrow">Agile coaching framework</span><h2 class="h2" style="margin-top:1rem">The competencies of an agile coach<span class="dot">.</span></h2></div>
         <p class="lead">ACHC builds every competency in the agile coaching framework on a foundation of Agile-Lean mindset, values and principles.</p>
       </div>
-      <div class="framework" data-reveal>
-        <div class="fw-masteries">
-          <span>Technical Mastery</span><span>Business Mastery</span><span>Transformation Mastery</span>
-        </div>
-        <div class="fw-groups">
-          <div class="fw-group">
-            <h3>Content authority</h3>
-            <ul role="list"><li>Mentoring competency</li><li>Training competency</li></ul>
-          </div>
-          <div class="fw-group center-g">
-            <Image src={emblem} alt="Master Hijrah Coach emblem" width={160} />
-            <h3>Agile-Lean practitioner</h3>
-          </div>
-          <div class="fw-group">
-            <h3>Process authority</h3>
-            <ul role="list"><li>Coaching competency</li><li>Team coaching competency</li><li>Facilitating competency</li></ul>
-          </div>
-        </div>
-        <div class="fw-foundation">A foundation in Agile-Lean mindset, values &amp; principles</div>
-      </div>
+      <div data-reveal><CompetencyWheel /></div>
     </div>
   </section>
 
@@ -209,25 +190,6 @@ const faqs = [
   .acc-row :global(img) { height: calc(var(--h) * var(--k, 1)); width: auto; max-width: 100%; object-fit: contain; }
   @media (max-width: 640px) { .acc-row li { height: 84px; } .acc-row { --k: 0.66; } }
 
-  .framework { display: grid; gap: 1rem; }
-  .fw-masteries { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-  .fw-masteries span {
-    text-align: center; padding: 0.9rem 0.5rem; border-radius: 999px;
-    background: var(--sand); font-weight: 600; font-size: clamp(0.72rem, 0.6rem + 0.4vw, 0.95rem);
-  }
-  .fw-groups { display: grid; gap: 1rem; }
-  @media (min-width: 860px) { .fw-groups { grid-template-columns: 1fr 0.9fr 1fr; } }
-  .fw-group { padding: 1.75rem; border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
-  .fw-group h3 { font-size: var(--fs-micro); letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; margin-bottom: 1rem; }
-  .fw-group li { padding: 0.75rem 0; border-top: 1px solid var(--line); font-weight: 500; font-size: 1.05rem; }
-  .center-g { display: grid; justify-items: center; align-content: center; text-align: center; gap: 1rem; background: var(--navy-950); border-color: var(--navy-950); }
-  .center-g :global(img) { width: 130px; }
-  .center-g h3 { color: var(--gold-light); margin: 0; }
-  .fw-foundation {
-    text-align: center; padding: 1.1rem; border-radius: var(--radius);
-    background: linear-gradient(90deg, var(--gold-deep), var(--gold));
-    color: var(--navy-950); font-weight: 600;
-  }
 
   .rounded { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
   .modules { display: grid; border-top: 1px solid var(--line-dark); }
