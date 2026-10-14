@@ -317,7 +317,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Edi Siswanto",
     role: "VP Customer Service Operation",
-    company: "Telin",
+    company: "Telin (PT. Telekomunikasi Indonesia Internasional)",
     logo: "telin",
     quote:
       "In customer service operations, agility has to show up on the floor, not just in the boardroom. HADE helped my managers coach their teams instead of only directing them, and you can feel the difference in how quickly our teams solve the case and adapt to customer needs. The program was practical, energizing and relevant to our daily work. I highly recommend HADE to any leader who wants teams that are more responsive and more engaged.",
@@ -325,7 +325,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Abimanyu Suryadi",
     role: "VP Human Capital",
-    company: "PT Pertamina Drilling Services Indonesia",
+    company: "PDSI (PT. Pertamina Drilling Service Indonesia)",
     logo: "pertamina-drilling",
     quote:
       "As an HR leader, my main focus is always making sure a program truly impacts how people lead—and HADE delivered on that. The Agile Coaching (ICP-ACC) certification gave our leaders practical coaching skills, while MyBrain profiling provided deep insights into how each individual thinks and makes decisions.\n\nAs a result, we've built a thriving internal coaching culture that grows independently without relying on external consultants. HADE has truly become a trusted partner in growing our people.",
