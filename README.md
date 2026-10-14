@@ -10,6 +10,12 @@ npm run dev      # http://localhost:4321
 npm run build    # hasil statis di dist/ — bisa di-hosting di mana saja (Vercel, Netlify, Cloudflare Pages, cPanel)
 ```
 
+## Tayang di hade.belajaragile.com (Firebase)
+
+- Live: https://hade.belajaragile.com (situs Firebase `hade-belajaragile` di project `hade-community`, terpisah dari belajaragile.com)
+- Deploy manual: `npm run deploy:firebase` (perlu `firebase login` sekali di laptop)
+- Masih noindex. Hapus `PUBLIC_NOINDEX=true` di script itu saat siap diindeks Google.
+
 ## Tayang sementara: GitHub Pages
 
 - Live: https://darudewayanto.github.io/hade-profile/ (noindex, tidak diindeks Google)
