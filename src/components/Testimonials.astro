@@ -2,11 +2,16 @@
 // Renders testimonials from src/data/site.ts. While the list is empty it shows
 // three placeholder slots so the layout is final and ready for real quotes.
 import Icon from "./Icon.astro";
+import Image from "./Img.astro";
+import { clientImg } from "../lib/assets";
 import { testimonials } from "../data/site";
 
 const items = testimonials.length
   ? testimonials
   : Array.from({ length: 3 }, () => null);
+
+const initials = (name: string) =>
+  name.split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
 ---
 <section class="section testimonials">
   <div class="wrap">
@@ -15,24 +20,34 @@ const items = testimonials.length
         <span class="eyebrow">Testimonials</span>
         <h2 class="h2" style="margin-top:1rem">What leaders say<span class="dot">.</span></h2>
       </div>
-      <p class="lead">Executives, faculty and coaches from the organizations we have worked with, in their own words.</p>
+      <p class="lead">Executives and leaders from the organizations we have worked with, in their own words.</p>
     </div>
 
-    <div class="grid">
+    <div class:list={["grid", { two: items.length === 2 }]}>
       {items.map((t, i) => (
         <figure class:list={["card", "t", { placeholder: !t }]} data-reveal style={`--d:${i * 0.08}s`}>
-          <Icon name="quote" size={28} class="q" />
           {t ? (
             <>
-              <blockquote>{t.quote}</blockquote>
+              <div class="t-top">
+                <Icon name="quote" size={30} class="q" />
+                {t.logo && clientImg[t.logo] && (
+                  <Image src={clientImg[t.logo]} alt={t.company} height={80} class="t-logo" />
+                )}
+              </div>
+              <blockquote>
+                {t.quote.split(/\n\s*\n/).map((para) => <p>{para}</p>)}
+              </blockquote>
               <figcaption>
-                {t.photo && <img src={t.photo} alt="" width="44" height="44" loading="lazy" />}
+                {t.photo
+                  ? <img src={t.photo} alt="" width="48" height="48" loading="lazy" />
+                  : <span class="avatar initials" aria-hidden="true">{initials(t.name)}</span>}
                 <span><strong>{t.name}</strong><br /><span class="muted small">{t.role}, {t.company}</span></span>
               </figcaption>
             </>
           ) : (
             <>
-              <blockquote class="muted">Client testimonial coming soon. This space is reserved for a quote from one of our partner organizations.</blockquote>
+              <Icon name="quote" size={28} class="q" />
+              <blockquote class="muted"><p>Client testimonial coming soon. This space is reserved for a quote from one of our partner organizations.</p></blockquote>
               <figcaption>
                 <span class="avatar" aria-hidden="true"></span>
                 <span><strong>Client name</strong><br /><span class="muted small">Role, Organization</span></span>
@@ -47,11 +62,19 @@ const items = testimonials.length
 
 <style>
   .grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  @media (min-width: 900px) { .grid.two { grid-template-columns: 1fr 1fr; } }
   .t { display: flex; flex-direction: column; gap: 1.5rem; }
-  .t :global(.q) { color: var(--gold); }
-  blockquote { font-size: 1.12rem; line-height: 1.55; letter-spacing: -0.01em; flex: 1; }
+  .t :global(.q) { color: var(--gold); flex: none; }
+  .t-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 40px; }
+  .t-top :global(.t-logo) { height: 40px; width: auto; max-width: 160px; object-fit: contain; }
+  blockquote { font-size: 1.08rem; line-height: 1.6; letter-spacing: -0.005em; flex: 1; display: grid; gap: 0.9rem; }
   figcaption { display: flex; align-items: center; gap: 0.85rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
-  figcaption img, .avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex: none; }
+  figcaption img, .avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; flex: none; }
   .avatar { background: var(--sand); border: 1px dashed var(--line-strong); }
+  .avatar.initials {
+    display: grid; place-items: center; border: 0;
+    background: var(--navy-950); color: var(--gold-light);
+    font-weight: 600; font-size: 0.95rem; letter-spacing: 0.04em;
+  }
   .placeholder { border-style: dashed; background: transparent; }
 </style>
