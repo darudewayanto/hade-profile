@@ -32,8 +32,26 @@ const process = [
     </div>
   </PageHero>
 
-  <!-- Core positioning -->
+  <!-- Transformation design -->
   <section class="sheet section">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div><span class="eyebrow">Our transformation design</span><h2 class="h2" style="margin-top:1rem">A guided journey, co-created with you<span class="dot">.</span></h2></div>
+        <p class="lead">Every HADE transformation follows a proven guideline, but it is never one-size-fits-all. We co-create the journey with your leaders, from aligning on direction to developing leaders as agile coaches and mentors, so business agility and a coaching culture take root and keep growing on their own.</p>
+      </div>
+      <div class="journey-figs">
+        <figure class="journey-fig" data-reveal>
+          <img src={u("/solutions/how-to-transform.png")} width="923" height="435" alt="How to transform: a high-level agile transformation journey linking business agility transformation, agile leader transformation and developing an agile and coaching culture" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="journey-fig" data-reveal style="--d:.08s">
+          <img src={u("/solutions/agile-leader-journey.png")} width="841" height="402" alt="Agile leader development path: agility leader alignment workshop, leader as agile coach and mentor, ICP-ACC certification, advanced agile certification modules 2 to 4, and ongoing mentoring and supervision" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core positioning -->
+  <section class="section" style="padding-top:0">
     <div class="wrap">
       <div class="head-row" data-reveal>
         <div><span class="eyebrow">Core positioning</span><h2 class="h2" style="margin-top:1rem">Three disciplines, one transformation<span class="dot">.</span></h2></div>
@@ -162,6 +180,12 @@ const process = [
 </Base>
 
 <style>
+  /* Supplied diagrams (923px & 841px wide): shown as-is, never wider than their native size. */
+  .journey-figs { display: grid; gap: 1.25rem; justify-items: center; }
+  .journey-fig { margin: 0; width: 100%; display: grid; justify-items: center; padding: clamp(1rem, 0.5rem + 2vw, 2.25rem); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
+  .journey-fig img { width: 100%; height: auto; }
+  .journey-fig:first-child img { max-width: 923px; }
+  .journey-fig:last-child img { max-width: 841px; }
   .core { display: grid; gap: 1.25rem; }
   .core-item {
     display: grid; gap: 1.25rem 3rem; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
