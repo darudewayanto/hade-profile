@@ -182,6 +182,7 @@ import portrait from "../assets/photos/daru-portrait.png";
               <span class="chip chip-gold">{m.hours} hrs</span>
             </div>
             <h3 class="h3">{m.title}</h3>
+            <p class="mod-cred">{m.credential}</p>
             <p class="muted small">{m.text}</p>
             <div class="mod-logos">{m.logos.map((l) => <Image src={accImg[l]} alt={l} height={56} />)}</div>
           </li>
@@ -440,6 +441,7 @@ import portrait from "../assets/photos/daru-portrait.png";
   .mod-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
   .mod-top .chip { white-space: nowrap; flex: none; }
   .mod-code { font-size: var(--fs-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; }
+  .mod-cred { font-size: 0.85rem; font-weight: 600; color: var(--gold-light); margin-top: -0.4rem; }
   .mod-logos { display: flex; gap: 0.6rem; align-items: center; margin-top: auto; padding-top: 0.75rem; }
   .mod-logos :global(img) {
     height: 30px; width: auto; background: #fff; border-radius: 6px; padding: 3px 6px;

@@ -98,6 +98,7 @@ const faqs = [
               <div>
                 <span class="m-code">{m.code}</span>
                 <h3 class="h3">{m.title}</h3>
+                <p class="m-cred">{m.credential}</p>
               </div>
             </div>
             <div class="m-mid">
@@ -209,6 +210,7 @@ const faqs = [
   @media (min-width: 960px) { .modules > li { grid-template-columns: 1fr 1.3fr auto; align-items: start; } }
   .m-left { display: flex; gap: 1.25rem; align-items: flex-start; }
   .m-step { font-size: 2.6rem; line-height: 1; letter-spacing: -0.05em; color: var(--gold); font-weight: 500; }
+  .m-cred { margin-top: 0.5rem; font-size: 0.95rem; font-weight: 600; color: var(--gold-light); }
   .m-code { font-size: var(--fs-micro); letter-spacing: 0.18em; text-transform: uppercase; color: #9aa3b5; font-weight: 600; }
   .m-mid { display: grid; gap: 0.85rem; color: #c3c9d6; }
   .m-acc { display: flex; gap: 0.5rem; align-items: flex-start; font-size: var(--fs-small); color: var(--gold-light); }
