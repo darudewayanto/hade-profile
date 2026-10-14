@@ -326,8 +326,7 @@ export const testimonials: Testimonial[] = [
     name: "Abimanyu Suryadi",
     role: "VP Human Capital",
     company: "PT Pertamina Drilling Services Indonesia",
-    // TODO: replace with the Pertamina Drilling Services logo when the file is available.
-    logo: "pertamina",
+    logo: "pertamina-drilling",
     quote:
       "As an HR leader, my main focus is always making sure a program truly impacts how people lead—and HADE delivered on that. The Agile Coaching (ICP-ACC) certification gave our leaders practical coaching skills, while MyBrain profiling provided deep insights into how each individual thinks and makes decisions.\n\nAs a result, we've built a thriving internal coaching culture that grows independently without relying on external consultants. HADE has truly become a trusted partner in growing our people.",
   },
