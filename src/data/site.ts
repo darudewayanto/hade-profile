@@ -250,7 +250,7 @@ export const masterCredentials = [
   { logo: "mind-master", name: "MIND Master Practitioner", full: "MyBrain Indicator of Neurological Dominance" },
   { logo: "cmc", name: "CMC", full: "Certified Master Coach, Corporate Coach Academy" },
   { logo: "erickson", name: "ECPC", full: "Erickson Certified Professional Coach" },
-  { logo: "", name: "Stakeholder Centered Coaching", full: "Marshall Goldsmith" },
+  { logo: "marshall-goldsmith", name: "Stakeholder Centered Coaching", full: "Marshall Goldsmith" },
 ];
 
 export const awards = [

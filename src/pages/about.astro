@@ -157,7 +157,7 @@ const programs = [
       <ul role="list" class="logo-grid">
         {masterCredentials.map((a) => (
           <li data-reveal>
-            <div class="lg">{a.logo ? <Image src={accImg[a.logo]} alt="" height={70} /> : <span class="lg-text">Marshall<br />Goldsmith</span>}</div>
+            <div class="lg">{a.logo && <Image src={accImg[a.logo]} alt="" height={a.logo === "marshall-goldsmith" ? 108 : 140} class:list={[{ wide: a.logo === "marshall-goldsmith" }]} />}</div>
             <strong>{a.name}</strong><span class="muted small">{a.full}</span>
           </li>
         ))}
@@ -261,7 +261,7 @@ const programs = [
   .logo-grid li { display: grid; gap: 0.25rem; align-content: start; padding: 1.25rem; background: var(--paper); border-radius: var(--radius); border: 1px solid var(--line); }
   .lg { height: 84px; display: flex; align-items: center; margin-bottom: 0.75rem; }
   .lg :global(img) { max-height: 70px; width: auto; max-width: 100%; object-fit: contain; }
-  .lg-text { font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--navy-800); }
+  .lg :global(img.wide) { max-height: 54px; }
   .logo-grid strong { font-weight: 600; font-size: 0.95rem; }
 
   .awards-wrap { display: grid; gap: 2.5rem; align-items: start; }
