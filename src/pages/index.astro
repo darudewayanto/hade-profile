@@ -225,13 +225,13 @@ import portrait from "../assets/photos/daru-portrait.png";
   <!-- ============ FOUNDER ============ -->
   <section class="founder dark">
     <div class="wrap founder-grid">
-      <div class="founder-photo" data-reveal>
+      <a class="founder-photo coach-link" href={site.coachDaruUrl} target="_blank" rel="noopener" aria-label="Visit Coach Daru Dewayanto's profile" data-reveal>
         <span class="halo" aria-hidden="true"></span>
         <Image src={portrait} alt="Daru Dewayanto, MCM, MCC, ICE-AC" widths={[480, 760, 1000]} sizes="(min-width: 900px) 40vw, 90vw" />
-      </div>
+      </a>
       <div class="founder-copy" data-reveal style="--d:.1s">
         <span class="eyebrow">Founder, CEO &amp; Master Coach</span>
-        <h2 class="h1">Daru Dewayanto<span class="dot">.</span></h2>
+        <h2 class="h1"><a class="coach-name" href={site.coachDaruUrl} target="_blank" rel="noopener">Daru Dewayanto</a><span class="dot">.</span></h2>
         <p class="creds">MCM · MCC · ICE-AC</p>
         <p class="lead">
           An internationally accredited, award-winning agile coach with more than 30 years of experience as a corporate leader and entrepreneur. Daru has trained and certified 1,800+ coaches and practitioners, and has coached more than 1,000 companies, executives and business owners over 5,000+ hours.
@@ -478,6 +478,11 @@ import portrait from "../assets/photos/daru-portrait.png";
   .founder { padding-top: clamp(4rem, 3rem + 4vw, 7rem); overflow: hidden; }
   .founder-grid { display: grid; gap: 2rem; align-items: end; }
   @media (min-width: 900px) { .founder-grid { grid-template-columns: 0.9fr 1.1fr; gap: clamp(3rem, 6vw, 6rem); } }
+  .coach-link { color: inherit; text-decoration: none; display: block; }
+  .coach-name { color: inherit; text-decoration: none; background-image: linear-gradient(currentColor, currentColor); background-size: 0 2px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size 0.35s var(--ease); }
+  .coach-name:hover { background-size: 100% 2px; }
+  .coach-link :global(img) { transition: transform 0.6s var(--ease); }
+  .coach-link:hover :global(img) { transform: scale(1.02); }
   .founder-photo { position: relative; align-self: end; max-width: 520px; margin-inline: auto; width: 100%; }
   .founder-photo :global(img) { position: relative; width: 100%; height: auto; }
   .halo {
