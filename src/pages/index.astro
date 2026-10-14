@@ -120,9 +120,11 @@ import portrait from "../assets/photos/daru-portrait.png";
         <p class="lead">
           HADE is the only firm in the region accredited in agile coaching by three major international bodies (ICF, ICAgile and MyBrain), so your leaders gain capabilities that stay after the workshop ends.
         </p>
-        <div class="acc-row">
-          {["icf", "icagile", "mybrain"].map((n) => <Image src={accImg[n]} alt={n} height={44} />)}
-        </div>
+        <ul role="list" class="acc-row">
+          <li style="--h:34px"><Image src={accImg["icf"]} alt="International Coaching Federation (ICF)" height={68} /></li>
+          <li style="--h:46px"><Image src={accImg["icagile"]} alt="ICAgile" height={92} /></li>
+          <li style="--h:36px"><Image src={accImg["mybrain"]} alt="MyBrain International" height={72} /></li>
+        </ul>
         <div class="btn-row">
           <a class="btn" href={u("/about")}>About HADE</a>
           <a class="btn btn-dark" href={u("/certification")}>View certification</a>
@@ -402,8 +404,10 @@ import portrait from "../assets/photos/daru-portrait.png";
   }
   .feature-copy > div { display: grid; gap: 1.4rem; max-width: 520px; }
   @media (min-width: 900px) { .feature-copy { padding-inline: clamp(3rem, 6vw, 6rem); } }
-  .acc-row { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
-  .acc-row :global(img) { height: 38px; width: auto; }
+  /* Optical sizing: each logo gets its own height so all three read at the same visual weight (~100px wide). */
+  .acc-row { display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem clamp(1.5rem, 1rem + 2vw, 2.5rem); padding-block: 0.25rem; }
+  .acc-row li { display: flex; align-items: center; height: 48px; }
+  .acc-row :global(img) { height: var(--h); width: auto; }
   .call-chip {
     position: absolute; left: 0; bottom: 0;
     display: flex; align-items: center; gap: 0.75rem;
