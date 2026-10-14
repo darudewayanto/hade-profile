@@ -11,6 +11,8 @@ export const site = {
   email: "salam@hijrahcoach.co.id",
   phoneDisplay: "+62 811 1881 877",
   whatsapp: "628111881877",
+  // HADE community on the HijrahCoach platform (sign up / log in).
+  communityUrl: "https://belajaragile.com/hade",
   countries: ["Indonesia", "Hong Kong", "Qatar", "Australia"],
 };
 
@@ -21,6 +23,7 @@ const waMessages = {
   register:
     "Hello HADE, I'd like to register for the Agile Certified Hijrah Coach (ACHC) certification. Please share the upcoming schedule.",
   ai: "Hello HADE, I'd like to request a demo of HADE AI for our organization.",
+  cohort: "Hello HADE, I'd like to bring my team into the HADE Community as a group/cohort.",
 } as const;
 
 export type WaTopic = keyof typeof waMessages;
@@ -35,6 +38,7 @@ export const nav = [
   { href: "/certification", label: "Certification" },
   { href: "/clients", label: "Clients" },
   { href: "/hade-ai", label: "HADE AI" },
+  { href: "/community", label: "Community" },
 ];
 
 export const stats = [

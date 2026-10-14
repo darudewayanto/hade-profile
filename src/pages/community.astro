@@ -1,0 +1,285 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { site, wa } from "../data/site";
+
+const join = site.communityUrl;
+
+const why = [
+  { icon: "layers", title: "Learning doesn't end at the workshop", text: "Agile transformation is a habit, not an event. The community keeps your skills sharp long after the classroom." },
+  { icon: "users", title: "A network of agile leaders", text: "Connect with HADE graduates, coaches and corporate leaders who face the same challenges you do." },
+  { icon: "coach", title: "Close to master coaches", text: "Learn from internationally credentialed HADE coaches, with direct access to ask questions and get feedback." },
+  { icon: "compass", title: "Stay current", text: "Fresh insight on agile, coaching, applied neuroscience and AI, curated for practitioners rather than theory." },
+  { icon: "certificate", title: "Credentials that count", text: "Complete classes and earn certificates that anyone can verify online." },
+  { icon: "building", title: "Grow your team together", text: "Bring your leaders into one space so the whole organization learns and moves at the same pace." },
+];
+
+const audiences = [
+  {
+    tag: "For professionals",
+    title: "Coaches, trainers, mentors & practitioners",
+    points: [
+      "Keep growing after certification with ongoing classes and discussions",
+      "Build your reputation: share insights, help peers, climb the leaderboard",
+      "Find collaborators and opportunities across the HADE network",
+    ],
+  },
+  {
+    tag: "For corporate leaders",
+    title: "Executives, managers & HR / L&D teams",
+    points: [
+      "Sustain the impact of in-house programs between sessions",
+      "Learn alongside your team as a dedicated group (cohort)",
+      "Benchmark your practice with leaders from other organizations",
+    ],
+  },
+];
+
+const features = [
+  { icon: "chat", title: "Discussions & polls", text: "Ask questions, share wins and get answers from coaches and peers." },
+  { icon: "layers", title: "Structured classes", text: "Module-by-module lessons with progress tracking. Free, Premium and paid classes." },
+  { icon: "calendar", title: "Live events", text: "Webinars, coaching circles and sessions you can RSVP to in one tap." },
+  { icon: "certificate", title: "Verifiable certificates", text: "Earn a certificate when you finish a class, with an online verification link." },
+  { icon: "users", title: "Member directory & messages", text: "Find members by profile and reach them through direct messages." },
+  { icon: "award", title: "Points, levels & rewards", text: "Earn points for contributing, level up, and win rewards on the leaderboard." },
+];
+
+const steps = [
+  { title: "Open the HADE Community", text: "Go to belajaragile.com/hade. It's free to join." },
+  { title: "Sign up or log in", text: "Create an account with your email, or continue with Google in seconds." },
+  { title: "Complete your profile & start", text: "Introduce yourself, join a class, and RSVP to the next event." },
+];
+---
+<Base title="Community" description="Join the HADE Community: a learning and networking platform for agile professionals and corporate leaders, with classes, live events, discussions and verifiable certificates. Free to join.">
+  <!-- HERO -->
+  <section class="c-hero dark">
+    <div class="wrap c-hero-grid">
+      <div class="c-copy">
+        <span class="eyebrow" data-reveal>HADE Community Platform</span>
+        <h1 data-reveal style="--d:.08s">Where agile leaders keep growing<span class="dot">.</span></h1>
+        <p class="lead" data-reveal style="--d:.16s">
+          A learning community for professionals and corporate leaders who want to keep sharpening their agile coaching, leadership and transformation skills together.
+        </p>
+        <div class="btn-row" data-reveal style="--d:.24s">
+          <a class="btn btn-gold" href={join} target="_blank" rel="noopener">Join the community <Icon name="arrow-up-right" /></a>
+          <a class="btn btn-light" href={join} target="_blank" rel="noopener">Log in</a>
+        </div>
+        <p class="small muted" data-reveal style="--d:.3s">Free to join · Part of HijrahCoach Group · belajaragile.com/hade</p>
+      </div>
+
+      <!-- Illustrative UI, not real member data -->
+      <div class="mock" aria-hidden="true" data-reveal style="--d:.2s">
+        <div class="m-card m-feed">
+          <div class="m-row"><span class="m-av">H</span><div><b>HADE Coach</b><small>Coaching circle · 2h</small></div></div>
+          <p>What is one agile habit your team adopted this month? Share it below.</p>
+          <div class="m-meta"><span>♥ 24</span><span>💬 12</span></div>
+        </div>
+        <div class="m-card m-course">
+          <small class="m-label">Class</small>
+          <b>Leader as Agile Coach</b>
+          <div class="m-bar"><span style="width:68%"></span></div>
+          <small>68% complete · Module 3 of 5</small>
+        </div>
+        <div class="m-card m-event">
+          <div class="m-date"><b>12</b><small>NOV</small></div>
+          <div><small class="m-label">Live event</small><b>Agile Leadership Webinar</b><small>RSVP · 86 going</small></div>
+        </div>
+        <div class="m-card m-level">
+          <small class="m-label">Your level</small>
+          <b>Level 4 · Practitioner</b>
+          <div class="m-dots"><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="sheet section" id="why">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div>
+          <span class="eyebrow">Why join</span>
+          <h2 class="h2" style="margin-top:1rem">Agility grows faster together<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">Workshops spark change, but communities sustain it. For professionals and corporate leaders, staying connected is how new skills become everyday leadership.</p>
+      </div>
+      <ul role="list" class="why">
+        {why.map((w, i) => (
+          <li data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="w-icon"><Icon name={w.icon} /></span>
+            <h3>{w.title}</h3>
+            <p class="muted">{w.text}</p>
+          </li>
+        ))}
+      </ul>
+
+      <div class="aud">
+        {audiences.map((a, i) => (
+          <article class:list={["aud-card", { dark: i === 1 }]} data-reveal style={`--d:${i * 0.08}s`}>
+            <span class:list={["chip", { "chip-gold": i === 1 }]}>{a.tag}</span>
+            <h3 class="h3">{a.title}</h3>
+            <ul class="check-list">{a.points.map((p) => <li>{p}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT -->
+  <section class="section sand" id="what">
+    <div class="wrap">
+      <div class="head-row" data-reveal>
+        <div>
+          <span class="eyebrow">What it is</span>
+          <h2 class="h2" style="margin-top:1rem">One place to learn, connect and grow<span class="dot">.</span></h2>
+        </div>
+        <p class="lead">The HADE Community Platform is HADE's online home for agile practitioners: classes, live events, discussions and recognition, all in one place on web and mobile.</p>
+      </div>
+      <ul role="list" class="feat">
+        {features.map((f, i) => (
+          <li class="card" data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+            <span class="f-icon"><Icon name={f.icon} /></span>
+            <h3>{f.title}</h3>
+            <p class="muted">{f.text}</p>
+          </li>
+        ))}
+      </ul>
+      <div class="tiers" data-reveal>
+        <div>
+          <strong>Free to join</strong>
+          <span class="muted">Discussions, events, member directory and free classes.</span>
+        </div>
+        <div>
+          <strong>Premium membership</strong>
+          <span class="muted">Unlocks Premium classes and content, billed monthly.</span>
+        </div>
+        <div>
+          <strong>Part of HijrahCoach Group</strong>
+          <span class="muted">One account also connects you to Hijrah Coach, MyBrain and Center of Agility communities.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section class="section" id="how">
+    <div class="wrap how">
+      <div class="stack" data-reveal>
+        <span class="eyebrow">How to join</span>
+        <h2 class="h2">Get started in three steps<span class="dot">.</span></h2>
+        <p class="lead">It takes less than two minutes. Already a member? Use the same link to log in.</p>
+        <div class="btn-row">
+          <a class="btn btn-dark" href={join} target="_blank" rel="noopener">Join at belajaragile.com/hade <Icon name="arrow-up-right" /></a>
+        </div>
+      </div>
+      <ol role="list" class="steps">
+        {steps.map((s, i) => (
+          <li data-reveal style={`--d:${i * 0.08}s`}>
+            <span class="s-num">{String(i + 1).padStart(2, "0")}</span>
+            <div><h3>{s.title}</h3><p class="muted">{s.text}</p></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-wrap">
+    <div class="wrap">
+      <div class="cta dark" data-reveal>
+        <div class="stack">
+          <span class="eyebrow">Join the HADE Community</span>
+          <h2 class="h2">Your agile journey continues here<span class="dot">.</span></h2>
+          <p class="lead">Free to join. Learn with HADE coaches and a network of agile leaders across Asia, Australia and the Middle East.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-gold" href={join} target="_blank" rel="noopener">Join now, it's free <Icon name="arrow-up-right" /></a>
+          <a class="btn btn-light" href={join} target="_blank" rel="noopener">Log in</a>
+          <a class="link-arrow" href={wa("cohort")} target="_blank" rel="noopener">Bringing a team? Talk to us about a group cohort <Icon name="arrow-right" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* Hero */
+  .c-hero {
+    padding: clamp(8.5rem, 7rem + 5vw, 12rem) 0 calc(var(--radius-lg) + clamp(3rem, 2rem + 4vw, 6rem));
+    background:
+      radial-gradient(80% 90% at 85% 20%, rgba(188, 148, 108, 0.22), transparent 60%),
+      var(--navy-950);
+    overflow: hidden;
+  }
+  .c-hero-grid { display: grid; gap: 3.5rem; align-items: center; }
+  @media (min-width: 980px) { .c-hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 4rem; } }
+  .c-copy { display: grid; gap: 1.5rem; justify-items: start; }
+  .c-copy h1 { font-size: clamp(2.6rem, 1.5rem + 4vw, 5.2rem); line-height: 1; letter-spacing: -0.045em; max-width: 13ch; }
+
+  .mock { position: relative; display: grid; gap: 0.85rem; grid-template-columns: 1fr 1fr; max-width: 520px; width: 100%; justify-self: center; }
+  .m-card {
+    background: var(--cream); color: var(--ink); border-radius: 18px; padding: 1rem 1.1rem;
+    box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6); display: grid; gap: 0.45rem; font-size: 0.85rem; line-height: 1.4;
+  }
+  .m-card small { color: var(--muted); font-size: 0.72rem; }
+  .m-card b { font-weight: 600; }
+  .m-label { text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; color: var(--gold-deep) !important; font-size: 0.62rem !important; }
+  .m-feed { grid-column: 1 / -1; }
+  .m-row { display: flex; gap: 0.6rem; align-items: center; }
+  .m-row div { display: grid; }
+  .m-av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--navy-950); color: var(--gold-light); font-weight: 700; }
+  .m-meta { display: flex; gap: 1rem; color: var(--muted); font-size: 0.75rem; }
+  .m-bar { height: 6px; border-radius: 99px; background: var(--sand); overflow: hidden; }
+  .m-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); }
+  .m-event { grid-template-columns: auto 1fr; align-items: center; gap: 0.8rem; }
+  .m-event > div:last-child { display: grid; gap: 0.15rem; }
+  .m-date { width: 48px; height: 52px; border-radius: 12px; background: var(--navy-950); color: #fff; display: grid; place-items: center; align-content: center; line-height: 1; }
+  .m-date b { font-size: 1.2rem; }
+  .m-date small { color: var(--gold-light); font-size: 0.6rem; letter-spacing: 0.1em; }
+  .m-level { grid-column: 1 / -1; }
+  .m-dots { display: flex; gap: 0.35rem; }
+  .m-dots i { flex: 1; height: 6px; border-radius: 99px; background: var(--gold); }
+  .m-dots i.off { background: var(--sand); }
+  @media (max-width: 560px) { .m-course, .m-event { grid-column: 1 / -1; } }
+
+  /* Why */
+  .why { display: grid; gap: 2.5rem 2rem; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .why { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 960px) { .why { grid-template-columns: repeat(3, 1fr); } }
+  .why li { display: grid; gap: 0.6rem; align-content: start; padding-top: 1.5rem; border-top: 1px solid var(--line-strong); }
+  .why h3, .feat h3, .steps h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+  .w-icon { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); color: var(--gold-deep); margin-bottom: 0.4rem; }
+
+  .aud { margin-top: clamp(3rem, 2rem + 3vw, 5rem); display: grid; gap: 1rem; }
+  @media (min-width: 860px) { .aud { grid-template-columns: 1fr 1fr; } }
+  .aud-card { display: grid; gap: 1.1rem; align-content: start; justify-items: start; padding: clamp(1.75rem, 1rem + 2vw, 2.75rem); border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
+  .aud-card.dark { background: var(--navy-950); border-color: var(--navy-950); }
+  .aud-card.dark .check-list { color: #c3c9d6; }
+
+  /* What */
+  .feat { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .feat li { display: grid; gap: 0.75rem; align-content: start; }
+  .f-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--navy-950); color: var(--gold-light); }
+  .tiers { margin-top: 1.5rem; display: grid; gap: 1px; background: var(--line-strong); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-strong); }
+  @media (min-width: 860px) { .tiers { grid-template-columns: repeat(3, 1fr); } }
+  .tiers > div { background: var(--paper); padding: 1.4rem 1.5rem; display: grid; gap: 0.3rem; }
+  .tiers strong { font-weight: 600; }
+
+  /* How */
+  .how { display: grid; gap: 3rem; align-items: start; }
+  @media (min-width: 900px) { .how { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+  .steps { display: grid; border-top: 1px solid var(--line-strong); }
+  .steps li { display: flex; gap: 1.5rem; padding: 1.6rem 0; border-bottom: 1px solid var(--line-strong); align-items: flex-start; }
+  .s-num { font-size: 2.4rem; line-height: 1; letter-spacing: -0.05em; color: var(--gold); font-weight: 500; min-width: 3.2rem; }
+  .steps p { margin-top: 0.35rem; }
+
+  /* CTA */
+  .cta-wrap { padding-bottom: var(--section); }
+  .cta {
+    border-radius: var(--radius-lg); padding: clamp(2rem, 1.2rem + 4vw, 5rem);
+    display: grid; gap: 2.5rem; align-items: center;
+    background: radial-gradient(120% 120% at 100% 0%, rgba(188, 148, 108, 0.2), transparent 55%), var(--navy-900);
+  }
+  @media (min-width: 960px) { .cta { grid-template-columns: 1.2fr 1fr; gap: 4rem; } }
+  .cta-actions { display: grid; gap: 0.85rem; justify-items: start; }
+</style>
