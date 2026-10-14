@@ -1,9 +1,13 @@
 ---
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
+import Image from "../components/Img.astro";
+import feedShot from "../assets/community/feed.png";
+import kelasShot from "../assets/community/kelas.png";
 import { site, wa } from "../data/site";
 
 const join = site.communityUrl;
+const login = site.communityLoginUrl;
 
 const why = [
   { icon: "layers", title: "Learning doesn't end at the workshop", text: "Agile transformation is a habit, not an event. The community keeps your skills sharp long after the classroom." },
@@ -46,7 +50,7 @@ const features = [
 
 const steps = [
   { title: "Open the HADE Community", text: "Go to belajaragile.com/hade. It's free to join." },
-  { title: "Sign up or log in", text: "Create an account with your email, or continue with Google in seconds." },
+  { title: "Create your account", text: "Sign up with your email, or continue with Google in seconds." },
   { title: "Complete your profile & start", text: "Introduce yourself, join a class, and RSVP to the next event." },
 ];
 ---
@@ -62,34 +66,16 @@ const steps = [
         </p>
         <div class="btn-row" data-reveal style="--d:.24s">
           <a class="btn btn-gold" href={join} target="_blank" rel="noopener">Join the community <Icon name="arrow-up-right" /></a>
-          <a class="btn btn-light" href={join} target="_blank" rel="noopener">Log in</a>
+          <a class="btn btn-light" href={login} target="_blank" rel="noopener">Log in</a>
         </div>
         <p class="small muted" data-reveal style="--d:.3s">Free to join · Part of HijrahCoach Group · belajaragile.com/hade</p>
       </div>
 
-      <!-- Illustrative UI, not real member data -->
-      <div class="mock" aria-hidden="true" data-reveal style="--d:.2s">
-        <div class="m-card m-feed">
-          <div class="m-row"><span class="m-av">H</span><div><b>HADE Coach</b><small>Coaching circle · 2h</small></div></div>
-          <p>What is one agile habit your team adopted this month? Share it below.</p>
-          <div class="m-meta"><span>♥ 24</span><span>💬 12</span></div>
-        </div>
-        <div class="m-card m-course">
-          <small class="m-label">Class</small>
-          <b>Leader as Agile Coach</b>
-          <div class="m-bar"><span style="width:68%"></span></div>
-          <small>68% complete · Module 3 of 5</small>
-        </div>
-        <div class="m-card m-event">
-          <div class="m-date"><b>12</b><small>NOV</small></div>
-          <div><small class="m-label">Live event</small><b>Agile Leadership Webinar</b><small>RSVP · 86 going</small></div>
-        </div>
-        <div class="m-card m-level">
-          <small class="m-label">Your level</small>
-          <b>Level 4 · Practitioner</b>
-          <div class="m-dots"><i></i><i></i><i></i><i></i><i class="off"></i><i class="off"></i></div>
-        </div>
-      </div>
+      <figure class="shot shot-hero" data-reveal style="--d:.2s">
+        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>belajaragile.com/hade</span></div>
+        <Image src={feedShot} alt="The HADE Community feed: discussion categories, a post composer, member level and the 30-day leaderboard" widths={[700, 1100, 1400]} sizes="(min-width: 980px) 46vw, 92vw" loading="eager" />
+        <figcaption class="small">Community feed · other members' names blurred for privacy</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -158,6 +144,23 @@ const steps = [
           <span class="muted">One account also connects you to Hijrah Coach, MyBrain and Center of Agility communities.</span>
         </div>
       </div>
+
+      <div class="classes" data-reveal>
+        <div class="stack">
+          <span class="eyebrow">Inside the platform</span>
+          <h3 class="h3">Classes for every stage of your agile journey</h3>
+          <p class="muted">Start with free foundations like Agile &amp; Agile Mindset and Business Agility, then go deeper with Premium series and certification programs such as Agile Coaching, Mentoring and Team Coaching Competency. Every class tracks your progress session by session.</p>
+          <ul class="check-list small">
+            <li><strong>Free</strong>: open to every member</li>
+            <li><strong>Premium monthly</strong>: included with Premium membership</li>
+            <li><strong>Premium product</strong>: certification programs purchased separately</li>
+          </ul>
+        </div>
+        <figure class="shot shot-classes">
+          <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>Kelas</span></div>
+          <Image src={kelasShot} alt="The Classes page listing free, Premium monthly and Premium product classes with module counts and progress" width={502} />
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -167,7 +170,7 @@ const steps = [
       <div class="stack" data-reveal>
         <span class="eyebrow">How to join</span>
         <h2 class="h2">Get started in three steps<span class="dot">.</span></h2>
-        <p class="lead">It takes less than two minutes. Already a member? Use the same link to log in.</p>
+        <p class="lead">It takes less than two minutes. Already a member? The same button takes you straight into the community.</p>
         <div class="btn-row">
           <a class="btn btn-dark" href={join} target="_blank" rel="noopener">Join at belajaragile.com/hade <Icon name="arrow-up-right" /></a>
         </div>
@@ -194,7 +197,7 @@ const steps = [
         </div>
         <div class="cta-actions">
           <a class="btn btn-gold" href={join} target="_blank" rel="noopener">Join now, it's free <Icon name="arrow-up-right" /></a>
-          <a class="btn btn-light" href={join} target="_blank" rel="noopener">Log in</a>
+          <a class="btn btn-light" href={login} target="_blank" rel="noopener">Log in</a>
           <a class="link-arrow" href={wa("cohort")} target="_blank" rel="noopener">Bringing a team? Talk to us about a group cohort <Icon name="arrow-right" /></a>
         </div>
       </div>
@@ -216,31 +219,13 @@ const steps = [
   .c-copy { display: grid; gap: 1.5rem; justify-items: start; }
   .c-copy h1 { font-size: clamp(2.6rem, 1.5rem + 4vw, 5.2rem); line-height: 1; letter-spacing: -0.045em; max-width: 13ch; }
 
-  .mock { position: relative; display: grid; gap: 0.85rem; grid-template-columns: 1fr 1fr; max-width: 520px; width: 100%; justify-self: center; }
-  .m-card {
-    background: var(--cream); color: var(--ink); border-radius: 18px; padding: 1rem 1.1rem;
-    box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6); display: grid; gap: 0.45rem; font-size: 0.85rem; line-height: 1.4;
-  }
-  .m-card small { color: var(--muted); font-size: 0.72rem; }
-  .m-card b { font-weight: 600; }
-  .m-label { text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; color: var(--gold-deep) !important; font-size: 0.62rem !important; }
-  .m-feed { grid-column: 1 / -1; }
-  .m-row { display: flex; gap: 0.6rem; align-items: center; }
-  .m-row div { display: grid; }
-  .m-av { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--navy-950); color: var(--gold-light); font-weight: 700; }
-  .m-meta { display: flex; gap: 1rem; color: var(--muted); font-size: 0.75rem; }
-  .m-bar { height: 6px; border-radius: 99px; background: var(--sand); overflow: hidden; }
-  .m-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--gold-deep), var(--gold)); }
-  .m-event { grid-template-columns: auto 1fr; align-items: center; gap: 0.8rem; }
-  .m-event > div:last-child { display: grid; gap: 0.15rem; }
-  .m-date { width: 48px; height: 52px; border-radius: 12px; background: var(--navy-950); color: #fff; display: grid; place-items: center; align-content: center; line-height: 1; }
-  .m-date b { font-size: 1.2rem; }
-  .m-date small { color: var(--gold-light); font-size: 0.6rem; letter-spacing: 0.1em; }
-  .m-level { grid-column: 1 / -1; }
-  .m-dots { display: flex; gap: 0.35rem; }
-  .m-dots i { flex: 1; height: 6px; border-radius: 99px; background: var(--gold); }
-  .m-dots i.off { background: var(--sand); }
-  @media (max-width: 560px) { .m-course, .m-event { grid-column: 1 / -1; } }
+  .shot { margin: 0; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.08); }
+  .shot :global(img) { display: block; width: 100%; height: auto; }
+  .shot-bar { display: flex; align-items: center; gap: 6px; padding: 0.6rem 0.85rem; background: #ece9e3; border-bottom: 1px solid var(--line); }
+  .shot-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d4cfc6; }
+  .shot-bar span { margin-left: 0.6rem; font-size: 0.72rem; color: var(--muted); background: #fff; border-radius: 6px; padding: 0.15rem 0.6rem; }
+  .shot-hero figcaption { padding: 0.55rem 0.9rem; background: #fff; color: var(--muted); border-top: 1px solid var(--line); font-size: 0.72rem; }
+  .shot-hero { width: 100%; max-width: 640px; justify-self: center; }
 
   /* Why */
   .why { display: grid; gap: 2.5rem 2rem; grid-template-columns: 1fr; }
@@ -264,6 +249,11 @@ const steps = [
   @media (min-width: 860px) { .tiers { grid-template-columns: repeat(3, 1fr); } }
   .tiers > div { background: var(--paper); padding: 1.4rem 1.5rem; display: grid; gap: 0.3rem; }
   .tiers strong { font-weight: 600; }
+
+  /* Classes showcase */
+  .classes { margin-top: clamp(3rem, 2rem + 3vw, 5rem); display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 900px) { .classes { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+  .shot-classes { max-width: 502px; width: 100%; justify-self: center; box-shadow: var(--shadow); border-color: var(--line); }
 
   /* How */
   .how { display: grid; gap: 3rem; align-items: start; }

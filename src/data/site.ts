@@ -13,6 +13,7 @@ export const site = {
   whatsapp: "628111881877",
   // HADE community on the HijrahCoach platform (sign up / log in).
   communityUrl: "https://belajaragile.com/hade",
+  communityLoginUrl: "https://belajaragile.com/masuk?komunitas=hade",
   countries: ["Indonesia", "Hong Kong", "Qatar", "Australia"],
 };
 
