@@ -11,8 +11,6 @@ import { corporatePrograms, coreSolutions, wa } from "../data/site";
 import stage from "../assets/photos/daru-stage.jpg";
 import safe1 from "../assets/visuals/safe-1.png";
 import safe2 from "../assets/visuals/safe-2.png";
-import mindInd from "../assets/visuals/mind-individual.png";
-import mindTeam from "../assets/visuals/mind-team.png";
 
 const process = [
   { n: "01", title: "Discover", text: "An Agile Health Check-up and leader profiling show where your organization stands today." },
@@ -140,8 +138,8 @@ const process = [
         </div>
       </div>
       <div class="profile-visuals" data-reveal style="--d:.1s">
-        <figure class="card"><Image src={mindInd} alt="Individual Neuro-Dominance profile chart" width={600} /><figcaption class="small muted">Individual profile</figcaption></figure>
-        <figure class="card"><Image src={mindTeam} alt="Team Neuro-Dominance profile charts" width={800} /><figcaption class="small muted">Team profile</figcaption></figure>
+        <img src={u("/solutions/mind-individual-profile.png")} width="508" height="355" alt="MyBrain individual profile: personal and professional thinking preferences across reasoning, spontaneous, specific and feeling" loading="lazy" decoding="async" />
+        <img src={u("/solutions/mind-team-profile.png")} width="583" height="355" alt="MyBrain team profile: the team's combined thinking preferences and member-by-member charts" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -197,9 +195,9 @@ const process = [
   @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; gap: 5rem; } }
   .acc-row { display: flex; gap: 1.25rem; align-items: center; }
   .acc-row :global(img) { width: auto; }
-  .profile-visuals { display: grid; gap: 1rem; grid-template-columns: 0.8fr 1fr; align-items: center; }
-  .profile-visuals figure { padding: 1rem; display: grid; gap: 0.5rem; }
-  .profile-visuals figcaption { text-align: center; }
+  /* Supplied images (508px & 583px wide): shown as-is, aligned at 508px so neither is ever upscaled. */
+  .profile-visuals { display: grid; gap: 1.25rem; justify-items: center; }
+  .profile-visuals img { width: 100%; max-width: 508px; height: auto; }
 
   .safe { display: grid; gap: 1rem; }
   @media (min-width: 900px) { .safe { grid-template-columns: 1fr 1fr; } }
