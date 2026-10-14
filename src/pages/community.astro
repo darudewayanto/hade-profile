@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import Image from "../components/Img.astro";
 import feedShot from "../assets/community/feed.png";
-import kelasShot from "../assets/community/kelas.png";
+import { u } from "../lib/url";
 import { site, wa } from "../data/site";
 
 const join = site.communityUrl;
@@ -156,10 +156,17 @@ const steps = [
             <li><strong>Premium product</strong>: certification programs purchased separately</li>
           </ul>
         </div>
-        <figure class="shot shot-classes">
-          <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>Kelas</span></div>
-          <Image src={kelasShot} alt="The Classes page listing free, Premium monthly and Premium product classes with module counts and progress" width={502} />
-        </figure>
+      </div>
+      <div class="class-shots">
+        {[
+          ["kelas-1.png", 502, 618, "Free classes: Welcome, Agile & Agile Mindset, Business Agility"],
+          ["kelas-2.png", 502, 576, "Agile Coaching Fundamental and competency programs"],
+          ["kelas-3.png", 504, 560, "Agile Mindset, Building Agile Team and Business & Entrepreneurship series"],
+        ].map(([file, w, h, alt], i) => (
+          <figure class="shot shot-class" data-reveal style={`--d:${i * 0.08}s`}>
+            <img src={u(`/community/${file}`)} width={w} height={h} alt={`HADE Community classes: ${alt}`} loading="lazy" decoding="async" />
+          </figure>
+        ))}
       </div>
     </div>
   </section>
@@ -253,7 +260,12 @@ const steps = [
   /* Classes showcase */
   .classes { margin-top: clamp(3rem, 2rem + 3vw, 5rem); display: grid; gap: 2.5rem; align-items: center; }
   @media (min-width: 900px) { .classes { grid-template-columns: 1fr 1fr; gap: 4rem; } }
-  .shot-classes { max-width: 502px; width: 100%; justify-self: center; box-shadow: var(--shadow); border-color: var(--line); }
+  .classes { grid-template-columns: 1fr !important; }
+  .classes > .stack { max-width: 760px; }
+  /* Original screenshots are ~500px wide: never display them wider than that. */
+  .class-shots { margin-top: 2rem; display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 504px); justify-content: center; align-items: start; }
+  @media (min-width: 900px) { .class-shots { grid-template-columns: repeat(3, minmax(0, 504px)); } }
+  .shot-class { box-shadow: var(--shadow); border-color: var(--line); }
 
   /* How */
   .how { display: grid; gap: 3rem; align-items: start; }
