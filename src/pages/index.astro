@@ -147,11 +147,12 @@ import portrait from "../assets/photos/daru-portrait.png";
       </div>
       <ul role="list" class="sol-grid">
         {corporatePrograms.map((p, i) => (
-          <li class="card sol" data-reveal style={`--d:${(i % 3) * 0.08}s`}>
+          <li class:list={["card", "sol", { "sol-linked": p.href }]} data-reveal style={`--d:${(i % 3) * 0.08}s`}>
             <span class="sol-icon"><Icon name={p.icon} /></span>
-            <h3 class="h3">{p.title}</h3>
+            <h3 class="h3">{p.href ? <a class="sol-link" href={u(p.href)}>{p.title}</a> : p.title}</h3>
             <p class="muted">{p.text}</p>
             <ul class="check-list small">{p.items.map((it) => <li>{it}</li>)}</ul>
+            {p.href && <span class="sol-more" aria-hidden="true">View program <Icon name="arrow-right" size={16} /></span>}
           </li>
         ))}
       </ul>
@@ -421,6 +422,14 @@ import portrait from "../assets/photos/daru-portrait.png";
   .sol-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
   .sol { display: grid; gap: 1rem; align-content: start; transition: transform 0.35s var(--ease), box-shadow 0.35s; }
   .sol:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .sol-linked { position: relative; cursor: pointer; border-color: rgba(188, 148, 108, 0.45); }
+  .sol-linked:hover { border-color: var(--gold); }
+  .sol-link { color: inherit; }
+  .sol-link::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; }
+  .sol-link:focus-visible { outline: none; }
+  .sol-linked:has(.sol-link:focus-visible) { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .sol-more { justify-self: start; display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.25rem; font-size: var(--fs-small); font-weight: 600; color: var(--gold-deep); transition: gap 0.25s var(--ease); }
+  .sol-linked:hover .sol-more { gap: 0.7em; }
   .sol-icon {
     width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
     background: var(--navy-950); color: var(--gold-light);
