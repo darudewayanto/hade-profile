@@ -61,7 +61,7 @@ export const pillars = [
   {
     icon: "coach",
     title: "Agile Coaching Competencies",
-    text: "A triple-accredited agile coaching certification (ICF, ICAgile & MyBrain) that gives leaders the core skills to guide transformation.",
+    text: "A triple-accredited agile coaching certification (ICF, ICAgile & MyBrain) that gives leaders the core skills to guide agile transformation.",
     href: "/certification",
   },
   {
@@ -75,7 +75,7 @@ export const pillars = [
 export const coreSolutions = [
   {
     title: "Workshop & Training",
-    text: "Transformation, leadership and team workshops designed around your strategy and culture.",
+    text: "Agile transformation, leadership and team workshops designed around your strategy and culture.",
   },
   {
     title: "Team & Leader Profiling",
@@ -95,7 +95,7 @@ export const corporatePrograms = [
   {
     icon: "leader",
     title: "Agile Leadership Transformation",
-    text: "Leadership transformation grounded in coaching and applied neuroscience.",
+    text: "Agile leadership transformation grounded in coaching and applied neuroscience.",
     items: ["Agile leader & mindset alignment", "Leader as agile coach", "Succession, women leader & millennial programs"],
   },
   {
@@ -108,14 +108,14 @@ export const corporatePrograms = [
   {
     icon: "coach",
     title: "1-on-1 & Group Coaching",
-    text: "Sustained coaching and mentoring through the transformation journey.",
+    text: "Sustained coaching and mentoring through the agile transformation journey.",
     items: ["Agile transformation journey", "Agile leadership & team coaching", "Agile sales & productivity"],
   },
   {
     icon: "compass",
     title: "Business Agility Assessment & Advisory",
     text: "Assess where you are and design the path to scaled agility.",
-    items: ["Agile Health Check-up", "Leader, team & organization assessment", "SAFe 6.0-aligned transformation"],
+    items: ["Agile Health Check-up", "Leader, team & organization assessment", "SAFe 6.0-aligned agile transformation"],
   },
   {
     icon: "brain",

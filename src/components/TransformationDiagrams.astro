@@ -1,0 +1,147 @@
+---
+// Vector redraw of HADE's "How to Transform?" and agile leader journey diagrams
+// (originals were small PNGs that looked soft on retina screens).
+import { accImg } from "../lib/assets";
+
+const tan = "#b8916a";
+const ink = "#1c2452";
+const arrow = "#cfccc6";
+
+// Block arrow (like the original slides). Horizontal when dir is "r", vertical when "d".
+const block = (x1: number, y1: number, x2: number, y2: number, dir: "r" | "d", w = 18, head = 36, hl = 22) => {
+  if (dir === "r") {
+    const y = y1, s = w / 2, h = head / 2;
+    return `M${x1} ${y - s} H${x2 - hl} V${y - h} L${x2} ${y} L${x2 - hl} ${y + h} V${y + s} H${x1} Z`;
+  }
+  const x = x1, s = w / 2, h = head / 2;
+  return `M${x - s} ${y1} V${y2 - hl} H${x - h} L${x} ${y2} L${x + h} ${y2 - hl} H${x + s} V${y1} Z`;
+};
+---
+<div class="tdiag">
+  <!-- 1. How to transform -->
+  <figure class="tfig" data-reveal>
+    <div class="tscroll">
+      <svg viewBox="0 0 1240 690" role="img" aria-labelledby="t1-title t1-desc">
+        <title id="t1-title">How to transform: high level agile transformation journey</title>
+        <desc id="t1-desc">The agile leader development path connects to Agile Leader Transformation, which sits between Business Agility Transformation (agile transformation consulting) and Developing Agile and Coaching Culture (agile and coaching culture consulting).</desc>
+        <defs>
+          <marker id="t1-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#3b5b8f" />
+          </marker>
+        </defs>
+
+        <text x="620" y="52" text-anchor="middle" class="h-title">HOW TO TRANSFORM?</text>
+        <text x="620" y="88" text-anchor="middle" class="h-sub">High Level Agile Transformation Journey</text>
+
+        <!-- mini journey -->
+        <g class="mini">
+          <path d={block(142, 152, 168, 152, "r", 8, 16, 9)} fill={arrow} />
+          <path d={block(302, 152, 328, 152, "r", 8, 16, 9)} fill={arrow} />
+          <path d={block(415, 176, 415, 203, "d", 8, 16, 9)} fill={arrow} />
+          <path d={block(235, 176, 235, 278, "d", 8, 16, 9)} fill={arrow} />
+          <path d={block(415, 251, 415, 278, "d", 8, 16, 9)} fill={arrow} />
+          <rect x="20" y="130" width="120" height="44" rx="8" fill={tan} />
+          <text x="80" y="148" text-anchor="middle" class="mt"><tspan x="80">Agility Leader</tspan><tspan x="80" dy="15">Alignment Workshop</tspan></text>
+          <rect x="170" y="130" width="130" height="44" rx="8" fill={tan} />
+          <text x="235" y="148" text-anchor="middle" class="mt"><tspan x="235">Leader as Agile</tspan><tspan x="235" dy="15">Coach &amp; Mentor</tspan></text>
+          <rect x="330" y="130" width="170" height="44" rx="8" fill={tan} />
+          <text x="415" y="148" text-anchor="middle" class="mt"><tspan x="415">Agile Coaching Competency</tspan><tspan x="415" dy="15">ICP-ACC Certification</tspan></text>
+          <rect x="330" y="205" width="170" height="44" rx="8" fill={tan} />
+          <text x="415" y="223" text-anchor="middle" class="mt"><tspan x="415">Advanced Agile Certification</tspan><tspan x="415" dy="15">Module 2 – 4</tspan></text>
+          <rect x="40" y="280" width="460" height="44" rx="8" fill={tan} />
+          <text x="270" y="298" text-anchor="middle" class="mt"><tspan x="270">Mentoring / Supervision</tspan><tspan x="270" dy="15">Agile Coaching Competency Practice</tspan></text>
+        </g>
+
+        <!-- link from the journey to the agile leader circle -->
+        <path d="M506 227 H840 V318" fill="none" stroke="#3b5b8f" stroke-width="2.5" marker-start="url(#t1-head)" marker-end="url(#t1-head)" />
+
+        <!-- three circles -->
+        <circle cx="600" cy="450" r="152" fill="#f3f2ef" stroke="#2b2b2b" stroke-width="2" stroke-dasharray="7 6" />
+        <circle cx="1080" cy="450" r="152" fill="#dedcd8" stroke="#2b2b2b" stroke-width="2" stroke-dasharray="7 6" />
+        <circle cx="840" cy="450" r="124" fill={tan} />
+        <text x="575" y="444" text-anchor="middle" class="ct"><tspan x="575">Business Agility</tspan><tspan x="575" dy="26">Transformation</tspan></text>
+        <text x="840" y="444" text-anchor="middle" class="ct"><tspan x="840">Agile Leader</tspan><tspan x="840" dy="26">Transformation</tspan></text>
+        <text x="1100" y="444" text-anchor="middle" class="ct"><tspan x="1100">Developing Agile &amp;</tspan><tspan x="1100" dy="26">Coaching Culture</tspan></text>
+
+        <!-- consulting notes -->
+        <text x="455" y="630" class="nt-b">Agile Transformation Consulting</text>
+        <text x="472" y="654" class="nt"><tspan x="472">•  Agile Transformation Framework</tspan><tspan x="472" dy="22">•  Consulting, Workshop, Mentoring</tspan></text>
+        <text x="935" y="630" class="nt-b">Agile &amp; Coaching Culture Consulting</text>
+        <text x="952" y="654" class="nt"><tspan x="952">•  Agile Culture Framework</tspan><tspan x="952" dy="22">•  Consulting, Workshop, Mentoring</tspan></text>
+      </svg>
+    </div>
+  </figure>
+
+  <!-- 2. Agile leader journey -->
+  <figure class="tfig" data-reveal style="--d:.08s">
+    <div class="tscroll">
+      <svg viewBox="0 0 1200 660" role="img" aria-labelledby="t2-title t2-desc">
+        <title id="t2-title">Agile leader development path</title>
+        <desc id="t2-desc">Agility Leader Alignment Workshop, then a 2-day Leader as Agile Coach and Mentor program, then a 3-day Agile Coaching Competency ICP-ACC certification, then three advanced modules accredited by ICF and MyBrain (Module 2 to 4), with continuous mentoring and supervision of agile coaching competency practice throughout.</desc>
+
+        <!-- arrows (drawn first, under the boxes) -->
+        <path d={block(266, 185, 327, 185, "r")} fill={arrow} />
+        <path d={block(611, 185, 692, 185, "r")} fill={arrow} />
+        <path d={block(1130, 236, 1130, 384, "d")} fill={arrow} />
+        <path d={block(470, 236, 470, 544, "d")} fill={arrow} />
+        <path d={block(940, 476, 940, 544, "d")} fill={arrow} />
+
+        <!-- notes above B -->
+        <text x="335" y="40" class="nt-b">2 Day Leader as Agile Coach</text>
+        <text x="345" y="68" class="nt"><tspan x="345">•  Leader as Coach</tspan><tspan x="345" dy="24">•  Leader as Mentor</tspan><tspan x="345" dy="24">•  Contract &amp; Alliance</tspan></text>
+
+        <!-- notes above C -->
+        <image href={accImg["icp-acc"].src} x="700" y="16" width="54" height="60" preserveAspectRatio="xMidYMid meet" />
+        <text x="768" y="40" class="nt-b">3 Day Agile Coaching Competency (ICP-ACC):</text>
+        <text x="778" y="68" class="nt"><tspan x="778">•  Leader as Coach</tspan><tspan x="778" dy="24">•  Leader as Mentor</tspan><tspan x="778" dy="24">•  Leader as Team Coach</tspan></text>
+        <text x="985" y="68" class="nt"><tspan x="985">•  Leader as Facilitator</tspan><tspan x="985" dy="24">•  Leader as Trainer</tspan><tspan x="985" dy="24">•  Contract &amp; Alliance</tspan></text>
+
+        <!-- row 1 boxes -->
+        <rect x="20" y="140" width="244" height="90" rx="16" fill={tan} />
+        <text x="142" y="178" text-anchor="middle" class="bt"><tspan x="142">Agility Leader</tspan><tspan x="142" dy="26">Alignment Workshop</tspan></text>
+        <rect x="335" y="140" width="274" height="90" rx="16" fill={tan} />
+        <text x="472" y="178" text-anchor="middle" class="bt"><tspan x="472">Leader as</tspan><tspan x="472" dy="26">Agile Coach &amp; Mentor</tspan></text>
+        <rect x="700" y="140" width="480" height="90" rx="16" fill={tan} />
+        <text x="940" y="178" text-anchor="middle" class="bt"><tspan x="940">Agile Coaching Competency</tspan><tspan x="940" dy="26">ICP-ACC Certification</tspan></text>
+
+        <!-- advanced modules notes -->
+        <image href={accImg["icf-level1"].src} x="702" y="258" width="50" height="50" preserveAspectRatio="xMidYMid meet" />
+        <image href={accImg["mind"].src} x="696" y="314" width="62" height="34" preserveAspectRatio="xMidYMid meet" />
+        <text x="768" y="280" class="nt-b">3 Advanced Modules (ICF &amp; MyBrain)</text>
+        <text x="778" y="308" class="nt"><tspan x="778">•  Advanced Coaching Competency</tspan><tspan x="778" dy="24">•  Advanced Team &amp; Group Coaching</tspan><tspan x="778" dy="24">•  Advanced Applied-Neuroscience</tspan></text>
+
+        <rect x="700" y="390" width="480" height="82" rx="16" fill={tan} />
+        <text x="940" y="424" text-anchor="middle" class="bt"><tspan x="940">Advanced Agile Certification</tspan><tspan x="940" dy="26">Module 2 – 4</tspan></text>
+
+        <!-- mentoring notes -->
+        <text x="20" y="300" class="nt-b">Continuous Mentoring &amp; Supervision:</text>
+        <text x="30" y="328" class="nt"><tspan x="30">•  Group &amp; 1-on-1 mentoring sessions</tspan><tspan x="30" dy="24">•  Competencies: coaching, mentoring,</tspan><tspan x="48" dy="24">team coaching, training, facilitating</tspan></text>
+
+        <rect x="20" y="550" width="1160" height="90" rx="16" fill={tan} />
+        <text x="600" y="588" text-anchor="middle" class="bt"><tspan x="600">Mentoring / Supervision</tspan><tspan x="600" dy="26">Agile Coaching Competency Practice</tspan></text>
+      </svg>
+    </div>
+  </figure>
+  <p class="tswipe">Swipe sideways to see the full diagram</p>
+</div>
+
+<style>
+  .tdiag { display: grid; gap: 1.25rem; grid-template-columns: minmax(0, 1fr); }
+  .tfig { min-width: 0; margin: 0; padding: clamp(1rem, 0.5rem + 2vw, 2.25rem); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
+  .tscroll svg { display: block; width: 100%; height: auto; font-family: var(--font); }
+  .h-title { font-size: 34px; font-weight: 700; fill: #1c2452; letter-spacing: 0.01em; }
+  .h-sub { font-size: 22px; fill: #1c2452; }
+  .mt { font-size: 12px; font-weight: 500; fill: #fff; }
+  .ct { font-size: 21px; font-weight: 500; fill: #1d1d1d; }
+  .bt { font-size: 21px; font-weight: 500; fill: #fff; }
+  .nt { font-size: 15.5px; fill: #2b2b2b; }
+  .nt-b { font-size: 16.5px; font-weight: 600; fill: #1d1d1d; }
+  .tswipe { display: none; text-align: center; font-size: 0.78rem; color: var(--muted); }
+
+  /* Small screens: keep the text legible and let the diagram scroll sideways. */
+  @media (max-width: 760px) {
+    .tscroll { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .tscroll svg { width: 760px; max-width: none; }
+    .tswipe { display: block; }
+  }
+</style>

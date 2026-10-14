@@ -5,6 +5,7 @@ import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Icon from "../components/Icon.astro";
 import CtaBand from "../components/CtaBand.astro";
+import TransformationDiagrams from "../components/TransformationDiagrams.astro";
 import { accImg } from "../lib/assets";
 import { corporatePrograms, coreSolutions, wa } from "../data/site";
 
@@ -36,17 +37,10 @@ const process = [
   <section class="sheet section">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Our transformation design</span><h2 class="h2" style="margin-top:1rem">A guided journey, co-created with you<span class="dot">.</span></h2></div>
-        <p class="lead">Every HADE transformation follows a proven guideline, but it is never one-size-fits-all. We co-create the journey with your leaders, from aligning on direction to developing leaders as agile coaches and mentors, so business agility and a coaching culture take root and keep growing on their own.</p>
+        <div><span class="eyebrow">Our agile transformation design</span><h2 class="h2" style="margin-top:1rem">A guided journey, co-created with you<span class="dot">.</span></h2></div>
+        <p class="lead">Every HADE agile transformation follows a proven guideline, but it is never one-size-fits-all. We co-create the journey with your leaders, from aligning on direction to developing leaders as agile coaches and mentors, so business agility and a coaching culture take root and keep growing on their own.</p>
       </div>
-      <div class="journey-figs">
-        <figure class="journey-fig" data-reveal>
-          <img src={u("/solutions/how-to-transform.png")} width="923" height="435" alt="How to transform: a high-level agile transformation journey linking business agility transformation, agile leader transformation and developing an agile and coaching culture" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="journey-fig" data-reveal style="--d:.08s">
-          <img src={u("/solutions/agile-leader-journey.png")} width="841" height="402" alt="Agile leader development path: agility leader alignment workshop, leader as agile coach and mentor, ICP-ACC certification, advanced agile certification modules 2 to 4, and ongoing mentoring and supervision" loading="lazy" decoding="async" />
-        </figure>
-      </div>
+      <TransformationDiagrams />
     </div>
   </section>
 
@@ -54,7 +48,7 @@ const process = [
   <section class="section" style="padding-top:0">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Core positioning</span><h2 class="h2" style="margin-top:1rem">Three disciplines, one transformation<span class="dot">.</span></h2></div>
+        <div><span class="eyebrow">Core positioning</span><h2 class="h2" style="margin-top:1rem">Three disciplines, one agile transformation<span class="dot">.</span></h2></div>
         <p class="lead">Every HADE engagement draws on business agility, agile coaching competencies and AI, combined to fit your organization.</p>
       </div>
       <div class="core">
@@ -62,7 +56,7 @@ const process = [
           <span class="num">01</span>
           <div>
             <h3 class="h3">Business Agility Transformation</h3>
-            <p class="muted">End-to-end agile culture transformation focused on people and leadership development, with customized team and leadership transformation.</p>
+            <p class="muted">End-to-end agile culture transformation focused on people and leadership development, with customized agile team and leadership transformation.</p>
           </div>
           <ul class="check-list small">
             {coreSolutions.map((c) => <li><strong>{c.title}</strong>: {c.text}</li>)}
@@ -176,16 +170,10 @@ const process = [
     </div>
   </section>
 
-  <CtaBand title="Let's design your transformation program." />
+  <CtaBand title="Let's design your agile transformation program." />
 </Base>
 
 <style>
-  /* Supplied diagrams (923px & 841px wide): shown as-is, never wider than their native size. */
-  .journey-figs { display: grid; gap: 1.25rem; justify-items: center; }
-  .journey-fig { margin: 0; width: 100%; display: grid; justify-items: center; padding: clamp(1rem, 0.5rem + 2vw, 2.25rem); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
-  .journey-fig img { width: 100%; height: auto; }
-  .journey-fig:first-child img { max-width: 923px; }
-  .journey-fig:last-child img { max-width: 841px; }
   .core { display: grid; gap: 1.25rem; }
   .core-item {
     display: grid; gap: 1.25rem 3rem; padding: clamp(1.5rem, 1rem + 2vw, 2.5rem);
