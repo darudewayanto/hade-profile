@@ -4,7 +4,7 @@ import Base from "../layouts/Base.astro";
 import PageHero from "../components/PageHero.astro";
 import Icon from "../components/Icon.astro";
 import CtaBand from "../components/CtaBand.astro";
-import CompetencyWheel from "../components/CompetencyWheel.astro";
+import framework from "../assets/visuals/agile-coaching-framework.png";
 import Testimonials from "../components/Testimonials.astro";
 import { accImg } from "../lib/assets";
 import { achcModules, wa } from "../data/site";
@@ -74,7 +74,12 @@ const faqs = [
         <div><span class="eyebrow">Agile coaching framework</span><h2 class="h2" style="margin-top:1rem">The competencies of an agile coach<span class="dot">.</span></h2></div>
         <p class="lead">ACHC builds every competency in the agile coaching framework on a foundation of Agile-Lean mindset, values and principles.</p>
       </div>
-      <div data-reveal><CompetencyWheel /></div>
+      <figure class="fw-figure" data-reveal>
+        <a href={framework.src} target="_blank" rel="noopener" aria-label="Open the agile coaching competency framework at full size">
+          <Image src={framework} alt="Agile coaching competency framework: technical, business and transformation mastery; mentoring and training (content authority); professional team coaching, professional coaching and facilitation (process authority); agile-lean practitioner, on a foundation of agile-lean mindset, values and principles" widths={[800, 1200, 1600, 2000]} sizes="(min-width: 1240px) 1160px, 94vw" quality={92} />
+        </a>
+        <figcaption class="fw-hint">Tap the diagram to view it full size</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -191,6 +196,11 @@ const faqs = [
   @media (max-width: 640px) { .acc-row li { height: 84px; } .acc-row { --k: 0.66; } }
 
 
+  .fw-figure { margin: 0; padding: clamp(0.75rem, 0.25rem + 2vw, 2rem); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
+  .fw-figure a { display: block; cursor: zoom-in; }
+  .fw-figure :global(img) { width: 100%; height: auto; display: block; }
+  .fw-hint { display: none; margin-top: 0.75rem; text-align: center; font-size: 0.78rem; color: var(--muted); }
+  @media (max-width: 760px) { .fw-hint { display: block; } }
   .rounded { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
   .modules { display: grid; border-top: 1px solid var(--line-dark); }
   .modules > li {
