@@ -41,7 +41,7 @@ export const nav = [
   { href: "/certification", label: "Certification" },
   { href: "/clients", label: "Clients" },
   { href: "/hade-ai", label: "HADE AI" },
-  { href: "/community", label: "Community" },
+  { href: "/community", label: "Belajar Agile" },
 ];
 
 export const stats = [
