@@ -42,11 +42,10 @@ const programs = [
   <section class="sheet section">
     <div class="wrap who">
       <div class="stack" data-reveal>
-        <span class="eyebrow">Who we are</span>
-        <h2 class="h2">From a business coaching practice to a regional agile coaching firm<span class="dot">.</span></h2>
+        <h2 class="h2">From a business coaching practice to a regional agile coaching firm</h2>
       </div>
       <div class="stack" data-reveal style="--d:.1s">
-        <p class="lead">HADE provides end-to-end agile culture transformation, focused on people and leadership development. Our programs combine three disciplines: coaching, applied neuroscience and AI-powered learning.</p>
+        <p class="lead">HADE focuses on people and leadership development. Our programs combine coaching, applied neuroscience and AI-powered learning.</p>
         <p class="muted">We work with executives, professionals (coaches, trainers and mentors) and business owners. Our network of coaching firms and associate coaches delivers programs in Indonesia, Hong Kong, Qatar and Australia, and our partners serve clients in the USA, UK, Qatar, Saudi Arabia, UAE, Kuwait, Oman, Bahrain, Malaysia and Singapore.</p>
       </div>
     </div>
@@ -60,14 +59,10 @@ const programs = [
   <!-- Strength -->
   <section class="section sand">
     <div class="wrap">
-      <div class="head-row" data-reveal>
-        <div><span class="eyebrow">HADE strength</span><h2 class="h2" style="margin-top:1rem">What makes us different<span class="dot">.</span></h2></div>
-        <p class="lead">Credentials that few firms in the world hold, and a delivery network to match.</p>
-      </div>
+      <h2 class="h2 sec-title" data-reveal>HADE strengths</h2>
       <ul role="list" class="strengths">
         {strengths.map((s, i) => (
           <li class="card" data-reveal style={`--d:${i * 0.08}s`}>
-            <span class="s-icon"><Icon name={s.icon} /></span>
             <h3>{s.title}</h3>
             <p class="muted">{s.text}</p>
           </li>
@@ -82,7 +77,7 @@ const programs = [
       <div class="media me-news" data-reveal><Image src={news} alt="Gulf Daily News coverage of the Northstar Telecom and HADE Middle East alliance" width={700} /></div>
       <div class="stack" data-reveal style="--d:.1s">
         <span class="eyebrow">HADE Middle East</span>
-        <h2 class="h2">A subsidiary headquartered in Bahrain<span class="dot">.</span></h2>
+        <h2 class="h2">A subsidiary headquartered in Bahrain</h2>
         <p class="lead">HADE Middle East was established with Northstar Telecom, headquartered in Bahrain, to bring agile coaching and AI learning to organizations across the GCC.</p>
         <Image src={clientImg["northstar"]} alt="Northstar Telecom" height={44} class="ns" />
       </div>
@@ -93,7 +88,7 @@ const programs = [
   <section class="section dark journey-sec">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">HADE journey</span><h2 class="h2" style="margin-top:1rem">Fifteen years of building agility<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">HADE journey, 2011 to today</h2></div>
         <p class="lead">From coaching local entrepreneurs to certifying agile coaches across four countries.</p>
       </div>
       <ol role="list" class="journey">
@@ -116,7 +111,7 @@ const programs = [
       </a>
       <div class="stack" data-reveal style="--d:.1s">
         <span class="eyebrow">Founder, CEO &amp; Master Coach of HADE &amp; HADE AI</span>
-        <h2 class="h1"><a class="coach-name" href={site.coachDaruUrl} target="_blank" rel="noopener">Daru Dewayanto</a><span class="dot">.</span></h2>
+        <h2 class="h1"><a class="coach-name" href={site.coachDaruUrl} target="_blank" rel="noopener">Daru Dewayanto</a></h2>
         <p class="creds">MCM · MCC · ICE-AC · Indonesia · Hong Kong · Qatar · Australia</p>
         <p class="lead">An internationally accredited and award-winning agile coach with more than 30 years of experience as a corporate leader and entrepreneur.</p>
         <ul class="check-list">
@@ -139,7 +134,7 @@ const programs = [
   <section class="section sand" id="accreditation">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">International credibility</span><h2 class="h2" style="margin-top:1rem">Accredited by six international organizations<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">Accredited by six international organizations</h2></div>
         <p class="lead">We are certified and accredited by six major coaching and applied-neuroscience organizations, and hold six master credentials.</p>
       </div>
 
@@ -169,7 +164,7 @@ const programs = [
   <section class="section">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Awards</span><h2 class="h2" style="margin-top:1rem">An award-winning master coach &amp; coaching firm<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">An award-winning master coach &amp; coaching firm</h2></div>
         <p class="lead">Recognized by the World Coaching Congress, the International Business Federation and global startup programs.</p>
       </div>
       <div class="awards-wrap">
@@ -188,8 +183,8 @@ const programs = [
     <div class="wrap coa">
       <div class="stack" data-reveal>
         <span class="eyebrow">Center of Agility Movement</span>
-        <h2 class="h2">Growing agility with Indonesia's universities<span class="dot">.</span></h2>
-        <p class="lead">Through the Center of Agility movement and the Duta Agility program, we partner with universities to prepare the next generation of agile leaders.</p>
+        <h2 class="h2">Growing agility with Indonesia's universities</h2>
+        <p class="lead">Through the Center of Agility movement and the Duta Agility program, HADE runs agile certification and micro-credential programs with university partners.</p>
         <p class="muted small"><strong>University partners:</strong> {universities}.</p>
       </div>
       <div class="coa-visual" data-reveal style="--d:.1s">
@@ -218,6 +213,7 @@ const programs = [
   .mini-stats li { display: grid; gap: 0.35rem; }
   .mini-stats span { font-size: clamp(2.2rem, 1.6rem + 2vw, 3.4rem); letter-spacing: -0.05em; line-height: 1; font-weight: 500; }
 
+  .sec-title { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem); }
   .strengths { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); }
   .strengths li { display: grid; gap: 0.9rem; align-content: start; }
   .strengths h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; }
@@ -252,7 +248,7 @@ const programs = [
   .coach-link:hover :global(img) { transform: scale(1.02); }
   .f-photo {
     border-radius: var(--radius-lg);
-    background: radial-gradient(circle at 50% 35%, rgba(188, 148, 108, 0.45), transparent 65%), var(--navy-900);
+    background: var(--navy-800);
     padding-top: 2.5rem; overflow: hidden;
   }
   .creds { color: var(--gold-deep); letter-spacing: 0.14em; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }

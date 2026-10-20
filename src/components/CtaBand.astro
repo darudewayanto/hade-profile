@@ -6,8 +6,8 @@ import { wa, site } from "../data/site";
 
 interface Props { title?: string; text?: string }
 const {
-  title = "Ready to build a truly agile organization?",
-  text = "Tell us about your team. We will design an in-house program or help you register for the next certification batch.",
+  title = "Plan your program with HADE",
+  text = "Message us on WhatsApp about an in-house program, or ask for the schedule of the next ACHC public batch.",
 } = Astro.props;
 ---
 <section class="cta-band">
@@ -15,7 +15,6 @@ const {
     <div class="inner dark" data-reveal>
       <Image src={emblem} alt="" class="emblem" width={420} />
       <div class="copy">
-        <span class="eyebrow">Let's talk</span>
         <h2 class="h2">{title}</h2>
         <p class="lead">{text}</p>
       </div>
@@ -45,9 +44,7 @@ const {
     padding: clamp(2rem, 1.2rem + 4vw, 5rem);
     display: grid;
     gap: 2.5rem;
-    background:
-      radial-gradient(120% 120% at 100% 0%, rgba(188, 148, 108, 0.18), transparent 55%),
-      var(--navy-900);
+    background: var(--navy-900);
   }
   @media (min-width: 960px) { .inner { grid-template-columns: 1.15fr 1fr; align-items: center; gap: 4rem; } }
   .inner :global(.emblem) {

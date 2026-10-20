@@ -15,13 +15,7 @@ const initials = (name: string) =>
 ---
 <section class="section testimonials">
   <div class="wrap">
-    <div class="head-row" data-reveal>
-      <div>
-        <span class="eyebrow">Testimonials</span>
-        <h2 class="h2" style="margin-top:1rem">What leaders say<span class="dot">.</span></h2>
-      </div>
-      <p class="lead">Executives and leaders from the organizations we have worked with, in their own words.</p>
-    </div>
+    <h2 class="h2 t-title" data-reveal>What our clients say</h2>
 
     <div class:list={["grid", { two: items.length === 2 }]}>
       {items.map((t, i) => (
@@ -61,6 +55,7 @@ const initials = (name: string) =>
 </section>
 
 <style>
+  .t-title { margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem); }
   .grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
   @media (min-width: 900px) { .grid.two { grid-template-columns: 1fr 1fr; } }
   .t { display: flex; flex-direction: column; gap: 1.5rem; }

@@ -22,7 +22,7 @@ const audiences = [
 
 const faqs = [
   { q: "Who accredits the ACHC program?", a: "ACHC is accredited by three international bodies: ICAgile (ICP-ACC) after Fundamental & Module 1, ICF Level 1 accredited coaching education after Modules 2 & 3, and MyBrain International with ICF Continuing Coach Education after Module 4." },
-  { q: "Can we run ACHC privately for our organization?", a: "Yes. Most of our corporate clients run ACHC as an in-house certification for batches of leaders, faculty members or internal coaches. We tailor the case studies and schedule to your organization." },
+  { q: "Can we run ACHC privately for our organization?", a: "Yes. ACHC is available as an in-house certification for batches of leaders, faculty members or internal coaches, as well as in public batches." },
   { q: "How do I register for a public batch?", a: "Send us a message on WhatsApp. We will share the next batch schedule, the investment and the registration steps." },
   { q: "Who leads the program?", a: "The program is designed and led by Daru Dewayanto, MCC, ICE-AC, together with HADE's credentialed master and associate coaches." },
 ];
@@ -71,7 +71,7 @@ const faqs = [
   <section class="section">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Agile coaching framework</span><h2 class="h2" style="margin-top:1rem">The competencies of an agile coach<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">The competencies of an agile coach</h2></div>
         <p class="lead">ACHC builds every competency in the agile coaching framework on a foundation of Agile-Lean mindset, values and principles.</p>
       </div>
       <figure class="fw-figure" data-reveal>
@@ -87,7 +87,7 @@ const faqs = [
   <section class="section dark rounded">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Program structure</span><h2 class="h2" style="margin-top:1rem">Four modules, three credentials<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">Four modules, three credentials</h2></div>
         <p class="lead">Each stage leads to an international accreditation, so participants earn recognized credentials as they progress.</p>
       </div>
       <ol role="list" class="modules">
@@ -119,13 +119,12 @@ const faqs = [
   <section class="section">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Who it's for</span><h2 class="h2" style="margin-top:1rem">Built for leaders who drive change<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">Who joins ACHC</h2></div>
         <p class="lead">Our graduates include 400+ executives from Telkom Group, 150+ from Pertamina Group, and corporate university faculty across Indonesia.</p>
       </div>
       <ul role="list" class="aud">
         {audiences.map((a, i) => (
           <li class="card" data-reveal style={`--d:${i * 0.06}s`}>
-            <span class="a-icon"><Icon name={a.icon} /></span>
             <h3>{a.title}</h3>
             <p class="muted small">{a.text}</p>
           </li>
@@ -136,15 +135,15 @@ const faqs = [
         <article class="format dark" data-reveal>
           <span class="chip chip-gold">For organizations</span>
           <h3 class="h3">In-house certification</h3>
-          <p class="muted">A private ACHC batch for your leaders, faculty or internal coaches, with case studies drawn from your organization.</p>
-          <ul class="check-list small"><li>Scheduled around your calendar</li><li>Customized cases &amp; context</li><li>Builds an internal coaching culture</li></ul>
+          <p class="muted">A private ACHC batch for your leaders, corporate university faculty or internal coaches.</p>
+          <ul class="check-list small"><li>Run for your organization only</li><li>Same triple accreditation</li></ul>
           <a class="btn btn-gold" href={wa("inhouse")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Plan an in-house batch</a>
         </article>
         <article class="format card" data-reveal style="--d:.08s">
           <span class="chip">For individuals</span>
           <h3 class="h3">Public batch</h3>
           <p class="muted">Join leaders and professionals from different industries in an open ACHC batch.</p>
-          <ul class="check-list small"><li>Open to individuals from any organization</li><li>Cross-industry peer learning</li><li>Same triple accreditation</li></ul>
+          <ul class="check-list small"><li>Open to individuals from any organization</li><li>Same triple accreditation</li></ul>
           <a class="btn btn-dark" href={wa("register")} target="_blank" rel="noopener"><Icon name="whatsapp" /> Ask for the next schedule</a>
         </article>
       </div>
@@ -155,8 +154,7 @@ const faqs = [
   <section class="section sand">
     <div class="wrap-narrow">
       <div class="center stack" data-reveal>
-        <span class="eyebrow center">FAQ</span>
-        <h2 class="h2">Questions about ACHC<span class="dot">.</span></h2>
+        <h2 class="h2">Questions about ACHC</h2>
       </div>
       <div class="faq" data-reveal>
         {faqs.map((f, i) => (
@@ -170,7 +168,7 @@ const faqs = [
   </section>
 
   <Testimonials />
-  <CtaBand title="Start your agile coaching journey." />
+  <CtaBand title="Register for ACHC or plan an in-house batch" />
 </Base>
 
 <style>

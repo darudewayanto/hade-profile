@@ -14,13 +14,13 @@ import flow from "../assets/visuals/hade-ai-flow.png";
 const steps = [
   { icon: "upload", title: "Upload", text: "Upload your documents, modules or expert material." },
   { icon: "chat", title: "Review", text: "HADE AI drafts a structured course for your experts to review and refine." },
-  { icon: "sparkle", title: "Release", text: "Publish AI micro-learning that learners can study and chat with on any device." },
+  { icon: "sparkle", title: "Release", text: "Publish the course as AI micro-learning that learners can study and ask questions to." },
 ];
 
 const uses = [
-  { icon: "leader", title: "Executives", text: "Bite-sized learning that keeps agile transformation priorities top of mind." },
-  { icon: "coach", title: "Coaches, trainers & mentors", text: "Turn your methods into scalable courses and engage learners between sessions." },
-  { icon: "building", title: "Business owners", text: "Capture company know-how and onboard teams faster." },
+  { icon: "leader", title: "Executives", text: "Short lessons on agile transformation topics between workshops." },
+  { icon: "coach", title: "Coaches, trainers & mentors", text: "Turn your own material into courses for participants between sessions." },
+  { icon: "building", title: "Business owners", text: "Turn company know-how into courses for your team." },
 ];
 
 const recognition = [
@@ -32,7 +32,7 @@ const recognition = [
 <Base title="HADE AI" description="HADE AI is an LLM knowledge converter that turns expert knowledge and documents into AI micro-learning that supports the agile transformation journey.">
   <PageHero
     eyebrow="HADE AI · AI LLM knowledge converter"
-    title="Turn knowledge into learning that never stops"
+    title="An AI knowledge converter for learning"
     lead="Solution-based AI that uses large language models to support learning along the agile transformation journey, for executives, professionals and business owners."
     image={stagePhoto}
     imagePosition="60% 50%"
@@ -45,9 +45,8 @@ const recognition = [
   <section class="sheet section">
     <div class="wrap how">
       <div class="stack" data-reveal>
-        <span class="eyebrow">How it works</span>
-        <h2 class="h2">From document to course in three steps<span class="dot">.</span></h2>
-        <p class="lead">HADE AI turns static material into engaging micro-learning that your people can learn from and chat with.</p>
+        <h2 class="h2">From document to course in three steps</h2>
+        <p class="lead">HADE AI turns documents and expert material into micro-learning courses.</p>
         <ol role="list" class="steps">
           {steps.map((s, i) => (
             <li>
@@ -66,13 +65,12 @@ const recognition = [
   <section class="section sand">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Built for</span><h2 class="h2" style="margin-top:1rem">Learning that fits the way leaders work<span class="dot">.</span></h2></div>
+        <div><h2 class="h2">Who uses HADE AI</h2></div>
         <p class="lead">AI micro-learning and learning engagement, designed alongside HADE's coaching programs.</p>
       </div>
       <ul role="list" class="uses">
         {uses.map((u, i) => (
           <li class="card" data-reveal style={`--d:${i * 0.08}s`}>
-            <span class="u-icon"><Icon name={u.icon} /></span>
             <h3>{u.title}</h3>
             <p class="muted">{u.text}</p>
           </li>
@@ -84,8 +82,7 @@ const recognition = [
   <section class="section">
     <div class="wrap rec">
       <div class="stack" data-reveal>
-        <span class="eyebrow">Global recognition</span>
-        <h2 class="h2">Recognized on the world startup stage<span class="dot">.</span></h2>
+        <h2 class="h2">Startup recognition</h2>
         <ul role="list" class="rec-list">
           {recognition.map((r) => (
             <li>
@@ -101,7 +98,7 @@ const recognition = [
     </div>
   </section>
 
-  <CtaBand title="See HADE AI with your own content." text="Send us a message and we will arrange a demo using one of your learning materials." />
+  <CtaBand title="Request a HADE AI demo" text="Send us a message on WhatsApp to arrange a demo." />
 </Base>
 
 <style>

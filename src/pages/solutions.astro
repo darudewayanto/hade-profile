@@ -13,18 +13,12 @@ import stage from "../assets/photos/daru-stage.jpg";
 import safe1 from "../assets/visuals/safe-1.png";
 import safe2 from "../assets/visuals/safe-2.png";
 
-const process = [
-  { n: "01", title: "Discover", text: "An Agile Health Check-up and leader profiling show where your organization stands today." },
-  { n: "02", title: "Design", text: "We co-design a program around your strategy, culture and people, whether in-house, public or blended." },
-  { n: "03", title: "Deliver", text: "Workshops, certification, and 1-on-1 and team coaching led by internationally credentialed coaches." },
-  { n: "04", title: "Sustain", text: "Internal coaches, a coaching culture and AI micro-learning keep the change going after we leave." },
-];
 ---
 <Base title="Solutions" description="Business agility transformation, agile coaching competencies, applied-neuroscience profiling and AI learning, customized for corporations and governments.">
   <PageHero
     eyebrow="Solutions"
     title="End-to-end agile culture transformation"
-    lead="Customized programs for people and leadership development, from the first assessment to a self-sustaining coaching culture."
+    lead="Customized programs for people and leadership development, designed together with each client."
     image={stage}
     imagePosition="50% 20%"
   >
@@ -37,8 +31,8 @@ const process = [
   <section class="sheet section">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Our agile transformation design</span><h2 class="h2" style="margin-top:1rem">A guided journey, co-created with you<span class="dot">.</span></h2></div>
-        <p class="lead">Every HADE agile transformation follows a proven guideline, but it is never one-size-fits-all. We co-create the journey with your leaders, from aligning on direction to developing leaders as agile coaches and mentors, so business agility and a coaching culture take root and keep growing on their own.</p>
+        <div><h2 class="h2">Our agile transformation guideline, co-created with you</h2></div>
+        <p class="lead">Every HADE program follows the guideline shown below. We agree the starting point and goals with your leaders, then shape the workshops, certification and mentoring to fit your organization.</p>
       </div>
       <TransformationDiagrams />
     </div>
@@ -48,15 +42,15 @@ const process = [
   <section class="section" style="padding-top:0">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Core positioning</span><h2 class="h2" style="margin-top:1rem">Three disciplines, one agile transformation<span class="dot">.</span></h2></div>
-        <p class="lead">Every HADE engagement draws on business agility, agile coaching competencies and AI, combined to fit your organization.</p>
+        <div><h2 class="h2">Core positioning</h2></div>
+        <p class="lead">HADE works in three areas: business agility transformation, agile coaching competencies and HADE AI.</p>
       </div>
       <div class="core">
         <article class="core-item" id="transformation" data-reveal>
           <span class="num">01</span>
           <div>
             <h3 class="h3">Business Agility Transformation</h3>
-            <p class="muted">End-to-end agile culture transformation focused on people and leadership development, with customized agile team and leadership transformation.</p>
+            <p class="muted">Agile culture transformation for people and leadership development, with agile team and leadership programs customized for each client.</p>
           </div>
           <ul class="check-list small">
             {coreSolutions.map((c) => <li><strong>{c.title}</strong>: {c.text}</li>)}
@@ -92,40 +86,20 @@ const process = [
     </div>
   </section>
 
-  <!-- Process -->
-  <section class="section dark rounded">
-    <div class="wrap">
-      <div class="head-row" data-reveal>
-        <div><span class="eyebrow">How we work</span><h2 class="h2" style="margin-top:1rem">From assessment to lasting agility<span class="dot">.</span></h2></div>
-        <p class="lead">A clear four-step path, tailored to each organization.</p>
-      </div>
-      <ol role="list" class="process">
-        {process.map((p, i) => (
-          <li data-reveal style={`--d:${i * 0.08}s`}>
-            <span class="pn">{p.n}</span>
-            <h3 class="h3">{p.title}</h3>
-            <p class="muted small">{p.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
   <!-- Corporate -->
   <section class="section" id="corporate">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Corporate &amp; enterprise solution</span><h2 class="h2" style="margin-top:1rem">Programs designed for your organization<span class="dot">.</span></h2></div>
-        <p class="lead">Our most requested corporate programs, each customized for your context and delivered in-house or in public batches.</p>
+        <div><h2 class="h2">Corporate &amp; enterprise programs</h2></div>
+        <p class="lead">The programs our corporate clients ask for most, delivered in-house or in public batches.</p>
       </div>
-      <ul role="list" class="sol-grid">
-        {corporatePrograms.map((p, i) => (
-          <li class:list={["card", "sol", { "sol-linked": p.href }]} data-reveal style={`--d:${(i % 3) * 0.08}s`}>
-            <span class="sol-icon"><Icon name={p.icon} /></span>
-            <h3 class="h3">{p.href ? <a class="sol-link" href={u(p.href)}>{p.title}</a> : p.title}</h3>
+      <ul role="list" class="prog-list">
+        {corporatePrograms.map((p) => (
+          <li class:list={["prog", { "prog-linked": p.href }]} data-reveal>
+            <h3>{p.href ? <a class="prog-link" href={u(p.href)}>{p.title}</a> : p.title}</h3>
             <p class="muted">{p.text}</p>
-            <ul class="check-list small">{p.items.map((it) => <li>{it}</li>)}</ul>
-            {p.href && <span class="sol-more" aria-hidden="true">View program <Icon name="arrow-right" size={16} /></span>}
+            <ul class="prog-items small">{p.items.map((it) => <li>{it}</li>)}</ul>
+            {p.href && <span class="prog-more" aria-hidden="true">View program <Icon name="arrow-right" size={16} /></span>}
           </li>
         ))}
       </ul>
@@ -136,8 +110,7 @@ const process = [
   <section class="section sand" id="profiling">
     <div class="wrap split">
       <div class="stack" data-reveal>
-        <span class="eyebrow">Applied neuroscience</span>
-        <h2 class="h2">MyBrain Neuro-Dominance profiling<span class="dot">.</span></h2>
+        <h2 class="h2">MyBrain Neuro-Dominance profiling</h2>
         <p class="lead">Understand how each leader and team prefers to think, decide and act, and use it to build better teams.</p>
         <ul class="check-list">
           <li><strong>Individual profile:</strong> personal and professional thinking preferences across reasoning, spontaneous, specific and feeling dimensions</li>
@@ -160,8 +133,8 @@ const process = [
   <section class="section">
     <div class="wrap">
       <div class="head-row" data-reveal>
-        <div><span class="eyebrow">Business agility transformation framework</span><h2 class="h2" style="margin-top:1rem">Scaled agility, guided by SAFe 6.0<span class="dot">.</span></h2></div>
-        <p class="lead">We use the Scaled Agile Framework (SAFe) 6.0 as a reference to connect strategy, leadership, teams and continuous learning, adapted to your organization's maturity.</p>
+        <div><h2 class="h2">Scaled agility, guided by SAFe 6.0</h2></div>
+        <p class="lead">We use the Scaled Agile Framework (SAFe) 6.0 as a reference model and adapt it to your organization's maturity.</p>
       </div>
       <div class="safe" data-reveal>
         <div class="card"><Image src={safe1} alt="Business agility competencies overview" width={1000} /></div>
@@ -184,24 +157,19 @@ const process = [
   .core-item .num { font-size: 2.2rem; letter-spacing: -0.04em; color: var(--gold); line-height: 1; }
   .core-item > div { display: grid; gap: 0.75rem; }
 
-  .rounded { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
-  .process { display: grid; gap: 1px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); background: var(--line-dark); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-dark); }
-  .process li { background: var(--navy-950); padding: 2rem 1.75rem; display: grid; gap: 0.75rem; align-content: start; }
-  .pn { color: var(--gold-light); font-weight: 600; letter-spacing: 0.1em; }
 
   #corporate, #profiling { scroll-margin-top: 4rem; }
-  .sol-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
-  .sol { display: grid; gap: 1rem; align-content: start; }
-  .sol-linked { position: relative; cursor: pointer; border-color: rgba(188, 148, 108, 0.45); }
-  .sol-linked:hover { border-color: var(--gold); }
-  .sol-link { color: inherit; }
-  .sol-link::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; }
-  .sol-link:focus-visible { outline: none; }
-  .sol-linked:has(.sol-link:focus-visible) { outline: 2px solid var(--gold); outline-offset: 3px; }
-  .sol-more { justify-self: start; display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.25rem; font-size: var(--fs-small); font-weight: 600; color: var(--gold-deep); transition: gap 0.25s var(--ease); }
-  .sol-linked:hover .sol-more { gap: 0.7em; }
-  .sol-icon { width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; background: var(--navy-950); color: var(--gold-light); }
-  .sol .check-list { margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  .prog-list { border-top: 1px solid var(--line-strong); }
+  .prog { position: relative; display: grid; gap: 0.5rem 3rem; padding: 1.75rem 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 900px) { .prog { grid-template-columns: 0.9fr 1.1fr 1fr; align-items: start; } }
+  .prog h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+  .prog-items { list-style: none; padding: 0; display: grid; gap: 0.35rem; color: var(--ink-soft); }
+  .prog-items li::before { content: "– "; color: var(--gold-deep); }
+  .prog-link { color: inherit; }
+  .prog-link::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+  .prog-linked:hover h3 { color: var(--gold-deep); }
+  .prog-more { grid-column: 1 / -1; display: inline-flex; align-items: center; gap: 0.4em; font-size: var(--fs-small); font-weight: 600; color: var(--gold-deep); }
+  @media (min-width: 900px) { .prog-more { grid-column: 1; } }
 
   .split { display: grid; gap: 3rem; align-items: center; }
   @media (min-width: 900px) { .split { grid-template-columns: 1fr 1fr; gap: 5rem; } }

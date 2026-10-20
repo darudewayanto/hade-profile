@@ -108,13 +108,13 @@ export const corporatePrograms = [
   {
     icon: "coach",
     title: "1-on-1 & Group Coaching",
-    text: "Sustained coaching and mentoring through the agile transformation journey.",
+    text: "Coaching and mentoring for leaders and teams at each stage of an agile transformation.",
     items: ["Agile transformation journey", "Agile leadership & team coaching", "Agile sales & productivity"],
   },
   {
     icon: "compass",
     title: "Business Agility Assessment & Advisory",
-    text: "Assess where you are and design the path to scaled agility.",
+    text: "An assessment of your current agile maturity, followed by an advisory roadmap.",
     items: ["Agile Health Check-up", "Leader, team & organization assessment", "SAFe 6.0-aligned agile transformation"],
   },
   {
@@ -126,7 +126,7 @@ export const corporatePrograms = [
   {
     icon: "ai",
     title: "AI Digital Learning Platform",
-    text: "Keep learning going between sessions with AI micro-learning.",
+    text: "AI micro-learning that participants use between coaching sessions.",
     items: ["AI micro learning", "AI learning engagement", "Knowledge converter for your experts"],
   },
 ];
@@ -186,7 +186,7 @@ export const caseStudies = [
     headline: "400+",
     headlineLabel: "executive graduates across 30 batches",
     summary:
-      "A multi-year agile transformation partnership covering leadership alignment, coaching culture and innovation acceleration across the group.",
+      "Agile transformation for Telkom Group and its subsidiaries, from leadership alignment to coaching culture and the Amoeba innovation program.",
     delivery: [
       "Agile transformation and agile leader & mindset alignment",
       "Frameworks & models in workshops and advisory",

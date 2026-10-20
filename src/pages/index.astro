@@ -50,8 +50,7 @@ import portrait from "../assets/photos/daru-portrait.png";
   <section class="sheet section intro">
     <div class="wrap">
       <div class="wrap-narrow center" data-reveal>
-        <span class="eyebrow center">Intro</span>
-        <h2 class="intro-title">We bring agility to life by combining coaching, neuroscience and AI, backed by more than a decade of agile transformation work.</h2>
+        <h2 class="intro-title">Since 2011, HADE has worked with more than 1,000 companies and certified 1,800+ coaches in Indonesia, Hong Kong, Qatar and Australia.</h2>
       </div>
 
       <ul role="list" class="pillars">
@@ -88,9 +87,9 @@ import portrait from "../assets/photos/daru-portrait.png";
   <section class="section specialist">
     <div class="wrap split">
       <div class="specialist-copy" data-reveal>
-        <h2 class="h1">The Agile<br />Specialist<span class="dot">.</span></h2>
+        <h2 class="h1">The Agile<br />Specialist</h2>
         <p class="lead">
-          HADE provides end-to-end agile culture transformation, focused on people and leadership development, with programs customized for every team and leader.
+          HADE focuses on people and leadership development, with agile team and leadership programs customized for each client.
         </p>
         <div class="accordion">
           {coreSolutions.map((c, i) => (
@@ -115,10 +114,9 @@ import portrait from "../assets/photos/daru-portrait.png";
     </div>
     <div class="feature-copy sand">
       <div data-reveal>
-        <span class="eyebrow">Why HADE</span>
-        <h2 class="h2">Not just training. Agile transformation that lasts<span class="dot">.</span></h2>
+        <h2 class="h2">The only firm in the region accredited in agile coaching by ICF, ICAgile and MyBrain</h2>
         <p class="lead">
-          HADE is the only firm in the region accredited in agile coaching by three major international bodies (ICF, ICAgile and MyBrain), so your leaders gain capabilities that stay after the workshop ends.
+          Each ACHC module leads to an international credential: ICP-ACC from ICAgile, ICF Level 1 coaching education, and MIND practitioner certification from MyBrain.
         </p>
         <ul role="list" class="acc-row">
           <li style="--h:34px"><Image src={accImg["icf"]} alt="International Coaching Federation (ICF)" height={68} /></li>
@@ -142,19 +140,17 @@ import portrait from "../assets/photos/daru-portrait.png";
     <div class="wrap">
       <div class="head-row" data-reveal>
         <div>
-          <span class="eyebrow">Corporate &amp; enterprise</span>
-          <h2 class="h1" style="margin-top:1rem">Our Solutions<span class="dot">.</span></h2>
+          <h2 class="h1">Our Solutions</h2>
         </div>
-        <p class="lead">Each program is customized and designed around your organization, from the boardroom to front-line teams, and delivered in-house or in public batches.</p>
+        <p class="lead">Programs for corporate and enterprise clients, delivered in-house or in public batches.</p>
       </div>
-      <ul role="list" class="sol-grid">
-        {corporatePrograms.map((p, i) => (
-          <li class:list={["card", "sol", { "sol-linked": p.href }]} data-reveal style={`--d:${(i % 3) * 0.08}s`}>
-            <span class="sol-icon"><Icon name={p.icon} /></span>
-            <h3 class="h3">{p.href ? <a class="sol-link" href={u(p.href)}>{p.title}</a> : p.title}</h3>
+      <ul role="list" class="prog-list">
+        {corporatePrograms.map((p) => (
+          <li class:list={["prog", { "prog-linked": p.href }]} data-reveal>
+            <h3>{p.href ? <a class="prog-link" href={u(p.href)}>{p.title}</a> : p.title}</h3>
             <p class="muted">{p.text}</p>
-            <ul class="check-list small">{p.items.map((it) => <li>{it}</li>)}</ul>
-            {p.href && <span class="sol-more" aria-hidden="true">View program <Icon name="arrow-right" size={16} /></span>}
+            <ul class="prog-items small">{p.items.map((it) => <li>{it}</li>)}</ul>
+            {p.href && <span class="prog-more" aria-hidden="true">View program <Icon name="arrow-right" size={16} /></span>}
           </li>
         ))}
       </ul>
@@ -167,7 +163,7 @@ import portrait from "../assets/photos/daru-portrait.png";
       <div class="head-row" data-reveal>
         <div>
           <span class="eyebrow">Agile Certified Hijrah Coach · ACHC</span>
-          <h2 class="h1" style="margin-top:1rem">A triple-accredited path to agile coaching mastery<span class="dot">.</span></h2>
+          <h2 class="h1" style="margin-top:1rem">Four modules and three international accreditations in one program</h2>
         </div>
         <div class="stack">
           <p class="lead">Four modules and 110 hours of international certified competency, accredited by ICF, ICAgile and MyBrain International.</p>
@@ -199,10 +195,9 @@ import portrait from "../assets/photos/daru-portrait.png";
     <div class="wrap">
       <div class="head-row" data-reveal>
         <div>
-          <span class="eyebrow">Trusted by</span>
-          <h2 class="h2" style="margin-top:1rem">Leaders across state-owned enterprises, ministries &amp; global brands<span class="dot">.</span></h2>
+          <h2 class="h2">Who we have worked with</h2>
         </div>
-        <p class="lead">From Telkom and Pertamina to Shell, Samsung and Indonesia's ministries, we have helped organizations make agility part of how they lead.</p>
+        <p class="lead">Our clients include Telkom Group, Pertamina Group, Shell, Samsung, XL Axiata, BPJS and several Indonesian ministries.</p>
       </div>
     </div>
     <LogoMarquee />
@@ -222,6 +217,16 @@ import portrait from "../assets/photos/daru-portrait.png";
     </div>
   </section>
 
+  <!-- ============ FOUNDER QUOTE ============ -->
+  <section class="quote-band">
+    <div class="wrap quote-inner" data-reveal>
+      <blockquote>
+        <p>“Agility has to start with us, and real transformation is led by us.”</p>
+      </blockquote>
+      <p class="quote-by"><Image src={heroPhoto} alt="" width={48} height={48} class="quote-avatar" /> <span><strong>Daru Dewayanto</strong><br /><span class="muted small">Founder, CEO &amp; Master Coach</span></span></p>
+    </div>
+  </section>
+
   <!-- ============ FOUNDER ============ -->
   <section class="founder dark">
     <div class="wrap founder-grid">
@@ -231,7 +236,7 @@ import portrait from "../assets/photos/daru-portrait.png";
       </a>
       <div class="founder-copy" data-reveal style="--d:.1s">
         <span class="eyebrow">Founder, CEO &amp; Master Coach</span>
-        <h2 class="h1"><a class="coach-name" href={site.coachDaruUrl} target="_blank" rel="noopener">Daru Dewayanto</a><span class="dot">.</span></h2>
+        <h2 class="h1"><a class="coach-name" href={site.coachDaruUrl} target="_blank" rel="noopener">Daru Dewayanto</a></h2>
         <p class="creds">MCM · MCC · ICE-AC</p>
         <p class="lead">
           An internationally accredited, award-winning agile coach with more than 30 years of experience as a corporate leader and entrepreneur. Daru has trained and certified 1,800+ coaches and practitioners, and has coached more than 1,000 companies, executives and business owners over 5,000+ hours.
@@ -256,7 +261,7 @@ import portrait from "../assets/photos/daru-portrait.png";
       <div class="ai" data-reveal>
         <div class="ai-copy">
           <span class="eyebrow">HADE AI</span>
-          <h2 class="h2">Turn your experts' knowledge into AI-powered learning<span class="dot">.</span></h2>
+          <h2 class="h2">Turn your experts' knowledge into AI-powered learning</h2>
           <p class="lead">An LLM knowledge converter that turns documents and expertise into micro-learning courses, so learning continues between coaching sessions.</p>
           <ul class="ai-awards small" role="list">
             <li><Icon name="award" size={18} /> Top 10 Finalist, Startup World Cup</li>
@@ -315,8 +320,7 @@ import portrait from "../assets/photos/daru-portrait.png";
   .hero-proof {
     display: grid; gap: 1rem; max-width: 300px;
     padding: 1.25rem; border-radius: var(--radius);
-    background: rgba(12, 19, 34, 0.55); border: 1px solid var(--line-dark);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    background: var(--navy-950); border: 1px solid var(--line-dark);
   }
   .hero-proof p { font-size: var(--fs-small); line-height: 1.45; }
   @media (max-width: 699px) {
@@ -419,23 +423,25 @@ import portrait from "../assets/photos/daru-portrait.png";
   .call-chip :global(.avatar) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
   .call-chip:hover strong { color: var(--gold-deep); }
 
-  /* ---------- Solutions ---------- */
-  .sol-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
-  .sol { display: grid; gap: 1rem; align-content: start; transition: transform 0.35s var(--ease), box-shadow 0.35s; }
-  .sol:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-  .sol-linked { position: relative; cursor: pointer; border-color: rgba(188, 148, 108, 0.45); }
-  .sol-linked:hover { border-color: var(--gold); }
-  .sol-link { color: inherit; }
-  .sol-link::after { content: ""; position: absolute; inset: 0; z-index: 2; border-radius: inherit; }
-  .sol-link:focus-visible { outline: none; }
-  .sol-linked:has(.sol-link:focus-visible) { outline: 2px solid var(--gold); outline-offset: 3px; }
-  .sol-more { justify-self: start; display: inline-flex; align-items: center; gap: 0.4em; margin-top: 0.25rem; font-size: var(--fs-small); font-weight: 600; color: var(--gold-deep); transition: gap 0.25s var(--ease); }
-  .sol-linked:hover .sol-more { gap: 0.7em; }
-  .sol-icon {
-    width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
-    background: var(--navy-950); color: var(--gold-light);
-  }
-  .sol .check-list { margin-top: 0.5rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  /* ---------- Solutions (editorial list) ---------- */
+  .prog-list { border-top: 1px solid var(--line-strong); }
+  .prog { position: relative; display: grid; gap: 0.5rem 3rem; padding: 1.75rem 0; border-bottom: 1px solid var(--line); }
+  @media (min-width: 900px) { .prog { grid-template-columns: 0.9fr 1.1fr 1fr; align-items: start; } }
+  .prog h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
+  .prog-items { list-style: none; padding: 0; display: grid; gap: 0.35rem; color: var(--ink-soft); }
+  .prog-items li::before { content: "– "; color: var(--gold-deep); }
+  .prog-link { color: inherit; }
+  .prog-link::after { content: ""; position: absolute; inset: 0; z-index: 2; }
+  .prog-linked:hover h3 { color: var(--gold-deep); }
+  .prog-more { grid-column: 1 / -1; display: inline-flex; align-items: center; gap: 0.4em; font-size: var(--fs-small); font-weight: 600; color: var(--gold-deep); }
+  @media (min-width: 900px) { .prog-more { grid-column: 1; } }
+
+  /* ---------- Founder quote ---------- */
+  .quote-band { padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem); }
+  .quote-inner { max-width: 980px; display: grid; gap: 1.5rem; }
+  .quote-inner blockquote p { font-size: clamp(1.8rem, 1.2rem + 2.6vw, 3.2rem); line-height: 1.15; letter-spacing: -0.035em; font-weight: 500; }
+  .quote-by { display: flex; align-items: center; gap: 0.85rem; }
+  .quote-by :global(.quote-avatar) { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: 50% 25%; }
 
   /* ---------- ACHC ---------- */
   .achc { border-radius: var(--radius-lg); margin-inline: clamp(0px, 1vw, 1rem); }
@@ -484,7 +490,7 @@ import portrait from "../assets/photos/daru-portrait.png";
   .halo {
     position: absolute; left: 8%; right: 8%; top: 12%; aspect-ratio: 1;
     border-radius: 50%;
-    background: radial-gradient(circle at 50% 40%, rgba(188, 148, 108, 0.5), rgba(188, 148, 108, 0.08) 60%, transparent 70%);
+    background: var(--navy-800);
     border: 1px solid rgba(188, 148, 108, 0.35);
   }
   .founder-copy { display: grid; gap: 1.25rem; padding-bottom: clamp(4rem, 3rem + 4vw, 7rem); justify-items: start; }
