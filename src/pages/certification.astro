@@ -19,13 +19,6 @@ const audiences = [
   { icon: "coach", title: "Coaches, trainers & mentors", text: "Professionals seeking international agile coaching credentials." },
   { icon: "layers", title: "Agile practitioners", text: "Agile transformation leads, innovation mentors and team leaders." },
 ];
-
-const faqs = [
-  { q: "Who accredits the Agile Coaching Certification?", a: "The Agile Coaching Certification is accredited by three international bodies: ICAgile (ICP-ACC) after Fundamental & Module 1, ICF Level 1 accredited coaching education after Modules 2 & 3, and MyBrain International with ICF Continuing Coach Education after Module 4." },
-  { q: "Can we run the Agile Coaching Certification privately for our organization?", a: "Yes. The Agile Coaching Certification is available as an in-house certification for batches of leaders, faculty members or internal coaches, as well as in public batches." },
-  { q: "How do I register for a public batch?", a: "Send us a message on WhatsApp. We will share the next batch schedule, the investment and the registration steps." },
-  { q: "Who leads the program?", a: "The program is designed and led by Daru Dewayanto, MCC, ICE-AC, together with HADE's credentialed master and associate coaches." },
-];
 ---
 <Base title="Agile Coaching Certification" description="Agile Coaching Certification: a triple-accredited agile coaching program by ICF, ICAgile and MyBrain International. Available in-house and in public batches.">
   <PageHero
@@ -143,23 +136,6 @@ const faqs = [
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section sand">
-    <div class="wrap-narrow">
-      <div class="center stack" data-reveal>
-        <h2 class="h2">Questions about the Agile Coaching Certification</h2>
-      </div>
-      <div class="faq" data-reveal>
-        {faqs.map((f, i) => (
-          <details name="faq" open={i === 0}>
-            <summary>{f.q}<span class="plus" aria-hidden="true"><Icon name="plus" size={18} /></span></summary>
-            <p class="muted">{f.a}</p>
-          </details>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <Testimonials />
   <CtaBand title="Register for Agile Coaching Certification or plan an in-house batch" />
 </Base>
@@ -220,12 +196,4 @@ const faqs = [
   @media (min-width: 860px) { .formats { grid-template-columns: 1fr 1fr; } }
   .format { display: grid; gap: 1rem; justify-items: start; align-content: start; padding: clamp(1.75rem, 1rem + 2vw, 2.75rem); border-radius: var(--radius); }
   .format.dark { background: var(--navy-950); }
-
-  .faq { margin-top: 2.5rem; border-top: 1px solid var(--line-strong); }
-  details { border-bottom: 1px solid var(--line-strong); }
-  summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.25rem 0; font-weight: 600; font-size: 1.08rem; }
-  summary::-webkit-details-marker { display: none; }
-  .plus { transition: transform 0.3s var(--ease); flex: none; }
-  details[open] .plus { transform: rotate(45deg); color: var(--gold-deep); }
-  details p { padding: 0 2.5rem 1.4rem 0; }
 </style>
