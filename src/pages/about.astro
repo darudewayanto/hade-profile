@@ -9,6 +9,7 @@ import { stats, journey, accreditedMembers, masterCredentials, awards, universit
 
 import city from "../assets/photos/city.png";
 import portrait from "../assets/photos/daru-portrait.png";
+import mindIndividual from "../assets/visuals/mind-individual.png";
 import news from "../assets/visuals/gdn-news.png";
 import award100 from "../assets/photos/award-100-best.png";
 // award-wcc.png & award-top-business.png are hidden until higher-resolution photos arrive (originals are ~197px).
@@ -187,6 +188,7 @@ const programs = [
         <h2 class="h2">Growing agility with Indonesia's universities</h2>
         <p class="lead">Through the Center of Agility movement and the Duta Agility program, HADE runs agile certification and micro-credential programs with university partners.</p>
         <p class="muted small"><strong>University partners:</strong> {universities}.</p>
+        <a class="link-arrow sister-link" href={site.coaUrl} target="_blank" rel="noopener">Visit Center of Agility <Icon name="arrow-right" /></a>
       </div>
       <div class="coa-visual" data-reveal style="--d:.1s">
         <div class="media"><Image src={coa} alt="Agile certification and Duta Agility programs" width={900} /></div>
@@ -198,7 +200,28 @@ const programs = [
     </div>
   </section>
 
-  <div class="section-tight"></div>
+  <!-- MyBrain Indonesia -->
+  <section class="section">
+    <div class="wrap coa mybrain">
+      <div class="mb-visual" data-reveal>
+        <Image src={mindIndividual} alt="MyBrain individual profile: Reasoning, Spontaneous, Specific and Feeling quadrants" width={720} />
+      </div>
+      <div class="stack" data-reveal style="--d:.1s">
+        <span class="eyebrow">MyBrain Indonesia</span>
+        <h2 class="h2">Applied-neuroscience profiling for leaders and teams</h2>
+        <p class="lead">MyBrain Indonesia is the official licence holder of MyBrain (UK), applied-neuroscience profiling that combines physiology and psychology to understand how people think, feel and act.</p>
+        <p class="muted">The MIND profile maps neuro-dominance across four quadrants, Reasoning, Spontaneous, Specific and Feeling, so leaders understand how each person and team decides, communicates and works best. It is also Module 4 of the ACHC certification.</p>
+        <ul class="mb-list small" role="list">
+          <li><Icon name="check" size={16} /> Individual Profile</li>
+          <li><Icon name="check" size={16} /> Team Profile</li>
+          <li><Icon name="check" size={16} /> In-house Workshop</li>
+          <li><Icon name="check" size={16} /> Practitioner Certification</li>
+        </ul>
+        <a class="link-arrow sister-link" href={site.mybrainUrl} target="_blank" rel="noopener">Visit MyBrain Indonesia <Icon name="arrow-right" /></a>
+      </div>
+    </div>
+  </section>
+
   <CtaBand />
 </Base>
 
@@ -282,4 +305,11 @@ const programs = [
   .coa-visual { display: grid; gap: 1rem; }
   .unis { display: grid; gap: 0.75rem; padding: 1.25rem; background: var(--paper); border-radius: var(--radius); }
   .profile-link { justify-self: start; align-self: start; font-size: calc(var(--fs-small) * 2); border-bottom-width: 2px; }
+  .sister-link { justify-self: start; align-self: start; font-size: calc(var(--fs-small) * 1.5); margin-top: 0.5rem; }
+  @media (min-width: 900px) { .mybrain { grid-template-columns: 1fr 1.1fr; } }
+  .mb-visual { padding: clamp(1rem, 0.5rem + 2vw, 2rem); background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); }
+  .mb-visual :global(img) { width: 100%; height: auto; }
+  .mb-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem 1.5rem; }
+  .mb-list li { display: flex; gap: 0.5rem; align-items: center; }
+  .mb-list :global(svg) { color: var(--gold-deep); flex: none; }
 </style>

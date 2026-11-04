@@ -15,6 +15,9 @@ export const site = {
   communityUrl: "https://belajaragile.com/hade",
   // Personal site of the founder (Coach Daru Dewayanto).
   coachDaruUrl: "https://coachdaru.belajaragile.com/",
+  // Sister brands: Center of Agility (university movement) and MyBrain Indonesia (temporary host until mybrain.id is live).
+  coaUrl: "https://coa.belajaragile.com/",
+  mybrainUrl: "https://darudewayanto.github.io/mybrain-profile/",
   communityLoginUrl: "https://belajaragile.com/masuk?komunitas=hade",
   countries: ["Indonesia", "Hong Kong", "Qatar", "Australia"],
 };
