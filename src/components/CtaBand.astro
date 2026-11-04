@@ -7,7 +7,7 @@ import { wa, site } from "../data/site";
 interface Props { title?: string; text?: string }
 const {
   title = "Plan your program with HADE",
-  text = "Message us on WhatsApp about an in-house program, or ask for the schedule of the next ACHC public batch.",
+  text = "Message us on WhatsApp about an in-house program, or ask for the schedule of the next Agile Coaching Certification public batch.",
 } = Astro.props;
 ---
 <section class="cta-band">
@@ -26,7 +26,7 @@ const {
         </a>
         <a class="option" href={wa("register")} target="_blank" rel="noopener">
           <span class="ico"><Icon name="certificate" /></span>
-          <span><strong>Register for ACHC certification</strong><span class="muted small">Public batches for leaders and coaches</span></span>
+          <span><strong>Register for Agile Coaching Certification</strong><span class="muted small">Public batches for leaders and coaches</span></span>
           <Icon name="arrow-up-right" class="go" />
         </a>
         <p class="small muted">WhatsApp {site.phoneDisplay} · {site.email}</p>

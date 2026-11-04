@@ -27,7 +27,7 @@ const waMessages = {
   inhouse:
     "Hello HADE, I'd like to discuss an in-house agile training / certification program for my organization.",
   register:
-    "Hello HADE, I'd like to register for the Agile Certified Hijrah Coach (ACHC) certification. Please share the upcoming schedule.",
+    "Hello HADE, I'd like to register for the Agile Coaching Certification. Please share the upcoming schedule.",
   ai: "Hello HADE, I'd like to request a demo of HADE AI for our organization.",
   cohort: "Hello HADE, I'd like to bring my team into the HADE Community as a group/cohort.",
 } as const;
@@ -105,7 +105,7 @@ export const corporatePrograms = [
     icon: "certificate",
     title: "In-house Agile Coaching Certification",
     href: "/certification",
-    text: "The ACHC program delivered privately for your leaders, faculty and internal coaches.",
+    text: "The Agile Coaching Certification, delivered privately for your leaders, faculty and internal coaches.",
     items: ["ICF, ICAgile & MyBrain accredited", "Batches for executives to supervisors", "Build an internal coaching culture"],
   },
   {
