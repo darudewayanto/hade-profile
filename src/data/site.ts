@@ -14,7 +14,7 @@ export const site = {
   // HADE community on the HijrahCoach platform (sign up / log in).
   communityUrl: "https://belajaragile.com/hade",
   // Personal site of the founder (Coach Daru Dewayanto).
-  coachDaruUrl: "https://darudewayanto.github.io/profile/",
+  coachDaruUrl: "https://coachdaru.belajaragile.com/",
   communityLoginUrl: "https://belajaragile.com/masuk?komunitas=hade",
   countries: ["Indonesia", "Hong Kong", "Qatar", "Australia"],
 };

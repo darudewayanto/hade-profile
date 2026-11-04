@@ -12,8 +12,6 @@ import { pillars, stats, coreSolutions, achcModules, caseStudies, wa, site } fro
 import heroPhoto from "../assets/photos/daru-window.jpg";
 import lounge from "../assets/photos/daru-lounge.jpg";
 import stage from "../assets/photos/daru-stage.jpg";
-import aiFlow from "../assets/visuals/hade-ai-flow.png";
-import startupStage from "../assets/photos/startup-stage.png";
 import portrait from "../assets/photos/daru-portrait.png";
 ---
 <Base>
@@ -217,30 +215,7 @@ import portrait from "../assets/photos/daru-portrait.png";
           {["ice-ac", "mcc", "mind-master", "cmc", "erickson"].map((n) => <Image src={accImg[n]} alt={n} height={104} />)}
           <Image src={accImg["marshall-goldsmith"]} alt="Marshall Goldsmith Stakeholder Centered Coaching" height={80} class="mg" />
         </div>
-        <a class="link-arrow" href={u("/about#founder")}>Full profile <Icon name="arrow-right" /></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ HADE AI TEASER ============ -->
-  <section class="section-tight">
-    <div class="wrap">
-      <div class="ai" data-reveal>
-        <div class="ai-copy">
-          <span class="eyebrow">HADE AI</span>
-          <h2 class="h2">Turn your experts' knowledge into AI-powered learning</h2>
-          <p class="lead">An LLM knowledge converter that turns documents and expertise into micro-learning courses, so learning continues between coaching sessions.</p>
-          <ul class="ai-awards small" role="list">
-            <li><Icon name="award" size={18} /> Top 10 Finalist, Startup World Cup</li>
-            <li><Icon name="award" size={18} /> World Top Finalist, Startup Istanbul</li>
-            <li><Icon name="award" size={18} /> Founder Institute, Silicon Valley</li>
-          </ul>
-          <a class="btn btn-dark" href={u("/hade-ai")}>Discover HADE AI <Icon name="arrow-right" /></a>
-        </div>
-        <div class="ai-visual">
-          <div class="media"><Image src={startupStage} alt="HADE AI presented at an international startup competition" width={900} /></div>
-          <div class="media ai-flow"><Image src={aiFlow} alt="HADE AI converting a document into a course" width={700} /></div>
-        </div>
+        <a class="link-arrow profile-link" href={site.coachDaruUrl} target="_blank" rel="noopener">Full profile <Icon name="arrow-right" /></a>
       </div>
     </div>
   </section>
@@ -421,6 +396,7 @@ import portrait from "../assets/photos/daru-portrait.png";
   .case-num { font-size: clamp(2.2rem, 1.8rem + 1.5vw, 3rem); letter-spacing: -0.045em; line-height: 1; font-weight: 500; color: var(--gold-deep); }
   .case h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.015em; margin-top: 1rem; }
   .case .link-arrow { margin-top: 0.75rem; justify-self: start; }
+  .profile-link { font-size: calc(var(--fs-small) * 2); border-bottom-width: 2px; }
 
   /* ---------- Founder ---------- */
   .founder { padding-top: clamp(4rem, 3rem + 4vw, 7rem); overflow: hidden; }
@@ -448,24 +424,4 @@ import portrait from "../assets/photos/daru-portrait.png";
   .founder-badges { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; padding: 0.6rem 0.85rem; border-radius: 16px; background: var(--cream); }
   .founder-badges :global(img) { height: 52px; width: auto; }
   .founder-badges :global(img.mg) { height: 40px; }
-
-  /* ---------- AI ---------- */
-  .ai {
-    display: grid; gap: 3rem; align-items: center;
-    padding: clamp(2rem, 1rem + 4vw, 4.5rem);
-    border-radius: var(--radius-lg);
-    background: var(--sand);
-  }
-  @media (min-width: 960px) { .ai { grid-template-columns: 1fr 1.05fr; } }
-  .ai-copy { display: grid; gap: 1.25rem; justify-items: start; }
-  .ai-awards { display: grid; gap: 0.5rem; }
-  .ai-awards li { display: flex; gap: 0.5rem; align-items: center; }
-  .ai-awards :global(svg) { color: var(--gold-deep); }
-  .ai-visual { position: relative; padding-bottom: 3rem; }
-  .ai-visual > .media:first-child { aspect-ratio: 16 / 11; }
-  .ai-flow {
-    position: absolute; right: -0.5rem; bottom: 0; width: 58%;
-    border: 6px solid var(--paper); box-shadow: var(--shadow); background: #fff;
-  }
-  .ai-flow :global(img) { object-fit: contain; }
 </style>
