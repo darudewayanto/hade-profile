@@ -7,7 +7,7 @@ import Icon from "../components/Icon.astro";
 import CtaBand from "../components/CtaBand.astro";
 import TransformationDiagrams from "../components/TransformationDiagrams.astro";
 import { accImg } from "../lib/assets";
-import { corporatePrograms, coreSolutions, wa } from "../data/site";
+import { corporatePrograms, coreSolutions, wa, site } from "../data/site";
 
 import stage from "../assets/photos/daru-stage.jpg";
 import safe1 from "../assets/visuals/safe-1.png";
@@ -121,6 +121,7 @@ import safe2 from "../assets/visuals/safe-2.png";
           <Image src={accImg["mybrain"]} alt="MyBrain International" height={40} />
           <Image src={accImg["mind-master"]} alt="MIND Master Practitioner" height={56} />
         </div>
+        <a class="link-arrow sister-link" href={site.mybrainUrl} target="_blank" rel="noopener">Visit MyBrain Indonesia <Icon name="arrow-right" /></a>
       </div>
       <div class="profile-visuals" data-reveal style="--d:.1s">
         <img src={u("/solutions/mind-individual-profile.png")} width="508" height="355" alt="MyBrain individual profile: personal and professional thinking preferences across reasoning, spontaneous, specific and feeling" loading="lazy" decoding="async" />
@@ -183,4 +184,5 @@ import safe2 from "../assets/visuals/safe-2.png";
   @media (min-width: 900px) { .safe { grid-template-columns: 1fr 1fr; } }
   .safe .card { padding: 0.75rem; }
   .safe :global(img) { border-radius: 10px; }
+  .sister-link { font-size: calc(var(--fs-small) * 1.5); }
 </style>
