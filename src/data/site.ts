@@ -135,7 +135,7 @@ export const achcModules = [
   {
     code: "Fundamental & Module 1",
     hours: 22,
-    title: "Foundation of Agile Coaching",
+    title: "Agile Coaching Competency",
     credential: "ICP-ACC (by ICAgile)",
     text: "Covers the foundations of agile coaching, the leader as agile coach, and the core competencies for agile coaching certification.",
     accreditation: "Accredited by ICAgile (ICP-ACC) on completion of Fundamental & Module 1",

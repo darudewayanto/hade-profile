@@ -155,7 +155,6 @@ import portrait from "../assets/photos/daru-portrait.png";
         {achcModules.map((m, i) => (
           <li data-reveal style={`--d:${i * 0.08}s`}>
             <div class="mod-top">
-              <span class="mod-code">{m.code}</span>
               <span class="chip chip-gold">{m.hours} hrs</span>
             </div>
             <h3 class="h3">{m.title}</h3>
@@ -421,7 +420,6 @@ import portrait from "../assets/photos/daru-portrait.png";
   .modules li { background: var(--navy-950); padding: 1.75rem; display: grid; gap: 0.9rem; align-content: start; }
   .mod-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; }
   .mod-top .chip { white-space: nowrap; flex: none; }
-  .mod-code { font-size: var(--fs-micro); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; }
   .mod-cred { font-size: 0.85rem; font-weight: 600; color: var(--gold-light); margin-top: -0.4rem; }
   .mod-logos { display: flex; gap: 0.6rem; align-items: center; margin-top: auto; padding-top: 0.75rem; }
   .mod-logos :global(img) {
