@@ -52,17 +52,10 @@ const faqs = [
       </ul>
       <div class="acc-panel" data-reveal>
         <p class="acc-label">Accredited by</p>
-        <ul role="list" class="acc-row">
-          <li style="--h:62px"><Image src={accImg["icf"]} alt="International Coaching Federation (ICF)" height={124} /></li>
-          <li style="--h:74px"><Image src={accImg["icagile"]} alt="ICAgile" height={148} /></li>
-          <li style="--h:62px"><Image src={accImg["mybrain"]} alt="MyBrain International" height={116} /></li>
-        </ul>
+        <!-- Same artwork as hijrahcoach.belajaragile.com (Coach Daru's badge files), kept as lossless PNG. -->
+        <div class="acc-img orgs"><Image src={accImg["orgs-row"]} alt="International Coaching Federation (ICF), ICAgile and MyBrain International" widths={[1015]} sizes="(min-width: 760px) 620px, 92vw" format="png" /></div>
         <p class="acc-label">Program accreditations</p>
-        <ul role="list" class="acc-row">
-          <li style="--h:108px"><Image src={accImg["icf-level1"]} alt="ICF Level 1 Accredited Coaching Education" height={216} /></li>
-          <li style="--h:112px"><Image src={accImg["icp-acc"]} alt="ICAgile Certified Professional in Agile Coaching (ICP-ACC)" height={224} /></li>
-          <li style="--h:64px"><Image src={accImg["mind"]} alt="MIND, MyBrain Indicator of Neurological Dominance" height={128} /></li>
-        </ul>
+        <div class="acc-img program"><Image src={accImg["program-row"]} alt="ICF Level 1 Accredited Coaching Education, ICAgile Certified Professional in Agile Coaching (ICP-ACC), MiND Practitioner Certification by MyBrain" widths={[481]} sizes="(min-width: 760px) 430px, 92vw" format="png" /></div>
       </div>
     </div>
   </section>
@@ -187,12 +180,12 @@ const faqs = [
     font-size: var(--fs-micro); font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
   }
   .acc-label::before, .acc-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
-  .acc-row + .acc-label { margin-top: clamp(1rem, 0.5rem + 1.5vw, 2rem); }
-  /* Three equal cells per row; each logo gets an optical height (--h) so wordmarks and badges feel equally weighted. */
-  .acc-row { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); justify-content: center; gap: clamp(0.75rem, 0.25rem + 3vw, 4rem); }
-  .acc-row li { height: 120px; display: grid; place-items: center; }
-  .acc-row :global(img) { height: calc(var(--h) * var(--k, 1)); width: auto; max-width: 100%; object-fit: contain; }
-  @media (max-width: 640px) { .acc-row li { height: 84px; } .acc-row { --k: 0.66; } }
+  .acc-img + .acc-label { margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); }
+  /* Badge rows from the Hijrah Coach site, never wider than their source pixels. */
+  .acc-img { margin: clamp(1rem, 0.5rem + 1.5vw, 2rem) auto 0; }
+  .acc-img.orgs { max-width: 620px; }
+  .acc-img.program { max-width: 430px; }
+  .acc-img :global(img) { width: 100%; height: auto; }
 
 
   .fw-figure { margin: 0; padding: clamp(0.75rem, 0.25rem + 2vw, 2rem); border-radius: var(--radius-lg); background: #fff; border: 1px solid var(--line); }
