@@ -7,7 +7,7 @@ import LogoMarquee from "../components/LogoMarquee.astro";
 import Testimonials from "../components/Testimonials.astro";
 import CtaBand from "../components/CtaBand.astro";
 import { accImg, clientImg } from "../lib/assets";
-import { pillars, stats, coreSolutions, corporatePrograms, achcModules, caseStudies, wa, site } from "../data/site";
+import { pillars, stats, coreSolutions, achcModules, caseStudies, wa, site } from "../data/site";
 
 import heroPhoto from "../assets/photos/daru-window.jpg";
 import lounge from "../assets/photos/daru-lounge.jpg";
@@ -132,28 +132,6 @@ import portrait from "../assets/photos/daru-portrait.png";
         <Image src={heroPhoto} alt="" width={40} height={40} class="avatar" />
         <span>Talk to our Master Coach<br /><strong>{site.phoneDisplay}</strong></span>
       </a>
-    </div>
-  </section>
-
-  <!-- ============ CORPORATE SOLUTIONS ============ -->
-  <section class="section solutions">
-    <div class="wrap">
-      <div class="head-row" data-reveal>
-        <div>
-          <h2 class="h1">Our Solutions</h2>
-        </div>
-        <p class="lead">Programs for corporate and enterprise clients, delivered in-house or in public batches.</p>
-      </div>
-      <ul role="list" class="prog-list">
-        {corporatePrograms.map((p) => (
-          <li class:list={["prog", { "prog-linked": p.href }]} data-reveal>
-            <h3>{p.href ? <a class="prog-link" href={u(p.href)}>{p.title}</a> : p.title}</h3>
-            <p class="muted">{p.text}</p>
-            <ul class="prog-items small">{p.items.map((it) => <li>{it}</li>)}</ul>
-            {p.href && <span class="prog-more" aria-hidden="true">View program <Icon name="arrow-right" size={16} /></span>}
-          </li>
-        ))}
-      </ul>
     </div>
   </section>
 
@@ -422,19 +400,6 @@ import portrait from "../assets/photos/daru-portrait.png";
   }
   .call-chip :global(.avatar) { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; }
   .call-chip:hover strong { color: var(--gold-deep); }
-
-  /* ---------- Solutions (editorial list) ---------- */
-  .prog-list { border-top: 1px solid var(--line-strong); }
-  .prog { position: relative; display: grid; gap: 0.5rem 3rem; padding: 1.75rem 0; border-bottom: 1px solid var(--line); }
-  @media (min-width: 900px) { .prog { grid-template-columns: 0.9fr 1.1fr 1fr; align-items: start; } }
-  .prog h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
-  .prog-items { list-style: none; padding: 0; display: grid; gap: 0.35rem; color: var(--ink-soft); }
-  .prog-items li::before { content: "– "; color: var(--gold-deep); }
-  .prog-link { color: inherit; }
-  .prog-link::after { content: ""; position: absolute; inset: 0; z-index: 2; }
-  .prog-linked:hover h3 { color: var(--gold-deep); }
-  .prog-more { grid-column: 1 / -1; display: inline-flex; align-items: center; gap: 0.4em; font-size: var(--fs-small); font-weight: 600; color: var(--gold-deep); }
-  @media (min-width: 900px) { .prog-more { grid-column: 1; } }
 
   /* ---------- Founder quote ---------- */
   .quote-band { padding-block: clamp(3.5rem, 2.5rem + 4vw, 6rem); }
